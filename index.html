@@ -1,0 +1,2618 @@
+<!DOCTYPE html>
+<html lang="pl" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#080809" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="ONGXREPS" />
+  <title>ONGXREPS // Luxury Streetwear Archive & Verified QC Catalog</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (typeof tailwind !== 'undefined') {
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              obsidian: '#080809',
+              charcoal: {
+                950: '#0C0C0F',
+                900: '#111114',
+                800: '#16161A',
+                700: '#1F1F26',
+                600: '#2A2A34'
+              },
+              hairline: 'rgba(255, 255, 255, 0.07)',
+              acid: '#E2FF32'
+            },
+            fontFamily: {
+              sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              display: ['Space Grotesk', 'Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace']
+            }
+          }
+        }
+      };
+    }
+  </script>
+
+  <!-- Luxury Streetwear Design System & Specular Surface Architecture -->
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-obsidian: #080809;
+      --bg-studio: #0C0C0F;
+      --bg-card: #111114;
+      --bg-interactive: #16161A;
+      --border-hairline: rgba(255, 255, 255, 0.07);
+      --border-hover: rgba(255, 255, 255, 0.22);
+      --specular-top: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+      --text-primary: #F4F4F6;
+      --text-secondary: #9E9EA9;
+      --text-muted: #686873;
+      --accent-acid: #E2FF32;
+      --radius-hero: 22px;
+      --radius-card: 18px;
+      --radius-control: 11px;
+      --radius-badge: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg-obsidian);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      letter-spacing: -0.011em;
+    }
+
+    /* Standardized Typography & Tabular Telemetry */
+    .font-display {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: -0.035em;
+    }
+
+    .font-mono, .tabular-nums {
+      font-family: 'JetBrains Mono', monospace;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" on, "zero" on;
+    }
+
+    .editorial-gradient-text {
+      background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 45%, #A1A1AA 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Core Surface Tokens */
+    .bg-obsidian { background-color: #080809; }
+    .bg-charcoal-950 { background-color: #0C0C0F; }
+    .bg-charcoal-900 { background-color: #111114; }
+    .bg-charcoal-800 { background-color: #16161A; }
+    .border-hairline { border-color: rgba(255, 255, 255, 0.07); }
+    .text-acid { color: #E2FF32; }
+    .bg-acid { background-color: #E2FF32; }
+
+    /* Specular Surface Containers */
+    .surface-hero {
+      background: linear-gradient(165deg, #141418 0%, #0D0D10 100%);
+      border: 1px solid var(--border-hairline);
+      box-shadow: var(--specular-top), 0 24px 48px -18px rgba(0, 0, 0, 0.85);
+      border-radius: var(--radius-hero);
+    }
+
+    .surface-bento {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      box-shadow: var(--specular-top);
+      border-radius: var(--radius-card);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.28s ease;
+    }
+    .surface-bento:hover {
+      border-color: var(--border-hover);
+      background-color: #141418;
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14), 0 16px 32px -12px rgba(0, 0, 0, 0.75);
+    }
+
+    .radius-hero { border-radius: var(--radius-hero); }
+    .radius-card { border-radius: var(--radius-card); }
+    .radius-control { border-radius: var(--radius-control); }
+    .radius-badge { border-radius: var(--radius-badge); }
+
+    /* Subtle Luxury Grid Background */
+    .bg-luxury-grid {
+      background-size: 32px 32px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Glassmorphism for iPhone Top Header & Bottom Dock */
+    .glass-bar {
+      background: rgba(10, 10, 13, 0.84);
+      backdrop-filter: blur(22px) saturate(185%);
+      -webkit-backdrop-filter: blur(22px) saturate(185%);
+      box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.07);
+    }
+
+    .ios-bottom-dock {
+      background: rgba(12, 12, 15, 0.86);
+      backdrop-filter: blur(24px) saturate(190%);
+      -webkit-backdrop-filter: blur(24px) saturate(190%);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), 0 -12px 36px rgba(0, 0, 0, 0.75);
+    }
+
+    .glass-backdrop {
+      background: rgba(5, 5, 7, 0.86);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+    }
+
+    .glass-pill {
+      background: rgba(12, 12, 15, 0.78);
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+    }
+
+    /* Hide horizontal scrollbar on filter pills */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* iPhone Safe Area Support */
+    .pb-safe-bottom {
+      padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+    }
+    .main-viewport-pad {
+      padding-bottom: calc(6.25rem + env(safe-area-inset-bottom));
+    }
+    @media (min-width: 1024px) {
+      .main-viewport-pad {
+        padding-bottom: 3.5rem;
+      }
+    }
+
+    /* Ultra-Refined Product Card Architecture */
+    .ongx-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      box-shadow: var(--specular-top), 0 10px 26px -12px rgba(0, 0, 0, 0.7);
+      border-radius: var(--radius-card);
+      transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.26s ease, box-shadow 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+      height: 100%;
+    }
+    .ongx-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-hover);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14), 0 24px 48px -16px rgba(0, 0, 0, 0.92);
+    }
+
+    .ongx-media-box {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background-color: var(--bg-studio);
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+    .ongx-media-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 52%, rgba(8, 8, 9, 0.42) 100%),
+                  linear-gradient(180deg, rgba(8, 8, 9, 0.25) 0%, transparent 25%, transparent 72%, rgba(8, 8, 9, 0.65) 100%);
+      pointer-events: none;
+    }
+    .ongx-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ongx-card:hover .ongx-card-img {
+      transform: scale(1.055);
+    }
+
+    .ongx-title-clamp {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.65em;
+      line-height: 1.325;
+    }
+
+    /* Primary White Editorial CTA Button */
+    .btn-primary-white {
+      background-color: #FFFFFF;
+      color: #080809;
+      border-radius: var(--radius-control);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.08);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary-white:hover {
+      background-color: #F4F4F6;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 22px rgba(255, 255, 255, 0.14);
+    }
+    .btn-primary-white:active {
+      transform: scale(0.98);
+    }
+
+    /* Secondary Interactive Control Surface */
+    .btn-surface-secondary {
+      background-color: var(--bg-interactive);
+      border: 1px solid var(--border-hairline);
+      box-shadow: var(--specular-top);
+      border-radius: var(--radius-control);
+      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.18s ease;
+    }
+    .btn-surface-secondary:hover {
+      background-color: #1C1C22;
+      border-color: var(--border-hover);
+      color: #FFFFFF;
+    }
+    .btn-surface-secondary:active {
+      transform: scale(0.97);
+    }
+
+    /* Smooth Section & Card Stagger Animations */
+    .section-fade {
+      animation: fadeSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .card-stagger {
+      opacity: 0;
+      animation: cardEnter 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cardEnter {
+      from { opacity: 0; transform: translateY(12px) scale(0.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.38; transform: scale(0.88); }
+    }
+    .live-dot {
+      animation: pulseDot 2.2s infinite ease-in-out;
+    }
+
+    /* QC Lightbox Technical Ruler & Zoom */
+    .qc-ruler-overlay {
+      background-image: repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.28) 0px,
+        rgba(255, 255, 255, 0.28) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+      height: 8px;
+    }
+    .qc-zoom-img {
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+    }
+    .qc-zoomed {
+      transform: scale(1.75);
+      cursor: zoom-out;
+    }
+    .qc-unzoomed {
+      transform: scale(1);
+      cursor: zoom-in;
+    }
+
+    /* Mobile Bottom Dock Spring Tap */
+    .mob-nav-btn {
+      position: relative;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+    }
+    .mob-nav-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* Decorative Pseudo-Elements & Reliable Mobile External Link Tap Layer */
+    .surface-hero::before,
+    .surface-hero::after,
+    .surface-bento::before,
+    .surface-bento::after {
+      pointer-events: none;
+    }
+
+    .ext-action-link {
+      position: relative;
+      z-index: 30;
+      pointer-events: auto;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none !important;
+      pointer-events: none !important;
+    }
+  </style>
+</head>
+<body class="bg-obsidian text-[#F4F4F6] min-h-screen flex flex-col lg:flex-row selection:bg-[#E2FF32] selection:text-black">
+
+  <!-- =========================================================================
+       DESKTOP SIDEBAR (Automatically visible on screens >= 1024px)
+       ========================================================================= -->
+  <aside class="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:inset-y-0 lg:left-0 bg-charcoal-950 border-r border-hairline z-40 select-none">
+    <!-- Brand Identity -->
+    <div class="p-6 border-b border-hairline">
+      <div class="flex items-center justify-between">
+        <button onclick="App.navigate('home')" class="flex items-center gap-3 text-left group focus:outline-none">
+          <div class="w-9 h-9 radius-control bg-white text-black flex items-center justify-center font-display font-bold text-base tracking-tighter shadow-sm group-hover:bg-acid transition-colors">
+            OX
+          </div>
+          <div>
+            <span class="font-display font-bold text-xl tracking-tight text-white block leading-none">ONGXREPS</span>
+            <span class="font-mono text-[10px] tracking-widest text-[#9E9EA9] uppercase mt-1 block">ARCHIVE // VERIFIED</span>
+          </div>
+        </button>
+        <span class="font-mono text-[10px] px-2 py-0.5 radius-badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 flex items-center gap-1.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot"></span>
+          LIVE
+        </span>
+      </div>
+
+      <!-- Quick Search Trigger -->
+      <button onclick="App.focusSearch()" class="mt-5 w-full flex items-center justify-between px-3.5 py-2.5 radius-control btn-surface-secondary text-[#9E9EA9] hover:text-white text-xs">
+        <span class="flex items-center gap-2">
+          <svg class="w-3.5 h-3.5 text-[#686873]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+          </svg>
+          <span data-i18n="searchPlaceholderShort">Szukaj po nazwie</span>
+        </span>
+        <kbd class="font-mono text-[10px] px-1.5 py-0.5 radius-badge bg-obsidian text-[#9E9EA9] border border-hairline">/</kbd>
+      </button>
+    </div>
+
+    <!-- Sidebar Navigation Links -->
+    <nav class="flex-1 px-3.5 py-5 space-y-1.5 overflow-y-auto">
+      <div class="px-3 pb-1.5 font-mono text-[10px] tracking-widest uppercase text-[#686873]" data-i18n="navHeader">NAWIGACJA</div>
+
+      <button onclick="App.navigate('home')" data-sidebar-nav="home" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
+        <span class="flex items-center gap-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span data-i18n="navHome">Start</span>
+        </span>
+        <span class="font-mono tabular-nums text-[10px] opacity-60">01</span>
+      </button>
+
+      <button onclick="App.navigate('products')" data-sidebar-nav="products" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
+        <span class="flex items-center gap-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span data-i18n="navProducts">ONGXREPS SPREADSHEET</span>
+        </span>
+        <span id="sidebar-total-badge" class="font-mono tabular-nums text-[11px] px-2 py-0.5 radius-badge bg-charcoal-800 text-zinc-200 border border-hairline">18</span>
+      </button>
+
+      <button onclick="App.navigate('saved')" data-sidebar-nav="saved" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
+        <span class="flex items-center gap-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+          <span data-i18n="navSaved">Twój Haul Planner</span>
+        </span>
+        <span id="sidebar-saved-badge" class="font-mono tabular-nums text-[11px] px-2 py-0.5 radius-badge bg-charcoal-800 text-acid border border-hairline">2</span>
+      </button>
+
+      <button onclick="App.navigate('community')" data-sidebar-nav="community" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
+        <span class="flex items-center gap-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span data-i18n="navCommunity">SPOŁECZNOŚĆ ONGXREPS</span>
+        </span>
+        <span class="font-mono tabular-nums text-[10px] opacity-60">04</span>
+      </button>
+
+      <button onclick="App.navigate('publish')" data-sidebar-nav="publish" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
+        <span class="flex items-center gap-3">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          <span data-i18n="navPublish">Telefon</span>
+        </span>
+        <span class="font-mono text-[10px] px-1.5 py-0.5 radius-badge bg-white text-black font-bold">APP</span>
+      </button>
+
+      <!-- Quick Divisions -->
+      <div class="pt-5 pb-1.5 px-3 font-mono text-[10px] tracking-widest uppercase text-[#686873]" data-i18n="categoriesHeader">KATEGORIE</div>
+      <div id="sidebar-categories" class="space-y-0.5"></div>
+    </nav>
+
+    <!-- Sidebar Footer (Desktop Selectors & KakoBuy Popup Trigger) -->
+    <div class="p-4 border-t border-hairline bg-obsidian/60 space-y-3">
+      <div class="grid grid-cols-2 gap-2">
+        <!-- Desktop Currency Dropdown -->
+        <div class="relative" data-dropdown-root>
+          <button onclick="App.toggleDropdown('sidebar-curr-menu', event)" class="w-full h-9 px-3 radius-control btn-surface-secondary font-mono tabular-nums text-xs font-semibold text-white flex items-center justify-between">
+            <span class="flex items-center gap-1.5">
+              <span class="text-acid" id="sidebar-curr-symbol">zł</span>
+              <span id="sidebar-curr-code">PLN</span>
+            </span>
+            <svg class="w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="sidebar-curr-menu" class="dropdown-menu hidden absolute bottom-full left-0 mb-2 w-44 p-1.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-1">
+            <div class="px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectCurrencyLabel">Wybierz walutę</div>
+            <div data-currency-options></div>
+          </div>
+        </div>
+
+        <!-- Desktop Language Dropdown -->
+        <div class="relative" data-dropdown-root>
+          <button onclick="App.toggleDropdown('sidebar-lang-menu', event)" class="w-full h-9 px-3 radius-control btn-surface-secondary font-mono text-xs font-semibold text-white flex items-center justify-between">
+            <span id="sidebar-lang-code">PL</span>
+            <svg class="w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="sidebar-lang-menu" class="dropdown-menu hidden absolute bottom-full right-0 mb-2 w-40 p-1.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-1">
+            <div class="px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectLangLabel">Wybierz język</div>
+            <div data-lang-options></div>
+          </div>
+        </div>
+      </div>
+
+      <button onclick="App.openCouponPopup()" class="w-full text-left block p-3.5 radius-card surface-bento group">
+        <div class="flex items-center justify-between">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-acid font-semibold">KAKOBUY KUPONY</span>
+          <svg class="w-3.5 h-3.5 text-[#9E9EA9] group-hover:translate-x-0.5 group-hover:text-white transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+        <p class="text-xs text-[#F4F4F6] mt-1 font-medium" data-i18n="sidebarCouponText">Odbierz nawet 1500 zł w kuponach na dostawę</p>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT WRAPPER
+       ========================================================================= -->
+  <div class="flex-1 lg:pl-72 flex flex-col min-h-screen">
+
+    <!-- STICKY TOP MOBILE & DESKTOP HEADER (Ergonomic for 375px-430px iPhone Screens) -->
+    <header class="sticky top-0 z-30 glass-bar px-3 py-2.5 sm:px-6 lg:px-8 lg:py-3.5">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+
+        <!-- Left: Brand Identity + Live Sync Dot -->
+        <div class="flex items-center gap-2 min-w-0">
+          <button onclick="App.navigate('home')" class="flex items-center gap-2.5 text-left focus:outline-none group min-w-0">
+            <div class="w-8 h-8 radius-control bg-white text-black flex items-center justify-center font-display font-bold text-xs tracking-tighter shrink-0 shadow-sm group-active:scale-95 transition-transform">
+              OX
+            </div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5">
+                <span class="font-display font-bold text-sm sm:text-base tracking-tight text-white leading-none truncate">ONGXREPS</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot shrink-0" title="Live Catalog"></span>
+                <span id="header-count-pill" class="font-mono tabular-nums text-[10px] px-1.5 py-0.5 radius-badge bg-charcoal-800 text-[#F4F4F6] border border-hairline shrink-0">18</span>
+              </div>
+              <span class="font-mono text-[9px] tracking-widest text-[#9E9EA9] uppercase block mt-0.5 truncate">VERIFIED ARCHIVE</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Right: Compact Ergonomic Controls (Currency Dropdown, Language Dropdown, iPhone/Publish) -->
+        <div class="flex items-center gap-1.5 shrink-0">
+          <!-- Currency Selector Dropdown -->
+          <div class="relative" data-dropdown-root>
+            <button onclick="App.toggleDropdown('header-curr-menu', event)" class="h-8 px-2.5 radius-control btn-surface-secondary font-mono tabular-nums text-[11px] font-semibold text-white flex items-center gap-1" title="Wybierz walutę / Select Currency">
+              <span class="text-acid" id="header-curr-symbol">zł</span>
+              <span id="header-curr-code">PLN</span>
+              <svg class="w-3 h-3 text-[#9E9EA9] ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="header-curr-menu" class="dropdown-menu hidden absolute right-0 mt-2 w-44 p-1.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-1">
+              <div class="px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectCurrencyLabel">Wybierz walutę</div>
+              <div data-currency-options></div>
+            </div>
+          </div>
+
+          <!-- Language Selector Dropdown (PL / EN) -->
+          <div class="relative" data-dropdown-root>
+            <button onclick="App.toggleDropdown('header-lang-menu', event)" class="h-8 px-2.5 radius-control btn-surface-secondary font-mono text-[11px] font-semibold text-[#F4F4F6] flex items-center gap-1" title="Wybierz język / Select Language">
+              <span id="header-lang-btn">PL</span>
+              <svg class="w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div id="header-lang-menu" class="dropdown-menu hidden absolute right-0 mt-2 w-40 p-1.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-1">
+              <div class="px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectLangLabel">Wybierz język</div>
+              <div data-lang-options></div>
+            </div>
+          </div>
+
+          <!-- Prominent Phone App Guide Action Button -->
+          <button onclick="App.navigate('publish')" class="h-8 px-2.5 sm:px-3.5 radius-control btn-primary-white font-semibold text-[11px] sm:text-xs flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+            </svg>
+            <span class="hidden xs:inline sm:inline" data-i18n="headerIphoneBtn">Telefon</span>
+            <span class="inline xs:hidden sm:hidden font-mono text-[10px]">APP</span>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- =======================================================================
+         MAIN INTERACTIVE VIEWPORT
+         ======================================================================= -->
+    <main class="flex-1 main-viewport-pad px-3.5 pt-4 sm:px-6 lg:px-8 lg:pt-6 max-w-7xl w-full mx-auto">
+
+      <!-- =====================================================================
+           SECTION 1: HOME (START)
+           ===================================================================== -->
+      <section id="view-home" class="space-y-6 sm:space-y-8 section-fade">
+
+        <!-- Luxury Streetwear Editorial Hero Banner (22px radius + specular hairline) -->
+        <div class="relative surface-hero overflow-hidden bg-luxury-grid p-5 sm:p-8 lg:p-10">
+          <div class="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-white/[0.04] blur-3xl"></div>
+          <div class="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[#E2FF32]/[0.05] blur-3xl"></div>
+
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 radius-badge glass-pill mb-4">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot"></span>
+              <span class="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-[#F4F4F6]" data-i18n="heroBadge">
+                ONGXREPS // QC & KAKOBUY
+              </span>
+            </div>
+
+            <h1 class="font-display max-w-3xl">
+              <span class="block text-2xl sm:text-4xl lg:text-[46px] font-bold editorial-gradient-text leading-[1.05]" data-i18n="heroTitleMain">
+                SPREADSHEET ONGXREPS.
+              </span>
+              <span class="block text-base sm:text-xl lg:text-2xl font-semibold text-[#9E9EA9] tracking-tight mt-2" data-i18n="heroTitleSub">
+                NAJLEPSZE CENY I NAJLEPSZE BATCHE
+              </span>
+            </h1>
+
+            <p class="mt-3.5 text-xs sm:text-sm lg:text-[15px] text-[#9E9EA9] max-w-2xl leading-relaxed" data-i18n="heroDesc">
+              Oficjalna strona ONGXREPS. Znajdziesz tutaj starannie wybrane produkty, najlepsze batche, atrakcyjne ceny oraz zdjęcia QC.
+            </p>
+
+            <!-- Hero Quick CTA Button -->
+            <div class="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3">
+              <button onclick="App.navigate('products')" class="px-6 py-3.5 btn-primary-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 group">
+                <span data-i18n="ctaExploreCatalog">Przeglądaj itemy</span>
+                <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two Simple, Elegant Statistics (Available Products & Community Members) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
+          <div onclick="App.navigate('products')" class="cursor-pointer p-5 sm:p-6 surface-bento flex items-center justify-between">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9] block" data-i18n="statProductsLabel">LICZBA DOSTĘPNYCH PRODUKTÓW</span>
+              <div id="stat-products-val" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white mt-2">18</div>
+            </div>
+            <div class="w-11 h-11 radius-control bg-charcoal-800 border border-hairline flex items-center justify-center text-acid">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+            </div>
+          </div>
+
+          <div onclick="App.navigate('community')" class="cursor-pointer p-5 sm:p-6 surface-bento flex items-center justify-between">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9] block" data-i18n="statCommLabel">LICZBA CZŁONKÓW SPOŁECZNOŚCI</span>
+              <div id="stat-discord-members" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white mt-2">...</div>
+            </div>
+            <div class="w-11 h-11 radius-control bg-charcoal-800 border border-hairline flex items-center justify-center text-emerald-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =====================================================================
+           SECTION 2: PRODUCTS (ONGXREPS SPREADSHEET)
+           ===================================================================== -->
+      <section id="view-products" class="hidden space-y-5 section-fade">
+
+        <!-- Filter & Search Control Box -->
+        <div class="p-4 sm:p-5 surface-bento space-y-3.5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span id="catalog-count-label" class="font-mono tabular-nums text-xs font-bold uppercase tracking-widest text-acid">18 PRODUKTÓW</span>
+              </div>
+              <h1 class="font-display text-xl sm:text-2xl font-bold editorial-gradient-text mt-0.5" data-i18n="catalogHeading">ONGXREPS SPREADSHEET</h1>
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="flex items-center gap-2">
+              <select id="sort-select" onchange="App.setSort(this.value)" class="px-3 py-2 btn-surface-secondary font-mono text-xs text-white focus:outline-none">
+                <option value="featured">Sortuj: Polecane</option>
+                <option value="newest">Sortuj: Najnowsze</option>
+                <option value="price-asc">Cena: Od najniższej</option>
+                <option value="price-desc">Cena: Od najwyższej</option>
+                <option value="weight-desc">Waga: Od najcięższych</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Instant Search Bar (Search by name only) -->
+          <div class="relative">
+            <input
+              id="catalog-search"
+              type="text"
+              oninput="App.setSearch(this.value)"
+              placeholder="Szukaj po nazwie"
+              data-i18n-placeholder="searchByNamePlaceholder"
+              class="w-full px-4 py-3 pl-10 pr-20 radius-control bg-obsidian border border-hairline focus:border-white/30 text-sm text-white placeholder-[#686873] focus:outline-none transition-colors"
+            />
+            <svg class="w-4 h-4 text-[#686873] absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+            </svg>
+            <button id="reset-filters-btn" onclick="App.resetFilters()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 px-2.5 py-1 radius-badge bg-charcoal-800 text-acid font-mono text-[10px] font-bold border border-hairline">
+              RESET
+            </button>
+          </div>
+
+          <!-- Category Pills -->
+          <div id="catalog-category-pills" class="flex items-center gap-2 overflow-x-auto no-scrollbar pt-0.5"></div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch"></div>
+
+        <!-- Empty Search State -->
+        <div id="products-empty" class="hidden p-10 surface-bento text-center max-w-md mx-auto">
+          <p class="font-display text-lg font-bold text-white" data-i18n="emptySearchTitle">Brak wyników wyszukiwania</p>
+          <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="emptySearchDesc">Nie znaleźliśmy produktu pasującego do wpisanej nazwy.</p>
+          <button onclick="App.resetFilters()" class="mt-4 px-4 py-2.5 btn-primary-white font-bold text-xs">
+            Pokaż wszystkie produkty
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 3: SAVED VAULT / HAUL PLANNER (TWÓJ HAUL PLANNER)
+           ===================================================================== -->
+      <section id="view-saved" class="hidden space-y-5 section-fade">
+        <!-- Haul Planner Header & Live Total Cost Summary -->
+        <div class="p-5 sm:p-6 surface-bento space-y-5">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-widest text-acid">HAUL BUILDER & LIVE SHIPPING</span>
+              <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text mt-0.5" data-i18n="vaultHeading">Twój Haul Planner</h1>
+              <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="vaultSub">
+                Zapisane produkty z automatycznym podliczeniem wagi paczki, wysyłki na żywo i całkowitego kosztu zamówienia.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="App.syncShipWeightWithHaul()" class="px-3.5 py-2.5 btn-surface-secondary font-mono text-xs text-zinc-200 hover:text-white flex items-center gap-1.5" title="Ustaw suwak wagi na łączną wagę zapisanych produktów">
+                <svg class="w-3.5 h-3.5 text-acid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span data-i18n="vaultSyncWeightBtn">Waga z haula</span>
+              </button>
+              <button onclick="App.exportHaulList()" class="px-4 py-2.5 btn-primary-white font-bold text-xs flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                <span data-i18n="copyHaulBtn">Kopiuj listę Haul</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Vertical Rows Cost Summary (One Below Another) -->
+          <div class="space-y-2.5">
+            <!-- Row 1: Ilość produktów -->
+            <div class="px-4 py-3.5 radius-control bg-obsidian border border-hairline flex items-center justify-between gap-4">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2.5">
+                <span class="font-sans text-xs sm:text-sm font-medium text-[#9E9EA9]" data-i18n="vaultItemsCountLabel">Ilość produktów</span>
+                <span id="vault-weight" class="font-mono tabular-nums text-[11px] text-[#686873] whitespace-nowrap">(2.14 kg)</span>
+              </div>
+              <span id="vault-count" class="font-mono tabular-nums text-base sm:text-lg font-bold text-white whitespace-nowrap shrink-0">2</span>
+            </div>
+
+            <!-- Row 2: Cena produktów -->
+            <div class="px-4 py-3.5 radius-control bg-obsidian border border-hairline flex items-center justify-between gap-4">
+              <span class="font-sans text-xs sm:text-sm font-medium text-[#9E9EA9]" data-i18n="vaultProductsValueLabel">Cena produktów</span>
+              <div class="flex items-baseline gap-2 shrink-0 whitespace-nowrap">
+                <span id="vault-total" class="font-mono tabular-nums text-base sm:text-lg font-bold text-white whitespace-nowrap">312&nbsp;zł</span>
+              </div>
+            </div>
+
+            <!-- Row 3: Cena wysyłki -->
+            <div class="px-4 py-3.5 radius-control bg-obsidian border border-hairline flex items-center justify-between gap-4">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="font-sans text-xs sm:text-sm font-medium text-[#9E9EA9]" data-i18n="vaultShippingCostLabel">Cena wysyłki</span>
+                <span id="vault-shipping-sub" class="font-mono tabular-nums text-[10px] px-2 py-0.5 radius-badge bg-charcoal-800 text-acid border border-hairline whitespace-nowrap shrink-0">DPD • 2.1 kg</span>
+              </div>
+              <span id="vault-shipping" class="font-mono tabular-nums text-base sm:text-lg font-bold text-zinc-200 whitespace-nowrap shrink-0">140&nbsp;zł</span>
+            </div>
+
+            <!-- Row 4: Całkowita cena (Visually Highlighted & Most Prominent) -->
+            <div class="px-4 py-4 sm:px-5 sm:py-4.5 radius-card bg-gradient-to-r from-[#16161B] to-obsidian border-2 border-[#E2FF32] shadow-[0_0_28px_rgba(226,255,50,0.14)] flex items-center justify-between gap-4">
+              <div>
+                <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-tight block" data-i18n="vaultGrandTotalLabel">Całkowita cena</span>
+              </div>
+              <span id="vault-grand-total" class="font-display tabular-nums text-2xl sm:text-3xl font-bold text-acid tracking-tight whitespace-nowrap shrink-0">452&nbsp;zł</span>
+            </div>
+          </div>
+
+          <!-- Integrated Live Shipping Cost Calculator (0-20 kg, DPD / DHL / ETL, No Confirmation Button) -->
+          <div class="p-4 sm:p-5 radius-card bg-obsidian/90 border border-hairline space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-hairline">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-acid live-dot"></span>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-acid">LIVE CALCULATOR // 0–20 KG</span>
+                </div>
+                <h2 class="font-display text-lg sm:text-xl font-bold text-white mt-0.5" data-i18n="shipCalcHeading">Przybliżony koszt wysyłki</h2>
+                <p class="text-[11px] text-[#9E9EA9] mt-0.5" data-i18n="shipOverallLabel">
+                  Orientacyjna stawka aktualizowana na żywo podczas przesuwania wagi lub zmiany przewoźnika.
+                </p>
+              </div>
+
+              <!-- Prominent Live Shipping Cost Readout Right Above/Beside Controls -->
+              <div id="ship-result-card" class="px-3 py-2 radius-control bg-charcoal-900 border border-hairline flex sm:flex-col items-center sm:items-end justify-between gap-2 min-w-0 max-w-full overflow-hidden shrink-0">
+                <div class="flex items-center gap-1.5 whitespace-nowrap">
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9]" data-i18n="shipIndicativeBadge">SZACUNKOWY KOSZT</span>
+                  <span class="font-mono text-[10px] px-1.5 py-0.5 radius-badge bg-white/5 text-acid border border-hairline whitespace-nowrap" id="ship-summary-line">DPD</span>
+                </div>
+                <div class="flex items-baseline gap-1.5 shrink-0 whitespace-nowrap">
+                  <span id="ship-overall-cost" class="font-mono tabular-nums text-sm sm:text-base font-bold text-acid whitespace-nowrap leading-tight">140&nbsp;zł</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Carrier Selection: Exclusively DPD, DHL, ETL -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9]" data-i18n="shipSelectLineLabel">
+                  WYBÓR LINII TRANSPORTOWEJ
+                </span>
+                <span id="ship-summary-weight" class="font-mono tabular-nums text-[11px] text-[#9E9EA9]">2.1 kg</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2.5">
+                <button
+                  type="button"
+                  onclick="App.selectShipLine('DPD')"
+                  data-ship-line="DPD"
+                  class="ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"
+                >
+                  <span>DPD</span>
+                </button>
+                <button
+                  type="button"
+                  onclick="App.selectShipLine('DHL')"
+                  data-ship-line="DHL"
+                  class="ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"
+                >
+                  <span>DHL</span>
+                </button>
+                <button
+                  type="button"
+                  onclick="App.selectShipLine('ETL')"
+                  data-ship-line="ETL"
+                  class="ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"
+                >
+                  <span>ETL</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Live Weight Slider (0 to 20 kg) -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9]" data-i18n="shipWeightLabel">
+                  WAGA PACZKI (0 – 20 KG)
+                </span>
+                <div class="flex items-center gap-2">
+                  <span id="ship-weight-display" class="font-mono tabular-nums text-sm sm:text-base font-bold text-white">
+                    2.1 kg
+                  </span>
+                </div>
+              </div>
+              <input
+                id="ship-weight-slider"
+                type="range"
+                min="0"
+                max="20"
+                step="0.1"
+                value="2.1"
+                oninput="App.setShipWeight(this.value)"
+                class="w-full accent-[#E2FF32] cursor-pointer"
+              />
+              <div class="flex items-center justify-between font-mono tabular-nums text-[10px] text-[#686873]">
+                <span>0 kg</span>
+                <span>2 kg</span>
+                <span>5 kg</span>
+                <span>10 kg</span>
+                <span>15 kg</span>
+                <span>20 kg</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="saved-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch"></div>
+
+        <div id="saved-empty" class="hidden p-10 surface-bento text-center max-w-md mx-auto">
+          <p class="font-display text-lg font-bold text-white" data-i18n="emptyVaultTitle">Schowek jest pusty</p>
+          <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="emptyVaultDesc">Dotknij ikony zakładki na dowolnej karcie produktu, aby dodać go do swojego Haula.</p>
+          <button onclick="App.navigate('products')" class="mt-4 px-5 py-2.5 btn-primary-white font-bold text-xs">
+            Przejdź do Katalogu
+          </button>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 4: COMMUNITY (SPOŁECZNOŚĆ ONGXREPS)
+           ===================================================================== -->
+      <section id="view-community" class="hidden space-y-6 section-fade">
+        <div class="p-6 surface-hero bg-luxury-grid">
+          <span class="font-mono text-[10px] uppercase tracking-widest text-acid">OFFICIAL CHANNELS // ONGXR3PS</span>
+          <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text mt-1" data-i18n="commHeading">SPOŁECZNOŚĆ ONGXREPS</h1>
+          <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 max-w-2xl leading-relaxed" data-i18n="commSub">
+            Dołącz do naszego serwera Discord, oglądaj codzienne TikToki oraz odbierz zniżki w kuponach na dostawę w KakoBuy.
+          </p>
+        </div>
+
+        <!-- 3 Big Community Cards: Discord, TikTok, KakoBuy -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <!-- Discord -->
+          <div class="p-6 surface-bento flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 radius-card bg-[#5865F2]/15 border border-[#5865F2]/35 flex items-center justify-center text-[#5865F2]">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+                </div>
+                <span class="font-mono tabular-nums text-[10px] px-2.5 py-1 radius-badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 whitespace-nowrap"><span id="community-discord-count">—</span> CZŁONKÓW</span>
+              </div>
+              <h2 class="font-display text-xl font-bold text-white mt-4">Discord Server</h2>
+              <p class="text-xs text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="discordCardDesc">
+                Aktywna społeczność, liczne konkursy oraz mnóstwo pomocnych kanałów, takich jak W2C, QC Check i wiele innych. Zawsze możesz liczyć na pomoc społeczności.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
+              <a href="https://discord.gg/9yaAhBdBDy" target="_blank" rel="noopener noreferrer" class="ext-action-link flex-1 py-3 px-4 radius-control bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold text-xs text-center transition-all">
+                Dołącz do Discorda
+              </a>
+            </div>
+          </div>
+
+          <!-- TikTok -->
+          <div class="p-6 surface-bento flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 radius-card bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </div>
+                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-zinc-200 border border-hairline">@ONGXR3PS</span>
+              </div>
+              <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="tiktokCardTitle">TikTok</h2>
+              <p class="text-xs text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="tiktokCardDesc">
+                Codzienne TikToki o tematyce reps, ciekawe produkty, nowości i pełne wsparcie z mojej strony.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
+              <a href="https://tiktok.com/@ongxr3ps" target="_blank" rel="noopener noreferrer" class="ext-action-link flex-1 py-3 px-4 btn-primary-white font-bold text-xs text-center">
+                Obserwuj na TikTok
+              </a>
+            </div>
+          </div>
+
+          <!-- KakoBuy Store / Affiliate -->
+          <div class="p-6 surface-bento border-[#E2FF32]/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <div class="w-12 h-12 radius-card bg-acid text-black flex items-center justify-center font-display font-bold text-lg">
+                  KB
+                </div>
+                <span class="font-mono tabular-nums text-[10px] px-2.5 py-1 radius-badge bg-acid text-black font-bold">KUPONY</span>
+              </div>
+              <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="kakobuyCardTitle">KakoBuy</h2>
+              <p class="text-xs text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="kakobuyCardDesc">
+                Załóż konto na jednym z najtańszych i najszybszych agentów i odbierz nawet 1500 zł zniżek w kuponach na dostawę.
+              </p>
+            </div>
+            <div class="mt-5 pt-4 border-t border-hairline flex">
+              <a
+                id="community-kakobuy-link"
+                href="https://ikako.vip/r/OngxReps"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="position:relative; z-index:50; pointer-events:auto; touch-action:manipulation;"
+                class="ext-action-link flex-1 py-3 px-4 radius-control bg-acid hover:bg-[#d4f21c] text-black font-bold text-xs text-center transition-all"
+              >
+                <span style="pointer-events:none;">Odbierz Kupony KakoBuy</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           SECTION 5: PHONE HOME SCREEN APP GUIDE (IPHONE & ANDROID)
+           ===================================================================== -->
+      <section id="view-publish" class="hidden space-y-6 section-fade">
+        <div class="p-6 sm:p-8 surface-hero bg-luxury-grid">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 radius-badge bg-acid text-black font-mono text-[10px] font-bold uppercase mb-3" data-i18n="phoneBadge">
+            APLIKACJA NA TELEFON // IPHONE & ANDROID
+          </div>
+          <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text" data-i18n="phoneHeading">
+            Dodaj ONGXREPS do ekranu głównego telefonu
+          </h1>
+          <p class="text-xs sm:text-sm text-[#9E9EA9] mt-2 max-w-2xl leading-relaxed" data-i18n="phoneSub">
+            Dodaj stronę ONGXREPS do ekranu początkowego swojego smartfona, aby uruchamiać ją jednym dotknięciem na pełnym ekranie — dokładnie jak zwykłą aplikację.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <!-- iPhone (Safari) Card -->
+          <div class="p-6 surface-bento flex flex-col justify-between space-y-5">
+            <div>
+              <div class="flex items-center justify-between">
+                <div class="w-11 h-11 radius-control bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-acid border border-hairline font-bold">iOS // SAFARI</span>
+              </div>
+
+              <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="iphoneGuideTitle">iPhone (Safari)</h2>
+              <p class="text-xs text-[#9E9EA9] mt-1 leading-relaxed" data-i18n="iphoneGuideDesc">
+                Wykonaj trzy proste kroki w przeglądarce Safari na swoim iPhonie:
+              </p>
+
+              <div class="mt-4 space-y-2.5 text-xs text-zinc-200">
+                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                  <span class="w-6 h-6 radius-badge bg-acid text-black font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <span class="leading-relaxed" data-i18n="iphoneStep1">Otwórz stronę ONGXREPS w przeglądarce Safari.</span>
+                </div>
+                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                  <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">2</span>
+                  <span class="leading-relaxed" data-i18n="iphoneStep2">Kliknij ikonę „Udostępnij” na dolnym pasku.</span>
+                </div>
+                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                  <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">3</span>
+                  <span class="leading-relaxed" data-i18n="iphoneStep3">Wybierz „Dodaj do ekranu początkowego”, a następnie kliknij „Dodaj”.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Android (Chrome) Card -->
+          <div class="p-6 surface-bento flex flex-col justify-between space-y-5">
+            <div>
+              <div class="flex items-center justify-between">
+                <div class="w-11 h-11 radius-control bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-emerald-400 border border-hairline font-bold">ANDROID // CHROME</span>
+              </div>
+
+              <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="androidGuideTitle">Android (Chrome)</h2>
+              <p class="text-xs text-[#9E9EA9] mt-1 leading-relaxed" data-i18n="androidGuideDesc">
+                Wykonaj trzy proste kroki w przeglądarce Chrome na telefonie z systemem Android:
+              </p>
+
+              <div class="mt-4 space-y-2.5 text-xs text-zinc-200">
+                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                  <span class="w-6 h-6 radius-badge bg-acid text-black font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <span class="leading-relaxed" data-i18n="androidStep1">Otwórz stronę ONGXREPS w przeglądarce Chrome.</span>
+                </div>
+                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                  <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">2</span>
+                  <span class="leading-relaxed" data-i18n="androidStep2">Kliknij menu z trzema kropkami w prawym górnym rogu.</span>
+                </div>
+                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                  <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">3</span>
+                  <span class="leading-relaxed" data-i18n="androidStep3">Wybierz „Dodaj do ekranu głównego” lub „Zainstaluj aplikację”, jeśli taka opcja jest dostępna.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- =========================================================================
+       MOBILE FIXED BOTTOM NAVIGATION DOCK (iOS Glassmorphic Dock + Active Glow)
+       ========================================================================= -->
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 ios-bottom-dock pb-safe-bottom select-none">
+    <div class="grid grid-cols-5 h-[62px] max-w-md mx-auto px-1.5">
+      <button onclick="App.navigate('home')" data-mob-nav="home" class="mob-nav-btn flex flex-col items-center justify-center gap-1">
+        <span data-mob-glow="home" class="mob-glow-bar absolute top-0 w-7 h-[2px] rounded-full bg-white opacity-0 transition-all"></span>
+        <div data-mob-pill="home" class="px-3 py-1 rounded-full transition-colors">
+          <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <span class="font-mono text-[10px] tracking-tight leading-none" data-i18n="mobHome">Start</span>
+      </button>
+
+      <button onclick="App.navigate('products')" data-mob-nav="products" class="mob-nav-btn flex flex-col items-center justify-center gap-1">
+        <span data-mob-glow="products" class="mob-glow-bar absolute top-0 w-7 h-[2px] rounded-full bg-white opacity-0 transition-all"></span>
+        <div data-mob-pill="products" class="px-3 py-1 rounded-full transition-colors">
+          <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+        </div>
+        <span class="font-mono text-[10px] tracking-tight leading-none" data-i18n="mobProducts">Produkty</span>
+      </button>
+
+      <button onclick="App.navigate('saved')" data-mob-nav="saved" class="mob-nav-btn flex flex-col items-center justify-center gap-1">
+        <span data-mob-glow="saved" class="mob-glow-bar absolute top-0 w-7 h-[2px] rounded-full bg-white opacity-0 transition-all"></span>
+        <div data-mob-pill="saved" class="relative px-3 py-1 rounded-full transition-colors">
+          <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+          <span id="mob-saved-pill" class="absolute -top-0.5 right-0.5 min-w-[16px] h-4 px-1 rounded-full bg-acid text-black font-mono tabular-nums text-[9px] font-bold flex items-center justify-center shadow">2</span>
+        </div>
+        <span class="font-mono text-[10px] tracking-tight leading-none" data-i18n="mobSaved">Schowek</span>
+      </button>
+
+      <button onclick="App.navigate('community')" data-mob-nav="community" class="mob-nav-btn flex flex-col items-center justify-center gap-1">
+        <span data-mob-glow="community" class="mob-glow-bar absolute top-0 w-7 h-[2px] rounded-full bg-white opacity-0 transition-all"></span>
+        <div data-mob-pill="community" class="px-3 py-1 rounded-full transition-colors">
+          <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <span class="font-mono text-[10px] tracking-tight leading-none" data-i18n="mobCommunity">Społeczność</span>
+      </button>
+
+      <button onclick="App.navigate('publish')" data-mob-nav="publish" class="mob-nav-btn flex flex-col items-center justify-center gap-1">
+        <span data-mob-glow="publish" class="mob-glow-bar absolute top-0 w-7 h-[2px] rounded-full bg-white opacity-0 transition-all"></span>
+        <div data-mob-pill="publish" class="px-3 py-1 rounded-full transition-colors">
+          <svg class="w-[19px] h-[19px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+        </div>
+        <span class="font-mono text-[10px] tracking-tight leading-none" data-i18n="mobPublish">Telefon</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       MODAL: QC LIGHTBOX (SYMMETRICAL PRICE / BATCH / WEIGHT HUD)
+       ========================================================================= -->
+  <div id="qc-modal" onclick="if(event.target === this) App.closeQcModal()" class="hidden fixed inset-0 z-50 glass-backdrop flex items-center justify-center p-2.5 sm:p-5">
+    <div class="relative w-full max-w-4xl surface-hero overflow-hidden max-h-[92vh] flex flex-col shadow-2xl">
+      <!-- Top HUD Header Bar (Removed QC PASSED • HD STUDIO) -->
+      <div class="px-4 py-3 border-b border-hairline flex items-center justify-between gap-2 bg-obsidian/90">
+        <div class="flex items-center gap-2 min-w-0">
+          <span id="qc-id-badge" class="font-mono tabular-nums text-xs font-bold text-acid shrink-0">#ONGX-001</span>
+          <span id="qc-header-title" class="font-display text-xs font-semibold text-white truncate"></span>
+        </div>
+
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button onclick="App.toggleQcZoom()" id="qc-zoom-btn" class="px-2.5 py-1.5 btn-surface-secondary font-mono tabular-nums text-[11px] text-white flex items-center gap-1" title="Przełącz Zoom 1x / 1.75x">
+            <svg class="w-3.5 h-3.5 text-acid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16zM11 8v6M8 11h6"/></svg>
+            <span id="qc-zoom-label">1.0x</span>
+          </button>
+          <button onclick="App.closeQcModal()" class="p-2 btn-surface-secondary text-zinc-300 hover:text-white" aria-label="Zamknij">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Inspection Body -->
+      <div class="flex-1 overflow-y-auto grid grid-cols-1 lg:grid-cols-12">
+        <!-- Left: Interactive Inspection Viewport + Filmstrip -->
+        <div class="lg:col-span-7 p-3.5 sm:p-5 bg-obsidian border-b lg:border-b-0 lg:border-r border-hairline flex flex-col justify-between">
+          <div class="relative aspect-square radius-card overflow-hidden bg-[#0C0C0F] border border-hairline select-none">
+            <img
+              id="qc-main-img"
+              src=""
+              alt="QC Photo"
+              onclick="App.toggleQcZoom()"
+              class="w-full h-full object-cover qc-zoom-img qc-unzoomed"
+            />
+            <!-- Top-Left Angle HUD Label -->
+            <div class="absolute top-3 left-3 px-2.5 py-1 radius-badge glass-pill font-mono text-[10px] text-white tracking-wider uppercase pointer-events-none" id="qc-cam-label">
+              ANGLE 01/04 — FRONT PROFILE
+            </div>
+            <!-- Top-Right Optical Resolution Stamp -->
+            <div class="absolute top-3 right-3 px-2 py-1 radius-badge glass-pill font-mono tabular-nums text-[10px] text-[#9E9EA9] pointer-events-none">
+              RAW 4K • ISO 100
+            </div>
+            <!-- Bottom-Right Digital Scale Readout -->
+            <div class="absolute bottom-4 right-3 px-2.5 py-1 radius-badge glass-pill font-mono tabular-nums text-[11px] font-bold text-acid pointer-events-none" id="qc-weight-stamp">
+              SCALE: 960g
+            </div>
+            <!-- Technical Ruler Grid Along Bottom Edge -->
+            <div class="absolute bottom-0 inset-x-0 qc-ruler-overlay pointer-events-none opacity-75"></div>
+          </div>
+
+          <!-- Filmstrip Thumbnail Selector -->
+          <div id="qc-thumbs" class="grid grid-cols-4 gap-2.5 mt-3.5"></div>
+        </div>
+
+        <!-- Right: Symmetrical PRICE (Center Top) + BATCH (Left) / WEIGHT (Right) & Sticky Action Bar -->
+        <div class="lg:col-span-5 p-4 sm:p-5 flex flex-col justify-between space-y-5 bg-charcoal-900/60">
+          <div class="space-y-5">
+            <div>
+              <div class="flex items-center justify-between">
+                <span id="qc-cat" class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9]">BLUZY & KURTKI</span>
+                <span id="qc-source-tag" class="font-mono text-[10px] px-2 py-0.5 radius-badge bg-white/5 text-[#9E9EA9] border border-hairline">WEIDIAN</span>
+              </div>
+              <h3 id="qc-name" class="font-display text-lg sm:text-xl font-bold text-white mt-1.5 leading-snug">Product Name</h3>
+            </div>
+
+            <!-- Symmetrical Layout:
+                          CENA
+                 BATCH            WAGA
+            -->
+            <div class="p-4 sm:p-5 radius-card bg-obsidian border border-hairline space-y-4">
+              <!-- Center Top: PRICE -->
+              <div class="text-center pb-4 border-b border-hairline">
+                <span class="font-mono text-[10px] text-[#686873] uppercase tracking-widest block" data-i18n="labelPrice">CENA</span>
+                <div class="mt-1.5 flex items-baseline justify-center gap-2">
+                  <span id="qc-price" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-acid tracking-tight whitespace-nowrap">150&nbsp;zł</span>
+                </div>
+              </div>
+
+              <!-- Bottom Row: BATCH (Left) and WAGA (Right) -->
+              <div class="grid grid-cols-2 gap-3 pt-0.5 items-center">
+                <div class="text-left p-3 radius-control bg-charcoal-900/90 border border-hairline">
+                  <span class="font-mono text-[10px] text-[#686873] uppercase tracking-widest block" data-i18n="labelBatch">BATCH</span>
+                  <span id="qc-batch" class="font-mono text-xs sm:text-sm font-bold text-white mt-1 block truncate">TOP BATCH</span>
+                </div>
+                <div class="text-right p-3 radius-control bg-charcoal-900/90 border border-hairline">
+                  <span class="font-mono text-[10px] text-[#686873] uppercase tracking-widest block" data-i18n="labelWeight">WAGA</span>
+                  <span id="qc-weight-box" class="font-mono tabular-nums text-xs sm:text-sm font-bold text-white mt-1 block">960 g</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sticky Bottom Action Bar inside Modal -->
+          <div class="space-y-2 pt-3 border-t border-hairline sticky bottom-0 bg-charcoal-900/95 backdrop-blur-md">
+            <a id="qc-kakobuy-link" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 btn-primary-white font-bold text-xs flex items-center justify-center gap-2 group">
+              <span data-i18n="buyOnKakoBuy">Kup na KakoBuy</span>
+              <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <div class="grid grid-cols-2 gap-2">
+              <a id="qc-open-raw-link" href="#" target="_blank" rel="noopener noreferrer" class="py-2.5 px-3 btn-surface-secondary font-mono text-[11px] text-zinc-200 flex items-center justify-center gap-1.5">
+                <span>Otwórz Raw Link</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              <button id="qc-copy-raw-btn" class="py-2.5 px-3 btn-surface-secondary font-mono text-[11px] text-acid flex items-center justify-center gap-1.5">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <span>Kopiuj Link</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: KAKOBUY COUPONS POPUP (CLOSABLE)
+       ========================================================================= -->
+  <div id="kakobuy-popup" onclick="if(event.target === this) App.closeCouponPopup()" class="hidden fixed inset-0 z-50 glass-backdrop flex items-center justify-center p-4">
+    <div onclick="event.stopPropagation()" class="relative w-full max-w-md surface-hero bg-luxury-grid p-6 sm:p-7 shadow-2xl border border-[#E2FF32]/30 section-fade">
+      <button onclick="App.closeCouponPopup()" class="absolute top-4 right-4 p-2 btn-surface-secondary text-[#9E9EA9] hover:text-white" aria-label="Zamknij popup">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="inline-flex items-center gap-2 px-2.5 py-1 radius-badge bg-acid text-black font-mono text-[10px] font-bold uppercase">
+        ONGXREPS × KAKOBUY
+      </div>
+
+      <h3 class="font-display text-xl sm:text-2xl font-bold text-white mt-3.5 leading-snug" data-i18n="couponPopupTitle">
+        Odbierz kupony zniżkowe na KakoBuy
+      </h3>
+
+      <p class="text-xs sm:text-sm text-[#9E9EA9] mt-2 leading-relaxed" data-i18n="couponPopupDesc">
+        Załóż konto na jednym z najtańszych i najszybszych agentów i odbierz nawet 1500 zł zniżek w kuponach na dostawę.
+      </p>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-2.5">
+        <a
+          id="popup-kakobuy-link"
+          href="https://ikako.vip/r/OngxReps"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="position:relative; z-index:50; pointer-events:auto; touch-action:manipulation;"
+          onclick="event.stopPropagation(); setTimeout(function(){ if(window.App && window.App.closePromoPopup) window.App.closePromoPopup(); }, 350);"
+          class="ext-action-link flex-1 py-3 px-4 radius-control bg-acid hover:bg-[#d6f522] text-black font-bold text-xs sm:text-sm text-center flex items-center justify-center gap-1.5 transition-all"
+        >
+          <span data-i18n="couponPopupCta" style="pointer-events:none;">Odbierz kupony na KakoBuy</span>
+          <svg style="pointer-events:none;" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <button onclick="App.closeCouponPopup()" class="py-3 px-4 btn-surface-secondary text-xs sm:text-sm font-medium text-[#9E9EA9] hover:text-white" data-i18n="couponPopupClose">
+          Zamknij
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING GLASSMORPHIC TOP TOAST PILL -->
+  <div id="toast-box" class="fixed top-16 inset-x-0 z-50 pointer-events-none flex flex-col items-center gap-2 px-4"></div>
+
+  <!-- =========================================================================
+       APPLICATION SCRIPT & MODULAR DATA LAYER
+       ========================================================================= -->
+  <script>
+    const App = (() => {
+      // Currency Exchange Rates relative to CNY (Base price in spreadsheet)
+      const CURRENCIES = {
+        PLN: { symbol: 'zł', label: 'PLN — Polski Złoty', rate: 0.56, position: 'after', decimals: 0 },
+        CNY: { symbol: '¥', label: 'CNY — Chinese Yuan', rate: 1.0, position: 'before', decimals: 0 },
+        USD: { symbol: '$', label: 'USD — US Dollar', rate: 0.141, position: 'before', decimals: 0 },
+        EUR: { symbol: '€', label: 'EUR — Euro', rate: 0.131, position: 'before', decimals: 0 }
+      };
+
+      const LANGUAGES = {
+        PL: { code: 'PL', label: 'Polski (PL)' },
+        EN: { code: 'EN', label: 'English (EN)' }
+      };
+
+      // Bilingual UI Dictionary (Polish default + English toggle)
+      const I18N = {
+        PL: {
+          searchPlaceholderShort: 'Szukaj po nazwie',
+          searchByNamePlaceholder: 'Szukaj po nazwie',
+          navHeader: 'NAWIGACJA',
+          navHome: 'Start',
+          navProducts: 'ONGXREPS SPREADSHEET',
+          navSaved: 'Twój Haul Planner',
+          navCommunity: 'SPOŁECZNOŚĆ ONGXREPS',
+          navPublish: 'Telefon',
+          categoriesHeader: 'KATEGORIE',
+          sidebarCouponText: 'Odbierz nawet 1500 zł w kuponach na dostawę',
+          headerIphoneBtn: 'Telefon',
+          phoneBadge: 'APLIKACJA NA TELEFON // IPHONE & ANDROID',
+          phoneHeading: 'Dodaj ONGXREPS do ekranu głównego telefonu',
+          phoneSub: 'Dodaj stronę ONGXREPS do ekranu początkowego swojego smartfona, aby uruchamiać ją jednym dotknięciem na pełnym ekranie — dokładnie jak zwykłą aplikację.',
+          iphoneGuideTitle: 'iPhone (Safari)',
+          iphoneGuideDesc: 'Wykonaj trzy proste kroki w przeglądarce Safari na swoim iPhonie:',
+          iphoneStep1: 'Otwórz stronę ONGXREPS w przeglądarce Safari.',
+          iphoneStep2: 'Kliknij ikonę „Udostępnij” na dolnym pasku.',
+          iphoneStep3: 'Wybierz „Dodaj do ekranu początkowego”, a następnie kliknij „Dodaj”.',
+          androidGuideTitle: 'Android (Chrome)',
+          androidGuideDesc: 'Wykonaj trzy proste kroki w przeglądarce Chrome na telefonie z systemem Android:',
+          androidStep1: 'Otwórz stronę ONGXREPS w przeglądarce Chrome.',
+          androidStep2: 'Kliknij menu z trzema kropkami w prawym górnym rogu.',
+          androidStep3: 'Wybierz „Dodaj do ekranu głównego” lub „Zainstaluj aplikację”, jeśli taka opcja jest dostępna.',
+          selectCurrencyLabel: 'Wybierz walutę',
+          selectLangLabel: 'Wybierz język',
+          heroBadge: 'ONGXREPS // QC & KAKOBUY',
+          heroTitleMain: 'SPREADSHEET ONGXREPS.',
+          heroTitleSub: 'NAJLEPSZE CENY I NAJLEPSZE BATCHE',
+          heroDesc: 'Oficjalna strona ONGXREPS. Znajdziesz tutaj starannie wybrane produkty, najlepsze batche, atrakcyjne ceny oraz zdjęcia QC.',
+          ctaExploreCatalog: 'Przeglądaj itemy',
+          statProductsLabel: 'LICZBA DOSTĘPNYCH PRODUKTÓW',
+          statCommLabel: 'LICZBA CZŁONKÓW SPOŁECZNOŚCI',
+          catalogHeading: 'ONGXREPS SPREADSHEET',
+          vaultHeading: 'Twój Haul Planner',
+          vaultSub: 'Zapisane produkty z automatycznym podliczeniem wagi paczki, wysyłki na żywo i całkowitego kosztu zamówienia.',
+          vaultSyncWeightBtn: 'Waga z haula',
+          vaultItemsCountLabel: 'Ilość produktów',
+          vaultProductsValueLabel: 'Cena produktów',
+          vaultShippingCostLabel: 'Cena wysyłki',
+          vaultGrandTotalLabel: 'Całkowita cena',
+          copyHaulBtn: 'Kopiuj listę Haul',
+          commHeading: 'SPOŁECZNOŚĆ ONGXREPS',
+          commSub: 'Dołącz do naszego serwera Discord, oglądaj codzienne TikToki oraz odbierz zniżki w kuponach na dostawę w KakoBuy.',
+          discordCardDesc: 'Aktywna społeczność, liczne konkursy oraz mnóstwo pomocnych kanałów, takich jak W2C, QC Check i wiele innych. Zawsze możesz liczyć na pomoc społeczności.',
+          tiktokCardTitle: 'TikTok',
+          tiktokCardDesc: 'Codzienne TikToki o tematyce reps, ciekawe produkty, nowości i pełne wsparcie z mojej strony.',
+          kakobuyCardTitle: 'KakoBuy',
+          kakobuyCardDesc: 'Załóż konto na jednym z najtańszych i najszybszych agentów i odbierz nawet 1500 zł zniżek w kuponach na dostawę.',
+          shipCalcHeading: 'Przybliżony koszt wysyłki',
+          shipOverallLabel: 'Orientacyjna stawka aktualizowana na żywo podczas przesuwania wagi lub zmiany przewoźnika.',
+          shipIndicativeBadge: 'SZACUNKOWY KOSZT',
+          shipSelectLineLabel: 'WYBÓR LINII TRANSPORTOWEJ',
+          shipWeightLabel: 'WAGA PACZKI (0 – 20 KG)',
+          couponPopupTitle: 'Odbierz kupony zniżkowe na KakoBuy',
+          couponPopupDesc: 'Załóż konto na jednym z najtańszych i najszybszych agentów i odbierz nawet 1500 zł zniżek w kuponach na dostawę.',
+          couponPopupCta: 'Odbierz kupony na KakoBuy',
+          couponPopupClose: 'Zamknij',
+          mobHome: 'Start',
+          mobProducts: 'Produkty',
+          mobSaved: 'Schowek',
+          mobCommunity: 'Społeczność',
+          mobPublish: 'Telefon',
+          buyOnKakoBuy: 'Kup na KakoBuy',
+          qcBtnLabel: 'Zdjęcia QC',
+          rawBtnLabel: 'Raw Link',
+          labelPrice: 'CENA',
+          labelBatch: 'BATCH',
+          labelWeight: 'WAGA'
+        },
+        EN: {
+          searchPlaceholderShort: 'Search by name',
+          searchByNamePlaceholder: 'Search by name',
+          navHeader: 'NAVIGATION',
+          navHome: 'Home',
+          navProducts: 'ONGXREPS SPREADSHEET',
+          navSaved: 'Your Haul Planner',
+          navCommunity: 'ONGXREPS COMMUNITY',
+          navPublish: 'Phone',
+          categoriesHeader: 'DIVISIONS',
+          sidebarCouponText: 'Claim up to 1500 PLN in shipping coupons',
+          headerIphoneBtn: 'Phone',
+          phoneBadge: 'MOBILE APP // IPHONE & ANDROID',
+          phoneHeading: 'Add ONGXREPS to your phone home screen',
+          phoneSub: 'Add ONGXREPS to your smartphone home screen to launch it with a single tap in full screen — just like a native app.',
+          iphoneGuideTitle: 'iPhone (Safari)',
+          iphoneGuideDesc: 'Follow three simple steps in Safari on your iPhone:',
+          iphoneStep1: 'Open ONGXREPS in the Safari browser.',
+          iphoneStep2: 'Tap the Share icon on the bottom bar.',
+          iphoneStep3: 'Select "Add to Home Screen", then tap "Add".',
+          androidGuideTitle: 'Android (Chrome)',
+          androidGuideDesc: 'Follow three simple steps in Chrome on your Android phone:',
+          androidStep1: 'Open ONGXREPS in the Chrome browser.',
+          androidStep2: 'Tap the three-dot menu in the top-right corner.',
+          androidStep3: 'Select "Add to Home screen" or "Install app" if available.',
+          selectCurrencyLabel: 'Select currency',
+          selectLangLabel: 'Select language',
+          heroBadge: 'ONGXREPS // QC & KAKOBUY',
+          heroTitleMain: 'SPREADSHEET ONGXREPS.',
+          heroTitleSub: 'BEST PRICES AND BEST BATCHES',
+          heroDesc: 'Official ONGXREPS website. Here you will find carefully selected items, the best batches, attractive prices, and QC photos.',
+          ctaExploreCatalog: 'Browse items',
+          statProductsLabel: 'AVAILABLE PRODUCTS',
+          statCommLabel: 'COMMUNITY MEMBERS',
+          catalogHeading: 'ONGXREPS SPREADSHEET',
+          vaultHeading: 'Your Haul Planner',
+          vaultSub: 'Saved items with automatic parcel weight, live shipping calculator, and total haul cost calculation.',
+          vaultSyncWeightBtn: 'Sync haul weight',
+          vaultItemsCountLabel: 'Product quantity',
+          vaultProductsValueLabel: 'Products price',
+          vaultShippingCostLabel: 'Shipping price',
+          vaultGrandTotalLabel: 'Total price',
+          copyHaulBtn: 'Copy Haul List',
+          commHeading: 'ONGXREPS COMMUNITY',
+          commSub: 'Join our Discord server, watch daily TikToks, and claim shipping coupon discounts on KakoBuy.',
+          discordCardDesc: 'Active community, numerous giveaways, and plenty of helpful channels such as W2C, QC Check, and many more. You can always count on community support.',
+          tiktokCardTitle: 'TikTok',
+          tiktokCardDesc: 'Daily reps TikToks, interesting finds, new arrivals, and full support from my side.',
+          kakobuyCardTitle: 'KakoBuy',
+          kakobuyCardDesc: 'Create an account with one of the cheapest and fastest agents and claim up to 1500 PLN in shipping discount coupons.',
+          shipCalcHeading: 'Approximate shipping cost',
+          shipOverallLabel: 'Indicative rate updated live as you slide parcel weight or switch carrier.',
+          shipIndicativeBadge: 'APPROXIMATE COST',
+          shipSelectLineLabel: 'SELECT SHIPPING LINE',
+          shipWeightLabel: 'PARCEL WEIGHT (0 – 20 KG)',
+          couponPopupTitle: 'Claim KakoBuy Shipping Coupons',
+          couponPopupDesc: 'Create an account with one of the cheapest and fastest agents and claim up to 1500 PLN in shipping discount coupons.',
+          couponPopupCta: 'Claim KakoBuy Coupons',
+          couponPopupClose: 'Close',
+          mobHome: 'Home',
+          mobProducts: 'Products',
+          mobSaved: 'Planner',
+          mobCommunity: 'Community',
+          mobPublish: 'iPhone',
+          buyOnKakoBuy: 'Buy on KakoBuy',
+          qcBtnLabel: 'QC Photos',
+          rawBtnLabel: 'Raw Link',
+          labelPrice: 'PRICE',
+          labelBatch: 'BATCH',
+          labelWeight: 'WEIGHT'
+        }
+      };
+
+      const CATEGORIES = [
+        { id: 'All', pl: 'Wszystkie', en: 'All Items' },
+        { id: 'Shoes', pl: 'Buty', en: 'Shoes' },
+        { id: 'Hoodies & Jackets', pl: 'Bluzy & Kurtki', en: 'Hoodies & Jackets' },
+        { id: 'Tees', pl: 'Koszulki', en: 'Tees' },
+        { id: 'Pants', pl: 'Spodnie', en: 'Pants' },
+        { id: 'Accessories', pl: 'Akcesoria', en: 'Accessories' }
+      ];
+
+      // 18 Curated Luxury Streetwear Products (Zero GSM / fabric weight references; total product weight_g & batch preserved)
+      const DEFAULT_PRODUCTS = [
+        {
+          id: 'ONGX-001',
+          name: 'Heavyweight Boxy Washed Zip Hoodie',
+          category: 'Hoodies',
+          price_cny: 268,
+          batch: 'TOP BATCH',
+          weight_g: 960,
+          image: 'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX001&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241001928',
+          added: '2025-05-12'
+        },
+        {
+          id: 'ONGX-002',
+          name: 'Archive 2002R Protection Pack Phantom Suede',
+          category: 'Shoes',
+          price_cny: 290,
+          batch: 'ZC BATCH',
+          weight_g: 1180,
+          image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX002&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241003712',
+          added: '2025-05-11'
+        },
+        {
+          id: 'ONGX-003',
+          name: '3L Gore-Tex Pro Technical Waterproof Storm Jacket',
+          category: 'Jackets',
+          price_cny: 495,
+          batch: 'TOP BATCH',
+          weight_g: 740,
+          image: 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX003&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241002841',
+          added: '2025-05-10'
+        },
+        {
+          id: 'ONGX-004',
+          name: 'Mud-Washed Double-Knee Wide Carpenter Denim',
+          category: 'Pants',
+          price_cny: 315,
+          batch: 'TOP BATCH',
+          weight_g: 910,
+          image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX004&aff=ongxreps',
+          raw_url: 'https://item.taobao.com/item.htm?id=8192004112',
+          added: '2025-05-09'
+        },
+        {
+          id: 'ONGX-005',
+          name: 'Black Cat / Military Black Retro 4 Leather',
+          category: 'Shoes',
+          price_cny: 450,
+          batch: 'GX BATCH',
+          weight_g: 1490,
+          image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX005&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241005119',
+          added: '2025-05-08'
+        },
+        {
+          id: 'ONGX-006',
+          name: '925 Sterling Silver 8mm Gothic Cross Chain',
+          category: 'Accessories',
+          price_cny: 340,
+          batch: 'SOLID 925',
+          weight_g: 145,
+          image: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX006&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241006390',
+          added: '2025-05-07'
+        },
+        {
+          id: 'ONGX-007',
+          name: '700-Fill Matte Ripstop Down Puffer Jacket',
+          category: 'Jackets',
+          price_cny: 430,
+          batch: 'TOP BATCH',
+          weight_g: 1120,
+          image: 'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX007&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241007823',
+          added: '2025-05-06'
+        },
+        {
+          id: 'ONGX-008',
+          name: 'Chunky Calfskin Commando Lug-Sole Derby',
+          category: 'Shoes',
+          price_cny: 460,
+          batch: 'JIAOFU BATCH',
+          weight_g: 1620,
+          image: 'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX008&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241008441',
+          added: '2025-05-05'
+        },
+        {
+          id: 'ONGX-009',
+          name: 'Articulated Parachute Nylon Tactical Cargo Pants',
+          category: 'Pants',
+          price_cny: 275,
+          batch: 'TOP BATCH',
+          weight_g: 640,
+          image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX009&aff=ongxreps',
+          raw_url: 'https://item.taobao.com/item.htm?id=8192009552',
+          added: '2025-05-04'
+        },
+        {
+          id: 'ONGX-010',
+          name: 'Brushed Kid Mohair Distressed Knit Cardigan',
+          category: 'Hoodies',
+          price_cny: 285,
+          batch: 'INDEPENDENT',
+          weight_g: 680,
+          image: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX010&aff=ongxreps',
+          raw_url: 'https://item.taobao.com/item.htm?id=8192008441',
+          added: '2025-05-03'
+        },
+        {
+          id: 'ONGX-011',
+          name: 'Cordura 1680D Modular Crossbody Messenger Bag',
+          category: 'Accessories',
+          price_cny: 210,
+          batch: 'LUFAN 1:1',
+          weight_g: 590,
+          image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX011&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241010492',
+          added: '2025-05-02'
+        },
+        {
+          id: 'ONGX-012',
+          name: 'Loopwheel French Terry Hoodie Black',
+          category: 'Hoodies',
+          price_cny: 295,
+          batch: 'REDWAVE',
+          weight_g: 1080,
+          image: 'https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX012&aff=ongxreps',
+          raw_url: 'https://item.taobao.com/item.htm?id=8192012998',
+          added: '2025-05-01'
+        },
+        {
+          id: 'ONGX-013',
+          name: 'Japanese Red-Line Selvedge Raw Denim',
+          category: 'Pants',
+          price_cny: 340,
+          batch: 'SELVEDGE LAB',
+          weight_g: 950,
+          image: 'https://images.unsplash.com/photo-1604176354204-9268737828e4?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX013&aff=ongxreps',
+          raw_url: 'https://item.taobao.com/item.htm?id=8192013771',
+          added: '2025-04-29'
+        },
+        {
+          id: 'ONGX-014',
+          name: 'Melton Wool & Full-Grain Cowhide Varsity Jacket',
+          category: 'Jackets',
+          price_cny: 540,
+          batch: 'TOP BATCH',
+          weight_g: 1480,
+          image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX014&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241014209',
+          added: '2025-04-28'
+        },
+        {
+          id: 'ONGX-015',
+          name: 'Vibram Outsole Roughout Suede Tactical Boots',
+          category: 'Shoes',
+          price_cny: 420,
+          batch: 'GZ BATCH',
+          weight_g: 1540,
+          image: 'https://images.unsplash.com/photo-1520639888713-7851133b1ed0?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX015&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241015660',
+          added: '2025-04-26'
+        },
+        {
+          id: 'ONGX-016',
+          name: '100% Australian Merino Heavy Ribbed Beanie',
+          category: 'Accessories',
+          price_cny: 115,
+          batch: 'TOPSTONEY',
+          weight_g: 190,
+          image: 'https://images.unsplash.com/photo-1576871337632-b9aef4c17ab9?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX016&aff=ongxreps',
+          raw_url: 'https://item.taobao.com/item.htm?id=8192016334',
+          added: '2025-04-25'
+        },
+        {
+          id: 'ONGX-017',
+          name: 'Heavyweight Vintage Washed Graphic Tee',
+          category: 'Tees',
+          price_cny: 138,
+          batch: 'TOP BATCH',
+          weight_g: 360,
+          image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX017&aff=ongxreps',
+          raw_url: 'https://item.taobao.com/item.htm?id=8192017490',
+          added: '2025-04-24'
+        },
+        {
+          id: 'ONGX-018',
+          name: 'Haas Grained Calfskin 6-Slot Archive Cardholder',
+          category: 'Accessories',
+          price_cny: 165,
+          batch: 'HAAS LEATHER',
+          weight_g: 110,
+          image: 'https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80',
+          kakobuy_url: 'https://www.kakobuy.com/item?id=ONGX018&aff=ongxreps',
+          raw_url: 'https://weidian.com/item.html?itemID=7241018991',
+          added: '2025-04-22'
+        }
+      ];
+
+      let state = {
+        view: 'home',
+        lang: localStorage.getItem('ongx_lang') || 'PL',
+        currency: localStorage.getItem('ongx_curr') || 'PLN',
+        category: 'All',
+        search: '',
+        sort: 'featured',
+        shipLine: 'DPD',
+        shipWeightKg: 2.1,
+        qcZoomed: false,
+        qcActiveAngle: 0,
+        savedIds: JSON.parse(localStorage.getItem('ongx_saved') || '["ONGX-001","ONGX-002"]'),
+        products: [...DEFAULT_PRODUCTS]
+      };
+
+      // SVG Fallback Generator so images never break on mobile
+      function getFallbackSvg(title, code) {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+          <rect width="800" height="800" fill="#111114"/>
+          <rect x="80" y="80" width="640" height="640" rx="28" fill="#18181D" stroke="#26262E" stroke-width="3"/>
+          <text x="400" y="365" text-anchor="middle" fill="#E2FF32" font-family="monospace" font-weight="bold" font-size="38">ONGXREPS // ${code}</text>
+          <text x="400" y="425" text-anchor="middle" fill="#FAFAFA" font-family="sans-serif" font-weight="bold" font-size="22">${title.slice(0, 32)}</text>
+          <text x="400" y="475" text-anchor="middle" fill="#9CA3AF" font-family="monospace" font-size="16">QC PHOTOS</text>
+        </svg>`;
+        return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+      }
+
+      function formatPrice(cny, currCode = state.currency) {
+        const cfg = CURRENCIES[currCode] || CURRENCIES.PLN;
+        const val = (Number(cny || 0) * cfg.rate).toFixed(cfg.decimals);
+        return cfg.position === 'after' ? `${val}\u00A0${cfg.symbol}` : `${cfg.symbol}${val}`;
+      }
+
+      function getCategoryLabel(catId) {
+        if (catId === 'Hoodies' || catId === 'Jackets') {
+          return state.lang === 'PL' ? 'Bluzy & Kurtki' : 'Hoodies & Jackets';
+        }
+        const found = CATEGORIES.find(c => c.id.toLowerCase() === (catId || '').toLowerCase());
+        if (!found) return catId;
+        return state.lang === 'PL' ? found.pl : found.en;
+      }
+
+      function matchesCategory(productCat, selectedCat) {
+        if (selectedCat === 'All') return true;
+        if (selectedCat === 'Hoodies & Jackets') {
+          return ['hoodies', 'jackets', 'hoodies & jackets'].includes((productCat || '').toLowerCase());
+        }
+        return (productCat || '').toLowerCase() === selectedCat.toLowerCase();
+      }
+
+      function navigate(viewName) {
+        state.view = viewName;
+        ['home', 'products', 'saved', 'community', 'publish'].forEach(v => {
+          const el = document.getElementById(`view-${v}`);
+          if (el) el.classList.toggle('hidden', v !== viewName);
+        });
+        updateNavHighlight();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function updateNavHighlight() {
+        document.querySelectorAll('.sidebar-btn').forEach(btn => {
+          const active = btn.getAttribute('data-sidebar-nav') === state.view;
+          btn.className = active
+            ? 'sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-bold bg-white text-black shadow-sm transition-all'
+            : 'sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium text-[#9E9EA9] hover:text-white hover:bg-charcoal-900 transition-all';
+        });
+
+        document.querySelectorAll('.mob-nav-btn').forEach(btn => {
+          const tab = btn.getAttribute('data-mob-nav');
+          const active = tab === state.view;
+          btn.className = active
+            ? 'mob-nav-btn flex flex-col items-center justify-center gap-1 text-white font-semibold'
+            : 'mob-nav-btn flex flex-col items-center justify-center gap-1 text-[#686873] hover:text-[#9E9EA9]';
+
+          const glow = btn.querySelector('[data-mob-glow]');
+          if (glow) {
+            glow.className = active
+              ? 'mob-glow-bar absolute top-0 w-8 h-[2px] rounded-full bg-acid opacity-100 shadow-[0_0_10px_#E2FF32] transition-all'
+              : 'mob-glow-bar absolute top-0 w-6 h-[2px] rounded-full bg-white opacity-0 transition-all';
+          }
+
+          const pill = btn.querySelector('[data-mob-pill]');
+          if (pill) {
+            pill.className = active
+              ? 'relative px-3.5 py-1 rounded-full bg-white/[0.09] text-white transition-all'
+              : 'relative px-3 py-1 rounded-full bg-transparent transition-all';
+          }
+        });
+      }
+
+      function closeAllDropdowns() {
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+          menu.classList.add('hidden');
+        });
+      }
+
+      function toggleDropdown(menuId, event) {
+        if (event) event.stopPropagation();
+        const target = document.getElementById(menuId);
+        if (!target) return;
+        const isHidden = target.classList.contains('hidden');
+        closeAllDropdowns();
+        if (isHidden) {
+          target.classList.remove('hidden');
+        }
+      }
+
+      function selectCurrency(currCode) {
+        if (!CURRENCIES[currCode]) return;
+        state.currency = currCode;
+        localStorage.setItem('ongx_curr', state.currency);
+        closeAllDropdowns();
+        renderAll();
+        showToast(state.lang === 'PL' ? `Waluta zmieniona na ${state.currency}` : `Currency switched to ${state.currency}`);
+      }
+
+      function selectLanguage(langCode) {
+        if (!LANGUAGES[langCode]) return;
+        state.lang = langCode;
+        localStorage.setItem('ongx_lang', state.lang);
+        closeAllDropdowns();
+        renderAll();
+        showToast(state.lang === 'PL' ? 'Język: Polski (PL)' : 'Language: English (EN)');
+      }
+
+      function cycleCurrency() {
+        const list = ['PLN', 'CNY', 'USD', 'EUR'];
+        selectCurrency(list[(list.indexOf(state.currency) + 1) % list.length]);
+      }
+
+      function toggleLanguage() {
+        selectLanguage(state.lang === 'PL' ? 'EN' : 'PL');
+      }
+
+      function openCouponPopup() {
+        const popup = document.getElementById('kakobuy-popup');
+        if (popup) popup.classList.remove('hidden');
+      }
+
+      function closeCouponPopup() {
+        const popup = document.getElementById('kakobuy-popup');
+        if (popup) popup.classList.add('hidden');
+        sessionStorage.setItem('ongx_coupon_popup_closed', '1');
+      }
+
+      function renderDropdownLists() {
+        const currHtml = Object.keys(CURRENCIES).map(code => {
+          const cfg = CURRENCIES[code];
+          const active = state.currency === code;
+          return `
+            <button
+              onclick="App.selectCurrency('${code}')"
+              class="w-full px-2.5 py-2 radius-control font-mono text-xs flex items-center justify-between transition-colors ${
+                active ? 'bg-white text-black font-bold' : 'text-[#F4F4F6] hover:bg-charcoal-800'
+              }"
+            >
+              <span>${code} <span class="opacity-70">(${cfg.symbol})</span></span>
+              ${active ? '<span class="w-1.5 h-1.5 rounded-full bg-black"></span>' : ''}
+            </button>
+          `;
+        }).join('');
+
+        document.querySelectorAll('[data-currency-options]').forEach(container => {
+          container.innerHTML = currHtml;
+        });
+
+        const langHtml = Object.keys(LANGUAGES).map(code => {
+          const cfg = LANGUAGES[code];
+          const active = state.lang === code;
+          return `
+            <button
+              onclick="App.selectLanguage('${code}')"
+              class="w-full px-2.5 py-2 radius-control font-mono text-xs flex items-center justify-between transition-colors ${
+                active ? 'bg-white text-black font-bold' : 'text-[#F4F4F6] hover:bg-charcoal-800'
+              }"
+            >
+              <span>${cfg.label}</span>
+              ${active ? '<span class="w-1.5 h-1.5 rounded-full bg-black"></span>' : ''}
+            </button>
+          `;
+        }).join('');
+
+        document.querySelectorAll('[data-lang-options]').forEach(container => {
+          container.innerHTML = langHtml;
+        });
+      }
+
+      function renderProductCard(p, index = 0) {
+        const isSaved = state.savedIds.includes(p.id);
+        const mainPrice = formatPrice(p.price_cny, state.currency);
+        const fallback = getFallbackSvg(p.name, p.id);
+        const dict = I18N[state.lang];
+        const sourceTag = (p.raw_url || '').includes('taobao') ? 'TAOBAO' : 'WEIDIAN';
+        const staggerDelay = Math.min(index * 35, 280);
+
+        return `
+          <article style="animation-delay: ${staggerDelay}ms" class="ongx-card card-stagger overflow-hidden flex flex-col justify-between group">
+            <div class="flex-1 flex flex-col">
+              <!-- 4:5 Studio Media Container -->
+              <div class="ongx-media-box">
+                <img
+                  src="${p.image}"
+                  alt="${p.name.replace(/"/g, '&quot;')}"
+                  loading="lazy"
+                  onerror="this.onerror=null;this.src='${fallback}';"
+                  onclick="App.openQcModal('${p.id}')"
+                  class="ongx-card-img cursor-pointer"
+                />
+
+                <!-- Top-Left ID Pill -->
+                <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 pointer-events-none">
+                  <span class="px-2.5 py-1 radius-badge glass-pill font-mono tabular-nums text-[10px] font-semibold text-white">
+                    #${p.id.replace('ONGX-', '')}
+                  </span>
+                </div>
+
+                <!-- Top-Right Floating Circular Glass Bookmark/Vault Button -->
+                <button
+                  onclick="App.toggleSave('${p.id}')"
+                  class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full ${
+                    isSaved
+                      ? 'bg-acid text-black border border-acid shadow-[0_0_15px_rgba(226,255,50,0.35)]'
+                      : 'glass-pill text-zinc-200 hover:text-white'
+                  } flex items-center justify-center transition-all active:scale-90"
+                  aria-label="Bookmark"
+                  title="Zapisz do Twój Haul Planner"
+                >
+                  <svg class="w-3.5 h-3.5" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                  </svg>
+                </button>
+
+                <!-- Bottom-Right QC Tag -->
+                <div class="absolute bottom-3 right-3 z-10 flex items-center justify-end pointer-events-none">
+                  <span class="px-2 py-1 radius-badge glass-pill font-mono tabular-nums text-[10px] font-semibold text-acid">
+                    QC 4/4
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card Editorial Body -->
+              <div class="p-4 flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between font-mono text-[10px] text-[#9E9EA9] uppercase tracking-wider">
+                    <span>${getCategoryLabel(p.category)}</span>
+                    <span class="text-[#686873]">${sourceTag}</span>
+                  </div>
+
+                  <h3 onclick="App.openQcModal('${p.id}')" class="font-display font-bold text-[15px] sm:text-base text-[#F4F4F6] mt-1.5 ongx-title-clamp cursor-pointer group-hover:text-white transition-colors">
+                    ${p.name}
+                  </h3>
+                </div>
+
+                <!-- Symmetrical Price (Top Center) / Batch (Left) / Weight (Right) Layout -->
+                <div onclick="App.openQcModal('${p.id}')" class="mt-3.5 p-3 radius-control bg-obsidian/90 border border-hairline cursor-pointer">
+                  <div class="text-center pb-2.5 border-b border-hairline">
+                    <span class="font-mono text-[9px] uppercase tracking-widest text-[#686873] block">${dict.labelPrice}</span>
+                    <div class="mt-0.5 flex items-baseline justify-center gap-1.5">
+                      <span class="font-display tabular-nums text-xl sm:text-2xl font-bold text-acid tracking-tight whitespace-nowrap">${mainPrice}</span>
+                    </div>
+                  </div>
+                  <div class="pt-2.5 flex items-center justify-between gap-2">
+                    <div class="text-left min-w-0">
+                      <span class="font-mono text-[9px] uppercase tracking-widest text-[#686873] block">${dict.labelBatch}</span>
+                      <span class="font-mono text-[11px] font-bold text-white truncate block mt-0.5">${p.batch}</span>
+                    </div>
+                    <div class="text-right shrink-0">
+                      <span class="font-mono text-[9px] uppercase tracking-widest text-[#686873] block">${dict.labelWeight}</span>
+                      <span class="font-mono tabular-nums text-[11px] font-bold text-white block mt-0.5">${p.weight_g} g</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Footer Actions: Primary White CTA + 2-Col Secondary Control Bar -->
+            <div class="px-4 pb-4 space-y-2">
+              <a
+                href="${p.kakobuy_url}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full py-2.5 px-3.5 btn-primary-white font-bold text-xs flex items-center justify-center gap-1.5 group/cta"
+              >
+                <span>${dict.buyOnKakoBuy}</span>
+                <svg class="w-3.5 h-3.5 group-hover/cta:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+
+              <div class="grid grid-cols-2 gap-2">
+                <!-- Left: QC Photos (4) with Camera Icon -->
+                <button
+                  onclick="App.openQcModal('${p.id}')"
+                  class="py-2 px-2.5 btn-surface-secondary font-mono tabular-nums text-[11px] text-[#F4F4F6] flex items-center justify-center gap-1.5"
+                >
+                  <svg class="w-3.5 h-3.5 text-acid shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                    <circle cx="12" cy="13" r="3" stroke-width="1.8"/>
+                  </svg>
+                  <span class="truncate">${dict.qcBtnLabel} (4)</span>
+                </button>
+
+                <!-- Right: Unified Split-Action Pill [Raw Link | Copy] -->
+                <div class="btn-surface-secondary flex items-stretch overflow-hidden p-0">
+                  <a
+                    href="${p.raw_url}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 py-2 px-2 font-mono text-[11px] text-[#9E9EA9] hover:text-white flex items-center justify-center transition-colors truncate"
+                    title="Otwórz Raw Link"
+                  >
+                    <span>${dict.rawBtnLabel}</span>
+                  </a>
+                  <button
+                    onclick="App.copyText('${p.raw_url}', 'Skopiowano Raw Link (${p.id})!')"
+                    class="px-2.5 border-l border-hairline font-mono text-[11px] text-acid hover:bg-white/5 flex items-center justify-center transition-colors"
+                    title="Kopiuj Raw Link"
+                    aria-label="Kopiuj Raw Link"
+                  >
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+
+      function renderAll() {
+        const dict = I18N[state.lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[key]) el.textContent = dict[key];
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (dict[key]) el.setAttribute('placeholder', dict[key]);
+        });
+
+        // Header & Sidebar indicators with safe null guards
+        const currCfg = CURRENCIES[state.currency] || CURRENCIES.PLN;
+        const hdrCurrSym = document.getElementById('header-curr-symbol');
+        if (hdrCurrSym) hdrCurrSym.textContent = currCfg.symbol;
+        const hdrCurrCode = document.getElementById('header-curr-code');
+        if (hdrCurrCode) hdrCurrCode.textContent = state.currency;
+        const hdrLangBtn = document.getElementById('header-lang-btn');
+        if (hdrLangBtn) hdrLangBtn.textContent = state.lang;
+        const sideCurrSym = document.getElementById('sidebar-curr-symbol');
+        if (sideCurrSym) sideCurrSym.textContent = currCfg.symbol;
+        const sideCurrCode = document.getElementById('sidebar-curr-code');
+        if (sideCurrCode) sideCurrCode.textContent = state.currency;
+        const sideLangCode = document.getElementById('sidebar-lang-code');
+        if (sideLangCode) sideLangCode.textContent = state.lang;
+
+        const hdrCountPill = document.getElementById('header-count-pill');
+        if (hdrCountPill) hdrCountPill.textContent = state.products.length;
+        const sideTotalBadge = document.getElementById('sidebar-total-badge');
+        if (sideTotalBadge) sideTotalBadge.textContent = state.products.length;
+
+        renderDropdownLists();
+
+        // Stats on Home Page
+        const statProdEl = document.getElementById('stat-products-val');
+        if (statProdEl) statProdEl.textContent = state.products.length;
+
+        // Category pills
+        const counts = { All: state.products.length };
+        CATEGORIES.slice(1).forEach(c => {
+          counts[c.id] = state.products.filter(p => matchesCategory(p.category, c.id)).length;
+        });
+
+        const catPillsEl = document.getElementById('catalog-category-pills');
+        if (catPillsEl) {
+          catPillsEl.innerHTML = CATEGORIES.map(c => {
+            const active = state.category === c.id;
+            return `
+              <button onclick="App.setCategory('${c.id}')" class="shrink-0 px-3.5 py-2 radius-control font-mono tabular-nums text-xs flex items-center gap-1.5 transition-all ${
+                active ? 'bg-white text-black font-bold shadow-sm' : 'btn-surface-secondary text-[#9E9EA9] hover:text-white'
+              }">
+                <span>${state.lang === 'PL' ? c.pl : c.en}</span>
+                <span class="text-[10px] opacity-75">(${counts[c.id] || 0})</span>
+              </button>
+            `;
+          }).join('');
+        }
+
+        const sideCatsEl = document.getElementById('sidebar-categories');
+        if (sideCatsEl) {
+          sideCatsEl.innerHTML = CATEGORIES.slice(1).map(c => `
+            <button onclick="App.filterByCategoryAndOpen('${c.id}')" class="w-full flex items-center justify-between px-3.5 py-2 radius-control text-xs text-[#9E9EA9] hover:text-white hover:bg-charcoal-900 transition-all">
+              <span>${state.lang === 'PL' ? c.pl : c.en}</span>
+              <span class="font-mono tabular-nums text-[10px] text-[#686873]">${counts[c.id] || 0}</span>
+            </button>
+          `).join('');
+        }
+
+        // Products Catalog
+        renderCatalog();
+
+        // Saved Vault
+        renderVault();
+
+        // Shipping calculator UI
+        renderShipCalc();
+
+        // Keep QC Modal price in sync if currency changes while modal is open
+        if (state.qcActiveProductId) {
+          const activeProd = state.products.find(item => item.id === state.qcActiveProductId);
+          const qcPriceEl = document.getElementById('qc-price');
+          if (activeProd && qcPriceEl) {
+            qcPriceEl.textContent = formatPrice(activeProd.price_cny, state.currency);
+          }
+        }
+
+        updateNavHighlight();
+      }
+
+      function renderCatalog() {
+        let list = [...state.products];
+        if (state.category !== 'All') {
+          list = list.filter(p => matchesCategory(p.category, state.category));
+        }
+        // Search strictly by product name only
+        if (state.search.trim()) {
+          const q = state.search.toLowerCase().trim();
+          list = list.filter(p => p.name.toLowerCase().includes(q));
+        }
+
+        if (state.sort === 'newest') {
+          list.sort((a, b) => (b.added || '').localeCompare(a.added || ''));
+        } else if (state.sort === 'price-asc') {
+          list.sort((a, b) => a.price_cny - b.price_cny);
+        } else if (state.sort === 'price-desc') {
+          list.sort((a, b) => b.price_cny - a.price_cny);
+        } else if (state.sort === 'weight-desc') {
+          list.sort((a, b) => b.weight_g - a.weight_g);
+        }
+
+        const countLabelEl = document.getElementById('catalog-count-label');
+        if (countLabelEl) {
+          countLabelEl.textContent =
+            state.lang === 'PL' ? `${list.length} PRODUKTÓW` : `${list.length} PRODUCTS`;
+        }
+
+        const resetBtn = document.getElementById('reset-filters-btn');
+        if (resetBtn) {
+          resetBtn.classList.toggle('hidden', !state.search && state.category === 'All');
+        }
+
+        const grid = document.getElementById('products-grid');
+        const empty = document.getElementById('products-empty');
+        if (!grid || !empty) return;
+        if (!list.length) {
+          grid.innerHTML = '';
+          empty.classList.remove('hidden');
+        } else {
+          empty.classList.add('hidden');
+          grid.innerHTML = list.map((p, idx) => renderProductCard(p, idx)).join('');
+        }
+      }
+
+      function renderVault() {
+        const saved = state.products.filter(p => state.savedIds.includes(p.id));
+        const sideSavedBadge = document.getElementById('sidebar-saved-badge');
+        if (sideSavedBadge) sideSavedBadge.textContent = saved.length;
+        const mobSavedPill = document.getElementById('mob-saved-pill');
+        if (mobSavedPill) mobSavedPill.textContent = saved.length;
+
+        const totalWeightG = saved.reduce((s, p) => s + (p.weight_g || 0), 0);
+        const totalCny = saved.reduce((s, p) => s + (p.price_cny || 0), 0);
+
+        const vaultCountEl = document.getElementById('vault-count');
+        if (vaultCountEl) {
+          vaultCountEl.textContent = `${saved.length}`;
+        }
+        const vaultWeightEl = document.getElementById('vault-weight');
+        if (vaultWeightEl) {
+          vaultWeightEl.textContent = `(${(totalWeightG / 1000).toFixed(2)} kg)`;
+        }
+        const vaultTotalEl = document.getElementById('vault-total');
+        if (vaultTotalEl) vaultTotalEl.textContent = formatPrice(totalCny, state.currency);
+
+        renderShipCalc();
+
+        const grid = document.getElementById('saved-grid');
+        const empty = document.getElementById('saved-empty');
+        if (!grid || !empty) return;
+        if (!saved.length) {
+          grid.innerHTML = '';
+          empty.classList.remove('hidden');
+        } else {
+          empty.classList.add('hidden');
+          grid.innerHTML = saved.map((p, idx) => renderProductCard(p, idx)).join('');
+        }
+      }
+
+      function syncShipWeightWithHaul(silent = false) {
+        const saved = state.products.filter(p => state.savedIds.includes(p.id));
+        const totalWeightG = saved.reduce((s, p) => s + (p.weight_g || 0), 0);
+        state.shipWeightKg = Math.min(20, Math.round((totalWeightG / 1000) * 10) / 10);
+        renderShipCalc();
+        if (!silent) {
+          showToast(
+            state.lang === 'PL'
+              ? `Zaktualizowano wagę paczki z haula: ${state.shipWeightKg.toFixed(1)} kg`
+              : `Synced parcel weight from haul: ${state.shipWeightKg.toFixed(1)} kg`
+          );
+        }
+      }
+
+      function toggleSave(id) {
+        const idx = state.savedIds.indexOf(id);
+        if (idx > -1) {
+          state.savedIds.splice(idx, 1);
+          showToast(`Usunięto #${id} z Twój Haul Planner`);
+        } else {
+          state.savedIds.push(id);
+          showToast(`Dodano #${id} do Twój Haul Planner`);
+        }
+        localStorage.setItem('ongx_saved', JSON.stringify(state.savedIds));
+        syncShipWeightWithHaul(true);
+        renderAll();
+      }
+
+      // Live Shipping Calculator Logic (0-20 kg, DPD / DHL / ETL connected to Haul Planner total)
+      function computeIndicativeShipCny(kg, line) {
+        const w = Math.max(0, Math.min(20, parseFloat(kg) || 0));
+        if (w <= 0) return 0;
+        const steps = Math.ceil((w * 1000) / 500);
+        if (line === 'DHL') return 110 + steps * 36;
+        if (line === 'ETL') return 102 + steps * 33;
+        return 95 + steps * 31; // DPD
+      }
+
+      function renderShipCalc() {
+        const slider = document.getElementById('ship-weight-slider');
+        if (slider && parseFloat(slider.value) !== state.shipWeightKg) {
+          slider.value = state.shipWeightKg;
+        }
+
+        const formattedWeight = `${state.shipWeightKg.toFixed(1)} kg`;
+        const wDisp = document.getElementById('ship-weight-display');
+        if (wDisp) wDisp.textContent = formattedWeight;
+
+        document.querySelectorAll('.ship-line-btn').forEach(btn => {
+          const line = btn.getAttribute('data-ship-line');
+          const active = line === state.shipLine;
+          btn.className = active
+            ? 'ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center bg-acid text-black border border-acid shadow-[0_0_20px_rgba(226,255,50,0.22)] transition-all'
+            : 'ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center btn-surface-secondary text-[#F4F4F6] transition-all';
+        });
+
+        const shipCny = computeIndicativeShipCny(state.shipWeightKg, state.shipLine);
+        const formattedShip = formatPrice(shipCny, state.currency);
+
+        const overallEl = document.getElementById('ship-overall-cost');
+        if (overallEl) overallEl.textContent = formattedShip;
+
+        const sumLine = document.getElementById('ship-summary-line');
+        if (sumLine) sumLine.textContent = state.shipLine;
+
+        const sumWeight = document.getElementById('ship-summary-weight');
+        if (sumWeight) {
+          sumWeight.textContent =
+            state.lang === 'PL'
+              ? `Wybrana waga: ${formattedWeight}`
+              : `Selected weight: ${formattedWeight}`;
+        }
+
+        // Connect live shipping cost to Haul Planner totals
+        const saved = state.products.filter(p => state.savedIds.includes(p.id));
+        const productsCny = saved.reduce((s, p) => s + (p.price_cny || 0), 0);
+        const grandTotalCny = productsCny + shipCny;
+
+        const vaultShipEl = document.getElementById('vault-shipping');
+        if (vaultShipEl) vaultShipEl.textContent = formattedShip;
+
+        const vaultShipSubEl = document.getElementById('vault-shipping-sub');
+        if (vaultShipSubEl) {
+          vaultShipSubEl.textContent = `${state.shipLine} • ${formattedWeight}`;
+        }
+
+        const vaultGrandEl = document.getElementById('vault-grand-total');
+        if (vaultGrandEl) vaultGrandEl.textContent = formatPrice(grandTotalCny, state.currency);
+      }
+
+      function selectShipLine(line) {
+        if (!['DPD', 'DHL', 'ETL'].includes(line)) return;
+        state.shipLine = line;
+        renderShipCalc();
+      }
+
+      function setShipWeight(kgVal) {
+        const parsed = parseFloat(kgVal);
+        state.shipWeightKg = isNaN(parsed) ? 0 : Math.max(0, Math.min(20, parsed));
+        renderShipCalc();
+      }
+
+      function openQcModal(id) {
+        const p = state.products.find(item => item.id === id);
+        if (!p) return;
+
+        state.qcActiveProductId = p.id;
+        const fallback = getFallbackSvg(p.name, p.id);
+        state.currentQcAngles = [
+          { src: p.image || fallback, label: 'ANGLE 01/04 — FRONT PROFILE' },
+          { src: p.image || fallback, label: 'ANGLE 02/04 — BACK & STITCHING' },
+          { src: p.image || fallback, label: 'ANGLE 03/04 — TAG & NECK LABEL' },
+          { src: p.image || fallback, label: 'ANGLE 04/04 — SCALE WEIGHT CHECK' }
+        ];
+        state.qcActiveAngle = 0;
+        state.qcZoomed = false;
+
+        const setElText = (elId, txt) => {
+          const el = document.getElementById(elId);
+          if (el) el.textContent = txt;
+        };
+
+        setElText('qc-id-badge', `#${p.id}`);
+        setElText('qc-header-title', p.name);
+        setElText('qc-zoom-label', '1.0x');
+        setElText('qc-cam-label', state.currentQcAngles[0].label);
+        setElText('qc-weight-stamp', `SCALE: ${p.weight_g}g`);
+        setElText('qc-cat', getCategoryLabel(p.category));
+        setElText('qc-source-tag', (p.raw_url || '').includes('taobao') ? 'TAOBAO' : 'WEIDIAN');
+        setElText('qc-name', p.name);
+        setElText('qc-price', formatPrice(p.price_cny, state.currency));
+        setElText('qc-batch', p.batch || 'TOP BATCH');
+        setElText('qc-weight-box', `${p.weight_g} g`);
+
+        const mainImg = document.getElementById('qc-main-img');
+        if (mainImg) {
+          mainImg.classList.remove('qc-zoomed');
+          mainImg.classList.add('qc-unzoomed');
+          mainImg.onerror = function () {
+            this.onerror = null;
+            this.src = fallback;
+          };
+          mainImg.src = state.currentQcAngles[0].src;
+        }
+
+        const kakoLink = document.getElementById('qc-kakobuy-link');
+        if (kakoLink) kakoLink.href = p.kakobuy_url || 'https://www.kakobuy.com';
+
+        const rawLink = document.getElementById('qc-open-raw-link');
+        if (rawLink) rawLink.href = p.raw_url || '#';
+
+        const copyRawBtn = document.getElementById('qc-copy-raw-btn');
+        if (copyRawBtn) {
+          copyRawBtn.onclick = () => copyText(p.raw_url, `Skopiowano Raw Link (${p.id})!`);
+        }
+
+        renderQcThumbs();
+
+        const modal = document.getElementById('qc-modal');
+        if (modal) modal.classList.remove('hidden');
+      }
+
+      function renderQcThumbs() {
+        const angles = state.currentQcAngles || [];
+        const thumbsEl = document.getElementById('qc-thumbs');
+        if (!thumbsEl) return;
+        thumbsEl.innerHTML = angles.map((a, i) => {
+          const active = i === state.qcActiveAngle;
+          return `
+            <button
+              onclick="App.setQcAngle(${i})"
+              class="relative aspect-square radius-control overflow-hidden bg-charcoal-900 transition-all ${
+                active ? 'ring-2 ring-white border border-white scale-[1.02]' : 'border border-hairline opacity-65 hover:opacity-100'
+              }"
+            >
+              <img src="${a.src}" alt="QC ${i + 1}" class="w-full h-full object-cover" />
+              <span class="absolute bottom-1 right-1 px-1 rounded bg-obsidian/85 font-mono tabular-nums text-[9px] text-white">0${i + 1}</span>
+            </button>
+          `;
+        }).join('');
+      }
+
+      function setQcAngle(index) {
+        const angles = state.currentQcAngles || [];
+        const chosen = angles[index];
+        if (!chosen) return;
+        state.qcActiveAngle = index;
+        state.qcZoomed = false;
+        const mainImg = document.getElementById('qc-main-img');
+        if (mainImg) {
+          mainImg.classList.remove('qc-zoomed');
+          mainImg.classList.add('qc-unzoomed');
+          mainImg.style.opacity = '0.35';
+          setTimeout(() => {
+            mainImg.src = chosen.src;
+            mainImg.style.opacity = '1';
+          }, 90);
+        }
+        const zoomLbl = document.getElementById('qc-zoom-label');
+        if (zoomLbl) zoomLbl.textContent = '1.0x';
+        const camLbl = document.getElementById('qc-cam-label');
+        if (camLbl) camLbl.textContent = chosen.label;
+        renderQcThumbs();
+      }
+
+      function toggleQcZoom() {
+        state.qcZoomed = !state.qcZoomed;
+        const mainImg = document.getElementById('qc-main-img');
+        if (mainImg) {
+          mainImg.classList.toggle('qc-zoomed', state.qcZoomed);
+          mainImg.classList.toggle('qc-unzoomed', !state.qcZoomed);
+        }
+        const zoomLbl = document.getElementById('qc-zoom-label');
+        if (zoomLbl) zoomLbl.textContent = state.qcZoomed ? '1.75x' : '1.0x';
+      }
+
+      function closeQcModal() {
+        const modal = document.getElementById('qc-modal');
+        if (modal) modal.classList.add('hidden');
+      }
+
+      // 1-Click Download of Complete Self-Contained index.html for iPhone / Mobile Publishing
+      function downloadStandaloneHtml() {
+        try {
+          const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+          const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'index.html';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showToast('Pobrano gotowy plik index.html!');
+        } catch (e) {
+          showToast('Nie udało się pobrać pliku automatycznie.');
+        }
+      }
+
+      function loadExampleCsv() {
+        const csv = [
+          'id,name,category,price_cny,batch,weight_g,kakobuy_url,raw_url',
+          'ONGX-201,Supreme Box Logo Heavy Hoodie FW24,Hoodies,310,TC BATCH,1020,https://www.kakobuy.com,https://weidian.com',
+          'ONGX-202,Balenciaga Track LED Runner Black,Shoes,480,GOOD BATCH,1550,https://www.kakobuy.com,https://weidian.com',
+          'ONGX-203,ArcTeryx Beta LT Gore-Tex Jacket,Jackets,380,SHARKBREEDER,520,https://www.kakobuy.com,https://weidian.com'
+        ].join('\n');
+        document.getElementById('csv-paste-box').value = csv;
+        showToast('Wczytano 3 przykładowe wiersze CSV');
+      }
+
+      function applyCsvImport() {
+        const raw = document.getElementById('csv-paste-box').value.trim();
+        if (!raw) {
+          showToast('Najpierw wklej dane CSV lub kliknij Wczytaj przykład');
+          return;
+        }
+        const lines = raw.split(/\r?\n/).filter(Boolean);
+        if (lines.length < 2) {
+          showToast('Wymagany nagłówek i min. 1 wiersz produktu');
+          return;
+        }
+        const imported = lines.slice(1).map((line, idx) => {
+          const cols = line.split(',').map(s => s.trim());
+          return {
+            id: cols[0] || `ONGX-${200 + idx}`,
+            name: cols[1] || `Custom Product #${idx + 1}`,
+            category: cols[2] || 'Hoodies',
+            price_cny: parseFloat(cols[3]) || 280,
+            batch: cols[4] || 'TOP BATCH',
+            weight_g: parseInt(cols[5], 10) || 850,
+            image: getFallbackSvg(cols[1] || 'CUSTOM ITEM', cols[0] || 'ONGX'),
+            kakobuy_url: cols[6] || 'https://www.kakobuy.com',
+            raw_url: cols[7] || 'https://weidian.com',
+            added: '2025-05-12'
+          };
+        });
+        state.products = imported;
+        renderAll();
+        navigate('products');
+        showToast(`Załadowano ${imported.length} produktów z CSV!`);
+      }
+
+      function resetDefaultCatalog() {
+        state.products = [...DEFAULT_PRODUCTS];
+        renderAll();
+        navigate('products');
+        showToast('Przywrócono domyślny katalog 18 produktów');
+      }
+
+      function copyText(text, msg = 'Skopiowano do schowka!') {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast(msg);
+          }).catch(() => {
+            fallbackCopyText(text, msg);
+          });
+        } else {
+          fallbackCopyText(text, msg);
+        }
+      }
+
+      function fallbackCopyText(text, msg) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+          document.execCommand('copy');
+        } catch (err) {}
+        document.body.removeChild(ta);
+        showToast(msg);
+      }
+
+      function exportHaulList() {
+        const saved = state.products.filter(p => state.savedIds.includes(p.id));
+        if (!saved.length) {
+          showToast('Twój Haul Planner jest pusty!');
+          return;
+        }
+        const text = saved.map(p => `• [${p.id}] ${p.name} (${formatPrice(p.price_cny, state.currency)}) — ${p.kakobuy_url}`).join('\n');
+        copyText(`MOJA LISTA HAUL ONGXREPS:\n${text}`, 'Skopiowano pełną listę Haul!');
+      }
+
+      function showToast(msg) {
+        const box = document.getElementById('toast-box');
+        const el = document.createElement('div');
+        el.className = 'px-4 py-2 radius-control glass-pill text-white font-mono text-xs font-medium shadow-2xl flex items-center gap-2.5 section-fade pointer-events-auto';
+        el.innerHTML = `<span class="w-2 h-2 rounded-full bg-acid shadow-[0_0_8px_#E2FF32]"></span><span>${msg}</span>`;
+        box.appendChild(el);
+        setTimeout(() => el.remove(), 2500);
+      }
+
+      // Live Official Discord Member Count Fetcher (Invite API + Server Widget API, Zero Fake Fallback)
+      async function fetchDiscordMemberCount() {
+        const homeEl = document.getElementById('stat-discord-members');
+        const commEl = document.getElementById('community-discord-count');
+        const setDiscordCount = (val) => {
+          if (homeEl) homeEl.textContent = val;
+          if (commEl) commEl.textContent = val;
+        };
+
+        try {
+          const res = await fetch('https://discord.com/api/v10/invites/9yaAhBdBDy?with_counts=true', {
+            method: 'GET',
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+            if (typeof data.approximate_member_count === 'number') {
+              setDiscordCount(data.approximate_member_count.toLocaleString('pl-PL'));
+              return;
+            }
+            if (data.guild && data.guild.id) {
+              const widgetRes = await fetch(`https://discord.com/api/guilds/${data.guild.id}/widget.json`, {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+              });
+              if (widgetRes.ok) {
+                const widgetData = await widgetRes.json();
+                if (typeof widgetData.presence_count === 'number') {
+                  setDiscordCount(widgetData.presence_count.toLocaleString('pl-PL'));
+                  return;
+                }
+              }
+            }
+          }
+          setDiscordCount('—');
+        } catch (err) {
+          setDiscordCount('—');
+        }
+      }
+
+      function setCategory(catId) {
+        state.category = catId;
+        renderAll();
+      }
+
+      function filterByCategoryAndOpen(catId) {
+        state.category = catId;
+        renderAll();
+        navigate('products');
+      }
+
+      function setSearch(val) {
+        state.search = val || '';
+        renderCatalog();
+      }
+
+      function setSort(val) {
+        state.sort = val || 'featured';
+        renderCatalog();
+      }
+
+      function resetFilters() {
+        state.category = 'All';
+        state.search = '';
+        state.sort = 'featured';
+        const searchInput = document.getElementById('catalog-search');
+        if (searchInput) searchInput.value = '';
+        const sortSelect = document.getElementById('sort-select');
+        if (sortSelect) sortSelect.value = 'featured';
+        renderAll();
+      }
+
+      function focusSearch() {
+        navigate('products');
+        setTimeout(() => {
+          const input = document.getElementById('catalog-search');
+          if (input) input.focus();
+        }, 120);
+      }
+
+      function init() {
+        syncShipWeightWithHaul(true);
+        renderAll();
+        fetchDiscordMemberCount();
+
+        // Always show KakoBuy coupon popup reliably on startup
+        setTimeout(() => {
+          openCouponPopup();
+        }, 250);
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!e.target.closest('[data-dropdown-root]')) {
+            closeAllDropdowns();
+          }
+        });
+
+        // Keyboard shortcuts (/ for search, Escape to close modals/dropdowns)
+        document.addEventListener('keydown', (e) => {
+          if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            focusSearch();
+          } else if (e.key === 'Escape') {
+            closeQcModal();
+            closeCouponPopup();
+            closeAllDropdowns();
+          }
+        });
+      }
+
+      return {
+        init,
+        navigate,
+        setTab: navigate,
+        focusSearch,
+        toggleDropdown,
+        selectCurrency,
+        setCurrency: selectCurrency,
+        selectLanguage,
+        cycleCurrency,
+        toggleLanguage,
+        openCouponPopup,
+        closeCouponPopup,
+        closePromoPopup: closeCouponPopup,
+        setCategory,
+        filterByCategoryAndOpen,
+        setSearch,
+        setSort,
+        resetFilters,
+        toggleSave,
+        syncShipWeightWithHaul,
+        selectShipLine,
+        setShipWeight,
+        openQcModal,
+        closeQcModal,
+        toggleQcZoom,
+        setQcAngle,
+        copyText,
+        exportHaulList,
+        downloadStandaloneHtml,
+        loadExampleCsv,
+        applyCsvImport,
+        resetDefaultCatalog,
+        fetchDiscordMemberCount
+      };
+    })();
+
+    window.App = App;
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => App.init());
+    } else {
+      App.init();
+    }
+  </script>
+</body>
+</html>
