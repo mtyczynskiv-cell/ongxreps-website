@@ -388,20 +388,7 @@
       }
     }
 
-    /* KakoBuy Monogram Icon */
-    .kb-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #FF5A4E 0%, #E8202E 52%, #B3111E 100%);
-      color: #FFFFFF;
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 4px 14px rgba(232, 32, 46, 0.22);
-    }
+    /* KakoBuy Logo Mark inside red buttons */
     .kb-mark {
       display: inline-flex;
       align-items: center;
@@ -413,11 +400,6 @@
       background: rgba(255, 255, 255, 0.18);
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: #FFFFFF;
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
     }
 
     /* Compact List Product Rows */
@@ -568,6 +550,11 @@
 </head>
 <body class="bg-obsidian text-[#F4F4F6] min-h-screen flex flex-col lg:flex-row selection:bg-[#E2FF32] selection:text-black">
 
+  <!-- KakoBuy brand logo (single shared definition, used via <use href="#kakobuy-logo">) -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="kakobuy-logo" viewBox="44.5 46 420 420"><path d="M120 72H222V222C235.3 213.2 295 134 389 112V213C288.4 251.4 235.3 362.9 222 376V440H120ZM267 341H365V440H267Z"/></symbol>
+  </svg>
+
   <!-- =========================================================================
        DESKTOP SIDEBAR (Automatically visible on screens >= 1024px)
        ========================================================================= -->
@@ -684,7 +671,7 @@
       <button onclick="App.openCouponPopup()" class="w-full text-left block p-3.5 radius-card surface-bento group">
         <div class="flex items-center justify-between">
           <span class="flex items-center gap-2">
-            <span class="kb-icon w-5 h-5 rounded-md text-[8px]">KB</span>
+            <span class="w-5 h-5 rounded-md bg-[#E8202E]/15 border border-[#E8202E]/35 text-[#FF4D45] flex items-center justify-center shrink-0"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
             <span class="font-mono text-[10px] uppercase tracking-widest text-[#FF5A4E] font-semibold" data-i18n="sidebarCouponBadge">KAKOBUY KUPONY</span>
           </span>
           <svg class="w-3.5 h-3.5 text-[#9E9EA9] group-hover:translate-x-0.5 group-hover:text-white transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -1141,7 +1128,7 @@
             <div>
               <div class="flex items-center justify-between">
                 <div class="w-12 h-12 radius-card bg-[#E8202E]/15 border border-[#E8202E]/35 flex items-center justify-center text-[#FF4D45]">
-                  <svg class="w-6 h-6" fill="currentColor" viewBox="44.5 46 420 420" aria-hidden="true"><path d="M120 72H222V222C235.3 213.2 295 134 389 112V213C288.4 251.4 235.3 362.9 222 376V440H120ZM267 341H365V440H267Z"/></svg>
+                  <svg class="w-6 h-6" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg>
                 </div>
                 <span class="font-mono tabular-nums text-[10px] px-2.5 py-1 radius-badge bg-[#E8202E]/15 text-[#FF5A4E] border border-[#E8202E]/35 font-bold" data-i18n="kakobuyBadge">KUPONY</span>
               </div>
@@ -1384,7 +1371,7 @@
           <!-- Sticky Bottom Action Bar inside Modal -->
           <div class="space-y-2 pt-3 border-t border-hairline sticky bottom-0 bg-charcoal-900/95 backdrop-blur-md">
             <a id="qc-kakobuy-link" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 btn-kakobuy font-bold text-xs flex items-center justify-center gap-2 group">
-              <span class="kb-mark">KB</span>
+              <span class="kb-mark"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
               <span data-i18n="buyOnKakoBuy">Kup na KakoBuy</span>
               <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
@@ -1476,7 +1463,7 @@
         <!-- Promotional Layout -->
         <div class="mt-4 p-4 radius-card bg-gradient-to-br from-[#1C0B0E] to-obsidian border border-[#E8202E]/30">
           <div class="flex items-center gap-3.5">
-            <span class="kb-icon w-12 h-12 radius-card text-lg">KB</span>
+            <span class="w-12 h-12 radius-card bg-[#E8202E]/15 border border-[#E8202E]/35 text-[#FF4D45] flex items-center justify-center shrink-0"><svg class="w-6 h-6" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
             <div class="min-w-0">
               <span class="text-xs sm:text-sm font-medium text-[#F4F4F6] block" data-i18n="promoClaimTitle">Odbierz kupony na Kakobuy</span>
               <span class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-[#FF4D45] tracking-tight leading-none block mt-1.5" data-i18n="promoAmount">-1500 zł</span>
@@ -2394,7 +2381,7 @@
                 rel="noopener noreferrer"
                 class="w-full py-2.5 px-3.5 btn-kakobuy font-bold text-xs flex items-center justify-center gap-1.5 group/cta"
               >
-                <span class="kb-mark">KB</span>
+                <span class="kb-mark"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
                 <span>${dict.buyOnKakoBuy}</span>
                 <svg class="w-3.5 h-3.5 group-hover/cta:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
@@ -2493,7 +2480,7 @@
                   title="${dict.buyOnKakoBuy}"
                   aria-label="${dict.buyOnKakoBuy}"
                 >
-                  <span class="kb-mark">KB</span>
+                  <span class="kb-mark"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
                   <span class="hidden sm:inline">KakoBuy</span>
                 </a>
               </div>
