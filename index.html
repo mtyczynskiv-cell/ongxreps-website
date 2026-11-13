@@ -353,6 +353,13 @@
       display: none !important;
       pointer-events: none !important;
     }
+
+    @media (min-width: 1024px) {
+      .hidden.lg\:flex {
+        display: flex !important;
+        pointer-events: auto !important;
+      }
+    }
   </style>
 </head>
 <body class="bg-obsidian text-[#F4F4F6] min-h-screen flex flex-col lg:flex-row selection:bg-[#E2FF32] selection:text-black">
