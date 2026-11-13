@@ -472,6 +472,84 @@
       box-shadow: 0 0 0 1px var(--agent-g2), 0 16px 36px -16px rgba(var(--agent-rgb), 0.85);
     }
     .agent-choice:active { transform: scale(0.98); }
+    /* Language picker: flag icons in tiles styled like the KakoBuy / CapyBuy tiles
+       (tinted background + border in the flag's colour, --flag-rgb set per language) */
+    .lang-flag-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      background-color: rgba(var(--flag-rgb), 0.15);
+      border: 1px solid rgba(var(--flag-rgb), 0.35);
+      cursor: pointer;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .lang-flag-icon {
+      position: relative;
+      display: block;
+      width: 56%;
+      aspect-ratio: 3 / 2;
+      border-radius: 18%/27%;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 4px 10px -4px rgba(0, 0, 0, 0.7);
+    }
+    .lang-flag-icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    .lang-flag-icon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.18) 100%);
+      pointer-events: none;
+    }
+    .lang-flag-btn:hover {
+      background-color: rgba(var(--flag-rgb), 0.24);
+      border-color: rgba(var(--flag-rgb), 0.6);
+      transform: translateY(-2px);
+    }
+    .lang-flag-btn:active {
+      transform: scale(0.94);
+    }
+    .lang-flag-btn.is-active {
+      background-color: rgba(var(--flag-rgb), 0.26);
+      border-color: rgba(var(--flag-rgb), 0.9);
+      box-shadow: 0 0 0 2px #0C0C0F, 0 0 0 4px #FFFFFF, 0 10px 24px -10px rgba(var(--flag-rgb), 0.7);
+    }
+    .lang-flag-btn.is-pop {
+      animation: flagPop 0.34s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .lang-flag-btn:focus-visible {
+      outline: 2px solid #E2FF32;
+      outline-offset: 3px;
+    }
+    @keyframes flagPop {
+      0% { transform: scale(0.88); }
+      60% { transform: scale(1.07); }
+      100% { transform: scale(1); }
+    }
+    /* Header button: same small tile as the agent button (20px) */
+    .lang-flag-mini {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background-color: rgba(var(--flag-rgb), 0.15);
+      border: 1px solid rgba(var(--flag-rgb), 0.35);
+    }
+    .lang-flag-mini .lang-flag-icon {
+      width: 13px;
+      border-radius: 2px;
+      box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.2);
+    }
+
     /* Before an agent is chosen the welcome popup stays neutral (no agent colour) */
     #agent-popup[data-step="agent"] .agent-border-30 { border-color: rgba(255, 255, 255, 0.12) !important; }
     #agent-popup[data-step="agent"] .popup-dot.active { background: #FFFFFF; }
@@ -644,7 +722,7 @@
     <symbol id="flag-fr" viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="1" height="2" fill="#002654"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#ED2939"/></symbol>
     <symbol id="flag-es" viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></symbol>
     <symbol id="flag-it" viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#CE2B37"/></symbol>
-    <symbol id="flag-zh" viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice"><rect width="30" height="20" fill="#EE1C25"/><g fill="#FFDE00"><polygon points="5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07"/><polygon points="9.14,2.51 9.62,1.97 9.25,1.34 9.91,1.63 10.39,1.08 10.33,1.80 11.00,2.09 10.29,2.25 10.22,2.97 9.85,2.35"/><polygon points="11.01,4.14 11.66,3.82 11.56,3.10 12.07,3.62 12.72,3.30 12.38,3.95 12.88,4.47 12.17,4.34 11.83,4.99 11.73,4.27"/><polygon points="11.04,6.73 11.76,6.70 11.96,6.00 12.21,6.68 12.94,6.66 12.37,7.10 12.62,7.79 12.01,7.38 11.44,7.83 11.64,7.13"/><polygon points="9.22,8.38 9.90,8.63 10.35,8.06 10.32,8.79 11.00,9.05 10.30,9.24 10.26,9.96 9.87,9.36 9.16,9.55 9.62,8.98"/></g></symbol>
+    <symbol id="flag-zh" viewBox="0 0 30 20" preserveAspectRatio="xMinYMid slice"><rect width="30" height="20" fill="#EE1C25"/><g fill="#FFDE00"><polygon points="5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07"/><polygon points="9.14,2.51 9.62,1.97 9.25,1.34 9.91,1.63 10.39,1.08 10.33,1.80 11.00,2.09 10.29,2.25 10.22,2.97 9.85,2.35"/><polygon points="11.01,4.14 11.66,3.82 11.56,3.10 12.07,3.62 12.72,3.30 12.38,3.95 12.88,4.47 12.17,4.34 11.83,4.99 11.73,4.27"/><polygon points="11.04,6.73 11.76,6.70 11.96,6.00 12.21,6.68 12.94,6.66 12.37,7.10 12.62,7.79 12.01,7.38 11.44,7.83 11.64,7.13"/><polygon points="9.22,8.38 9.90,8.63 10.35,8.06 10.32,8.79 11.00,9.05 10.30,9.24 10.26,9.96 9.87,9.36 9.16,9.55 9.62,8.98"/></g></symbol>
     <symbol id="capybuy-logo" viewBox="0 0 100 100">
       <mask id="capybuy-logo-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
         <rect width="100" height="100" fill="#fff"/>
@@ -819,15 +897,15 @@
             </div>
           </div>
 
-          <!-- Language Selector Dropdown (PL / EN) -->
+          <!-- Language Selector Dropdown (flags only) -->
           <div class="relative" data-dropdown-root>
-            <button onclick="App.toggleDropdown('header-lang-menu', event)" class="h-8 px-1.5 sm:px-2.5 radius-control btn-surface-secondary font-mono text-[11px] font-semibold text-[#F4F4F6] flex items-center gap-1" title="Wybierz język / Select Language" data-i18n-title="titleSelectLanguage">
-              <span id="header-lang-btn">PL</span>
-              <svg class="w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <button onclick="App.toggleDropdown('header-lang-menu', event)" class="h-8 w-[30px] sm:w-auto px-0 sm:px-2 radius-control btn-surface-secondary flex items-center justify-center gap-1" title="Wybierz język / Select Language" aria-label="Wybierz język / Select Language" data-i18n-title="titleSelectLanguage" data-i18n-aria-label="titleSelectLanguage">
+              <span id="header-lang-btn" class="lang-flag-mini"></span>
+              <svg class="hidden sm:inline w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
-            <div id="header-lang-menu" class="dropdown-menu hidden absolute right-0 mt-2 w-40 p-1.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-1">
-              <div class="px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectLangLabel">Wybierz język</div>
-              <div data-lang-options></div>
+            <div id="header-lang-menu" class="dropdown-menu hidden absolute right-0 mt-2 w-[212px] p-2.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-2">
+              <div class="px-0.5 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectLangLabel">Wybierz język</div>
+              <div data-lang-options class="grid grid-cols-8 gap-2"></div>
             </div>
           </div>
 
@@ -1567,7 +1645,7 @@
       <div data-popup-step="lang" class="hidden mt-5 section-fade">
         <h3 class="font-display text-xl sm:text-2xl font-bold text-white leading-snug" data-i18n="popupLangTitle">Wybierz język strony</h3>
         <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="popupLangDesc">Możesz go zmienić w każdej chwili w nagłówku strony.</p>
-        <div id="popup-lang-options" class="mt-5 grid grid-cols-1 gap-2.5"></div>
+        <div id="popup-lang-options" class="mt-5 grid grid-cols-8 gap-3" role="group"></div>
         <div class="mt-5 flex gap-2.5">
           <button data-popup-back onclick="App.popupBack()" class="py-3.5 px-4 btn-surface-secondary font-medium text-xs sm:text-sm text-[#9E9EA9] hover:text-white" data-i18n="popupBack">Wstecz</button>
           <button onclick="App.popupNext()" class="flex-1 py-3.5 px-4 btn-primary-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2">
@@ -1665,14 +1743,26 @@
 
       // Supported languages: native name, flag symbol and <html lang> value
       const LANGUAGES = {
-        PL: { code: 'PL', name: 'Polski', label: 'Polski (PL)', flag: '#flag-pl', html: 'pl' },
-        EN: { code: 'EN', name: 'English', label: 'English (EN)', flag: '#flag-en', html: 'en' },
-        DE: { code: 'DE', name: 'Deutsch', label: 'Deutsch (DE)', flag: '#flag-de', html: 'de' },
-        FR: { code: 'FR', name: 'Français', label: 'Français (FR)', flag: '#flag-fr', html: 'fr' },
-        ES: { code: 'ES', name: 'Español', label: 'Español (ES)', flag: '#flag-es', html: 'es' },
-        IT: { code: 'IT', name: 'Italiano', label: 'Italiano (IT)', flag: '#flag-it', html: 'it' },
-        ZH: { code: 'ZH', name: '中文', label: '中文 (ZH)', flag: '#flag-zh', html: 'zh-CN' }
+        PL: { code: 'PL', name: 'Polski', label: 'Polski (PL)', flag: '#flag-pl', html: 'pl', rgb: '220, 20, 60' },
+        EN: { code: 'EN', name: 'English', label: 'English (EN)', flag: '#flag-en', html: 'en', rgb: '70, 105, 225' },
+        DE: { code: 'DE', name: 'Deutsch', label: 'Deutsch (DE)', flag: '#flag-de', html: 'de', rgb: '255, 206, 0' },
+        FR: { code: 'FR', name: 'Français', label: 'Français (FR)', flag: '#flag-fr', html: 'fr', rgb: '75, 115, 230' },
+        ES: { code: 'ES', name: 'Español', label: 'Español (ES)', flag: '#flag-es', html: 'es', rgb: '241, 191, 0' },
+        IT: { code: 'IT', name: 'Italiano', label: 'Italiano (IT)', flag: '#flag-it', html: 'it', rgb: '0, 160, 80' },
+        ZH: { code: 'ZH', name: '中文', label: '中文 (ZH)', flag: '#flag-zh', html: 'zh-CN', rgb: '238, 28, 37' }
       };
+
+      // Square flag tile used by every language picker (flag only; name kept for screen readers)
+      let langPop = null;
+      function flagTile(code, extraCls = '') {
+        const lang = LANGUAGES[code];
+        const active = state.lang === code;
+        return `<button type="button" data-lang="${code}" style="--flag-rgb: ${lang.rgb}" onclick="App.selectLanguage('${code}', this.closest('#agent-popup') !== null)" aria-label="${escapeHtml(lang.name)}" aria-pressed="${active}" class="lang-flag-btn ${extraCls}${active ? ' is-active' : ''}${code === langPop ? ' is-pop' : ''}">${flagIcon(code)}</button>`;
+      }
+
+      function flagIcon(code) {
+        return `<span class="lang-flag-icon"><svg aria-hidden="true"><use href="${LANGUAGES[code].flag}" width="100%" height="100%"/></svg></span>`;
+      }
 
       function flagSvg(code, cls = 'w-5 h-3.5', onLight = false) {
         const lang = LANGUAGES[code];
@@ -3459,9 +3549,11 @@
         state.lang = langCode;
         writeStorage('ongx_lang', state.lang);
         closeAllDropdowns();
+        langPop = langCode; // play the selection animation once on the chosen flag
         renderAll();
+        langPop = null;
         if (!silent) {
-          showToast(t('toastLanguage').replace('{lang}', LANGUAGES[state.lang].label));
+          showToast(t('toastLanguage').replace('{lang}', flagSvg(langCode, 'inline-block align-[-2px] w-[18px] h-3')));
         }
       }
 
@@ -3600,21 +3692,8 @@
       function renderPopupOptions() {
         const langEl = document.getElementById('popup-lang-options');
         if (langEl) {
-          langEl.innerHTML = Object.keys(LANGUAGES).map(code => {
-            const active = state.lang === code;
-            return `
-              <button onclick="App.selectLanguage('${code}', true)" class="w-full px-4 py-3.5 radius-control flex items-center justify-between transition-all ${
-                active ? 'bg-white text-black font-bold shadow-sm' : 'btn-surface-secondary text-[#F4F4F6]'
-              }">
-                <span class="flex items-center gap-3">
-                  <span class="font-mono text-[11px] font-bold w-8 py-1 radius-badge text-center ${active ? 'bg-black text-white' : 'bg-charcoal-800 text-[#9E9EA9] border border-hairline'}">${code}</span>
-                  ${flagSvg(code, 'w-5 h-3.5', active)}
-                  <span class="text-sm">${LANGUAGES[code].name}</span>
-                </span>
-                <span class="w-2 h-2 rounded-full ${active ? 'bg-black' : 'bg-white/10'}"></span>
-              </button>
-            `;
-          }).join('');
+          // 4 flags per row on an 8-column grid; the last row (3 flags) is centred
+          langEl.innerHTML = Object.keys(LANGUAGES).map((code, i) => flagTile(code, i === 4 ? 'col-span-2 col-start-2' : 'col-span-2')).join('');
         }
 
         const currEl = document.getElementById('popup-curr-options');
@@ -3671,21 +3750,7 @@
           container.innerHTML = currHtml;
         });
 
-        const langHtml = Object.keys(LANGUAGES).map(code => {
-          const cfg = LANGUAGES[code];
-          const active = state.lang === code;
-          return `
-            <button
-              onclick="App.selectLanguage('${code}')"
-              class="w-full px-2.5 py-2 radius-control font-mono text-xs flex items-center justify-between transition-colors ${
-                active ? 'bg-white text-black font-bold' : 'text-[#F4F4F6] hover:bg-charcoal-800'
-              }"
-            >
-              <span class="flex items-center gap-2">${flagSvg(code, 'w-[18px] h-3', active)}<span>${cfg.label}</span></span>
-              ${active ? '<span class="w-1.5 h-1.5 rounded-full bg-black"></span>' : ''}
-            </button>
-          `;
-        }).join('');
+        const langHtml = Object.keys(LANGUAGES).map((code, i) => flagTile(code, i === 4 ? 'col-span-2 col-start-2' : 'col-span-2')).join('');
 
         document.querySelectorAll('[data-lang-options]').forEach(container => {
           container.innerHTML = langHtml;
@@ -3968,7 +4033,11 @@
         const hdrCurrCode = document.getElementById('header-curr-code');
         if (hdrCurrCode) hdrCurrCode.textContent = state.currency;
         const hdrLangBtn = document.getElementById('header-lang-btn');
-        if (hdrLangBtn) hdrLangBtn.textContent = state.lang;
+        if (hdrLangBtn) {
+          const curLang = LANGUAGES[state.lang] ? state.lang : 'PL';
+          hdrLangBtn.style.setProperty('--flag-rgb', LANGUAGES[curLang].rgb);
+          hdrLangBtn.innerHTML = flagIcon(curLang);
+        }
         document.documentElement.lang = (LANGUAGES[state.lang] || LANGUAGES.PL).html;
 
         const sideTotalBadge = document.getElementById('sidebar-total-badge');
