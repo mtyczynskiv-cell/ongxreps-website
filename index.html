@@ -425,6 +425,19 @@
       padding: 1px 6px;
       white-space: nowrap;
     }
+    .promo-code-btn {
+      cursor: pointer;
+      font-size: inherit;
+      line-height: inherit;
+      transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .promo-code-btn:hover {
+      background: rgba(232, 32, 46, 0.32);
+      border-color: rgba(255, 90, 78, 0.7);
+    }
+    .promo-code-btn:active {
+      transform: scale(0.95);
+    }
 
     /* Animated Range Slider */
     .ongx-range {
@@ -804,14 +817,6 @@
                 <option value="price-desc" data-i18n="sortPriceDesc">Cena: Od najwyższej</option>
                 <option value="weight-desc" data-i18n="sortWeightDesc">Waga: Od najcięższych</option>
               </select>
-              <div class="flex items-center gap-1 p-[3px] radius-control bg-obsidian border border-hairline shrink-0" role="group">
-                <button type="button" onclick="App.setViewMode('grid')" data-view-mode="grid" class="view-mode-btn w-7 h-7 radius-badge flex items-center justify-center transition-all" title="Duże karty" aria-label="Duże karty" data-i18n-title="viewGridTitle" data-i18n-aria-label="viewGridTitle">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/></svg>
-                </button>
-                <button type="button" onclick="App.setViewMode('list')" data-view-mode="list" class="view-mode-btn w-7 h-7 radius-badge flex items-center justify-center transition-all" title="Kompaktowa lista" aria-label="Kompaktowa lista" data-i18n-title="viewListTitle" data-i18n-aria-label="viewListTitle">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1" stroke-width="1.8"/><rect x="4" y="15" width="4" height="4" rx="1" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M11 7h9M11 17h9"/></svg>
-                </button>
-              </div>
             </div>
           </div>
 
@@ -839,6 +844,16 @@
 
         <!-- Product Grid -->
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch"></div>
+        <div id="catalog-view-toggle" class="flex justify-center pt-1">
+          <div class="flex items-center gap-1 p-1 radius-control bg-charcoal-900 border border-white/10 shadow-sm" role="group">
+            <button type="button" onclick="App.setViewMode('grid')" data-view-mode="grid" class="view-mode-btn w-10 h-10 radius-badge flex items-center justify-center transition-all" title="Duże karty" aria-label="Duże karty" data-i18n-title="viewGridTitle" data-i18n-aria-label="viewGridTitle">
+              <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/></svg>
+            </button>
+            <button type="button" onclick="App.setViewMode('list')" data-view-mode="list" class="view-mode-btn w-10 h-10 radius-badge flex items-center justify-center transition-all" title="Kompaktowa lista" aria-label="Kompaktowa lista" data-i18n-title="viewListTitle" data-i18n-aria-label="viewListTitle">
+              <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1" stroke-width="1.8"/><rect x="4" y="15" width="4" height="4" rx="1" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M11 7h9M11 17h9"/></svg>
+            </button>
+          </div>
+        </div>
 
         <!-- Empty Search State -->
         <div id="products-empty" class="hidden p-10 surface-bento text-center max-w-md mx-auto">
@@ -866,18 +881,6 @@
             </div>
 
             <div class="flex flex-wrap items-center gap-2">
-              <div class="flex items-center gap-1 p-[3px] radius-control bg-obsidian border border-hairline shrink-0" role="group">
-                <button type="button" onclick="App.setViewMode('grid')" data-view-mode="grid" class="view-mode-btn w-7 h-7 radius-badge flex items-center justify-center transition-all" title="Duże karty" aria-label="Duże karty" data-i18n-title="viewGridTitle" data-i18n-aria-label="viewGridTitle">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/></svg>
-                </button>
-                <button type="button" onclick="App.setViewMode('list')" data-view-mode="list" class="view-mode-btn w-7 h-7 radius-badge flex items-center justify-center transition-all" title="Kompaktowa lista" aria-label="Kompaktowa lista" data-i18n-title="viewListTitle" data-i18n-aria-label="viewListTitle">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1" stroke-width="1.8"/><rect x="4" y="15" width="4" height="4" rx="1" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M11 7h9M11 17h9"/></svg>
-                </button>
-              </div>
-              <button onclick="App.resetShipWeight()" class="px-3.5 py-2.5 btn-surface-secondary font-mono text-xs text-zinc-200 hover:text-white flex items-center gap-1.5" title="Ustaw wagę paczki na 0.0 kg" data-i18n-title="vaultSyncWeightTitle">
-                <svg class="w-3.5 h-3.5 text-acid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                <span data-i18n="vaultSyncWeightBtn">Zeruj wagę</span>
-              </button>
               <button onclick="App.exportHaulList()" class="px-4 py-2.5 btn-primary-white font-bold text-xs flex items-center gap-1.5">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
                 <span data-i18n="copyHaulBtn">Kopiuj listę Haul</span>
@@ -995,29 +998,45 @@
                   </span>
                 </div>
               </div>
-              <input
-                id="ship-weight-slider"
-                type="range"
-                min="0"
-                max="20"
-                step="0.1"
-                value="2.1"
-                oninput="App.setShipWeight(this.value)"
-                class="ongx-range w-full my-2 cursor-pointer"
-              />
-              <div class="flex items-center justify-between font-mono tabular-nums text-[10px] text-[#686873]">
-                <span>0 kg</span>
-                <span>2 kg</span>
-                <span>5 kg</span>
-                <span>10 kg</span>
-                <span>15 kg</span>
-                <span>20 kg</span>
+              <div class="grid grid-cols-[1fr_auto] items-center gap-x-3">
+                <input
+                  id="ship-weight-slider"
+                  type="range"
+                  min="0"
+                  max="20"
+                  step="0.1"
+                  value="2.1"
+                  oninput="App.setShipWeight(this.value)"
+                  class="ongx-range w-full my-2 cursor-pointer"
+                />
+                <button onclick="App.resetShipWeight()" class="px-2.5 sm:px-3 py-2 btn-surface-secondary font-mono text-[11px] sm:text-xs text-zinc-200 hover:text-white flex items-center gap-1.5 whitespace-nowrap" title="Ustaw wagę paczki na 0.0 kg" aria-label="Zeruj wagę" data-i18n-title="vaultSyncWeightTitle" data-i18n-aria-label="vaultSyncWeightBtn">
+                  <svg class="w-3.5 h-3.5 text-acid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                  <span class="hidden sm:inline" data-i18n="vaultSyncWeightBtn">Zeruj wagę</span>
+                </button>
+                <div class="flex items-center justify-between font-mono tabular-nums text-[10px] text-[#686873]">
+                  <span>0 kg</span>
+                  <span>2 kg</span>
+                  <span>5 kg</span>
+                  <span>10 kg</span>
+                  <span>15 kg</span>
+                  <span>20 kg</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <div id="saved-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch"></div>
+        <div id="saved-view-toggle" class="flex justify-center pt-1">
+          <div class="flex items-center gap-1 p-1 radius-control bg-charcoal-900 border border-white/10 shadow-sm" role="group">
+            <button type="button" onclick="App.setViewMode('grid')" data-view-mode="grid" class="view-mode-btn w-10 h-10 radius-badge flex items-center justify-center transition-all" title="Duże karty" aria-label="Duże karty" data-i18n-title="viewGridTitle" data-i18n-aria-label="viewGridTitle">
+              <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/></svg>
+            </button>
+            <button type="button" onclick="App.setViewMode('list')" data-view-mode="list" class="view-mode-btn w-10 h-10 radius-badge flex items-center justify-center transition-all" title="Kompaktowa lista" aria-label="Kompaktowa lista" data-i18n-title="viewListTitle" data-i18n-aria-label="viewListTitle">
+              <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1" stroke-width="1.8"/><rect x="4" y="15" width="4" height="4" rx="1" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M11 7h9M11 17h9"/></svg>
+            </button>
+          </div>
+        </div>
 
         <div id="saved-empty" class="hidden p-10 surface-bento text-center max-w-md mx-auto">
           <p class="font-display text-lg font-bold text-white" data-i18n="emptyVaultTitle">Schowek jest pusty</p>
@@ -1413,18 +1432,18 @@
           ONGXREPS × KAKOBUY
         </div>
         <h3 class="font-display text-xl sm:text-2xl font-bold text-white mt-3.5 leading-snug" data-i18n="couponPopupTitle">
-          Odbierz kupony zniżkowe na KakoBuy
+          Odbierz kupony na KakoBuy
         </h3>
         <p id="popup-promo-text" class="text-xs sm:text-sm text-[#C9C9D1] mt-2 leading-relaxed">
-          Załóż konto z naszego linku, a potem w zakładce Kupony wpisz kod <span class="promo-code">ONGX100</span> i zgarnij kupony.
+          Załóż konto z naszego linku, a potem w zakładce Kupony wpisz kod <button type="button" onclick="App.copyPromoCode()" class="promo-code promo-code-btn" title="Kopiuj">ONGX100</button> i zgarnij kupony.
         </p>
 
         <!-- Copyable Promo Code -->
         <div class="mt-4 p-3.5 radius-control bg-obsidian border border-[#E8202E]/35 flex items-center justify-between gap-3">
           <div class="min-w-0">
             <span class="font-mono text-[9px] uppercase tracking-widest text-[#9E9EA9] block" data-i18n="promoCodeLabel">KOD RABATOWY</span>
-            <span class="font-mono text-xl font-bold tracking-[0.12em] text-white block mt-0.5">ONGX100</span>
-            <span class="block text-[11px] font-semibold text-[#FF6B60] mt-0.5" data-i18n="promoCodeNote">Kod ONGX100 = 55 zł zniżki na wysyłkę</span>
+            <button type="button" onclick="App.copyPromoCode()" class="font-mono text-xl font-bold tracking-[0.12em] text-white hover:text-[#FF6B60] block mt-0.5 cursor-pointer transition-colors" title="Kopiuj" data-i18n-title="promoCopyCode">ONGX100</button>
+            <span class="block font-display tabular-nums text-base font-bold text-[#FF6B60] mt-0.5" data-i18n="promoCodeNote">-55 zł</span>
           </div>
           <button onclick="App.copyPromoCode()" class="shrink-0 px-3 py-2 btn-surface-secondary font-mono text-[11px] text-white flex items-center gap-1.5">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
@@ -1540,7 +1559,7 @@
           shipIndicativeBadge: 'SZACUNKOWY KOSZT',
           shipSelectLineLabel: 'WYBÓR LINII TRANSPORTOWEJ',
           shipWeightLabel: 'WAGA PACZKI (0 – 20 KG)',
-          couponPopupTitle: 'Odbierz kupony zniżkowe na KakoBuy',
+          couponPopupTitle: 'Odbierz kupony na KakoBuy',
           couponPopupClose: 'Zamknij',
           mobHome: 'Start',
           mobProducts: 'Produkty',
@@ -1598,7 +1617,7 @@
           popupBack: 'Wstecz',
           promoText: 'Załóż konto z naszego linku, a potem w zakładce Kupony wpisz kod {code} i zgarnij kupony.',
           promoCodeLabel: 'KOD RABATOWY',
-          promoCodeNote: 'Kod ONGX100 = 55 zł zniżki na wysyłkę',
+          promoCodeNote: '-55 zł',
           promoCopyCode: 'Kopiuj',
           toastCodeCopied: 'Skopiowano kod ONGX100!',
           promoClaimTitle: 'Odbierz kupony na Kakobuy',
@@ -1660,7 +1679,7 @@
           shipIndicativeBadge: 'APPROXIMATE COST',
           shipSelectLineLabel: 'SELECT SHIPPING LINE',
           shipWeightLabel: 'PARCEL WEIGHT (0 – 20 KG)',
-          couponPopupTitle: 'Claim KakoBuy Shipping Coupons',
+          couponPopupTitle: 'Claim coupons on KakoBuy',
           couponPopupClose: 'Close',
           mobHome: 'Home',
           mobProducts: 'Products',
@@ -1718,7 +1737,7 @@
           popupBack: 'Back',
           promoText: 'Create an account using our link, then open the Coupons tab, enter code {code} and claim your coupons.',
           promoCodeLabel: 'PROMO CODE',
-          promoCodeNote: 'Code ONGX100 = 55 PLN off shipping',
+          promoCodeNote: '-55 PLN',
           promoCopyCode: 'Copy',
           toastCodeCopied: 'Code ONGX100 copied!',
           promoClaimTitle: 'Claim coupons on KakoBuy',
@@ -2209,7 +2228,10 @@
 
         const promoEl = document.getElementById('popup-promo-text');
         if (promoEl) {
-          promoEl.innerHTML = t('promoText').replace('{code}', `<span class="promo-code">${PROMO_CODE}</span>`);
+          promoEl.innerHTML = t('promoText').replace(
+            '{code}',
+            `<button type="button" onclick="App.copyPromoCode()" class="promo-code promo-code-btn" title="${t('promoCopyCode')}">${PROMO_CODE}</button>`
+          );
         }
       }
 
@@ -2481,8 +2503,8 @@
           const active = btn.getAttribute('data-view-mode') === state.viewMode;
           btn.setAttribute('aria-pressed', active ? 'true' : 'false');
           btn.className = active
-            ? 'view-mode-btn w-7 h-7 radius-badge flex items-center justify-center bg-white text-black shadow-sm transition-all'
-            : 'view-mode-btn w-7 h-7 radius-badge flex items-center justify-center text-[#9E9EA9] hover:text-white transition-all';
+            ? 'view-mode-btn w-10 h-10 radius-badge flex items-center justify-center bg-white text-black shadow-sm transition-all'
+            : 'view-mode-btn w-10 h-10 radius-badge flex items-center justify-center text-[#C9C9D1] hover:text-white hover:bg-white/5 transition-all';
         });
       }
 
@@ -2630,6 +2652,8 @@
 
         const grid = document.getElementById('products-grid');
         const empty = document.getElementById('products-empty');
+        const catalogToggle = document.getElementById('catalog-view-toggle');
+        if (catalogToggle) catalogToggle.classList.toggle('hidden', !list.length);
         if (!grid || !empty) return;
         if (!list.length) {
           grid.innerHTML = '';
@@ -2666,6 +2690,8 @@
 
         const grid = document.getElementById('saved-grid');
         const empty = document.getElementById('saved-empty');
+        const savedToggle = document.getElementById('saved-view-toggle');
+        if (savedToggle) savedToggle.classList.toggle('hidden', !saved.length);
         if (!grid || !empty) return;
         if (!saved.length) {
           grid.innerHTML = '';
