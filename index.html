@@ -637,6 +637,14 @@
        Elements marked data-agent-logo follow the selected agent. -->
   <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
     <symbol id="kakobuy-logo" viewBox="44.5 46 420 420"><path d="M120 72H222V222C235.3 213.2 295 134 389 112V213C288.4 251.4 235.3 362.9 222 376V440H120ZM267 341H365V440H267Z"/></symbol>
+    <!-- Language flags (used next to every language name) -->
+    <symbol id="flag-pl" viewBox="0 0 16 10" preserveAspectRatio="xMidYMid slice"><rect width="16" height="5" fill="#FFFFFF"/><rect y="5" width="16" height="5" fill="#DC143C"/></symbol>
+    <symbol id="flag-en" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice"><clipPath id="flag-en-clip"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#FFFFFF" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#flag-en-clip)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#FFFFFF" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></symbol>
+    <symbol id="flag-de" viewBox="0 0 5 3" preserveAspectRatio="xMidYMid slice"><rect width="5" height="1" fill="#000000"/><rect y="1" width="5" height="1" fill="#DD0000"/><rect y="2" width="5" height="1" fill="#FFCE00"/></symbol>
+    <symbol id="flag-fr" viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="1" height="2" fill="#002654"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#ED2939"/></symbol>
+    <symbol id="flag-es" viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="3" height="2" fill="#AA151B"/><rect y="0.5" width="3" height="1" fill="#F1BF00"/></symbol>
+    <symbol id="flag-it" viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#CE2B37"/></symbol>
+    <symbol id="flag-zh" viewBox="0 0 30 20" preserveAspectRatio="xMidYMid slice"><rect width="30" height="20" fill="#EE1C25"/><g fill="#FFDE00"><polygon points="5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07"/><polygon points="9.14,2.51 9.62,1.97 9.25,1.34 9.91,1.63 10.39,1.08 10.33,1.80 11.00,2.09 10.29,2.25 10.22,2.97 9.85,2.35"/><polygon points="11.01,4.14 11.66,3.82 11.56,3.10 12.07,3.62 12.72,3.30 12.38,3.95 12.88,4.47 12.17,4.34 11.83,4.99 11.73,4.27"/><polygon points="11.04,6.73 11.76,6.70 11.96,6.00 12.21,6.68 12.94,6.66 12.37,7.10 12.62,7.79 12.01,7.38 11.44,7.83 11.64,7.13"/><polygon points="9.22,8.38 9.90,8.63 10.35,8.06 10.32,8.79 11.00,9.05 10.30,9.24 10.26,9.96 9.87,9.36 9.16,9.55 9.62,8.98"/></g></symbol>
     <symbol id="capybuy-logo" viewBox="0 0 100 100">
       <mask id="capybuy-logo-cut" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
         <rect width="100" height="100" fill="#fff"/>
@@ -672,7 +680,7 @@
         </button>
         <span class="font-mono text-[10px] px-2 py-0.5 radius-badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot"></span>
-          LIVE
+          <span data-i18n="liveBadge">LIVE</span>
         </span>
       </div>
 
@@ -778,7 +786,7 @@
           <button onclick="App.navigate('home')" class="flex items-center h-8 pl-0.5 sm:pl-0 text-left focus:outline-none group min-w-0">
             <div class="min-w-0 flex items-center gap-2">
               <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white leading-none truncate">ONGXREPS</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot shrink-0" title="Live Catalog"></span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot shrink-0" title="Live Catalog" data-i18n-title="liveCatalogTitle"></span>
             </div>
           </button>
         </div>
@@ -948,7 +956,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
             </svg>
             <button id="reset-filters-btn" onclick="App.resetFilters()" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 px-2.5 py-1 radius-badge bg-charcoal-800 text-acid font-mono text-[10px] font-bold border border-hairline">
-              RESET
+              <span data-i18n="resetBtn">RESET</span>
             </button>
           </div>
 
@@ -987,7 +995,7 @@
         <div class="p-5 sm:p-6 surface-bento space-y-5">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
-              <span class="font-mono text-[10px] uppercase tracking-widest text-acid">HAUL BUILDER & LIVE SHIPPING PRICE</span>
+              <span class="font-mono text-[10px] uppercase tracking-widest text-acid" data-i18n="haulBadge">HAUL BUILDER & LIVE SHIPPING PRICE</span>
               <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text mt-0.5" data-i18n="vaultHeading">Twój Haul Planner</h1>
               <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="vaultSub">
                 Zapisane produkty z automatycznym podliczeniem wagi paczki, kosztem wysyłki na żywo i całkowitego kosztu zamówienia
@@ -1045,7 +1053,7 @@
               <div>
                 <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-acid live-dot"></span>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-acid">LIVE CALCULATOR // 0–20 KG</span>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-acid" data-i18n="shipLiveBadge">LIVE CALCULATOR // 0–20 KG</span>
                 </div>
                 <h2 class="font-display text-lg sm:text-xl font-bold text-white mt-0.5" data-i18n="shipCalcHeading">Przybliżony koszt wysyłki</h2>
                 <p class="text-[11px] text-[#9E9EA9] mt-0.5" data-i18n="shipOverallLabel">
@@ -1183,7 +1191,7 @@
                 </div>
                 <span class="font-mono tabular-nums text-[10px] px-2.5 py-1 radius-badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 whitespace-nowrap"><span id="community-discord-count">—</span> <span data-i18n="discordMembersBadge">CZŁONKÓW</span></span>
               </div>
-              <h2 class="font-display text-xl font-bold text-white mt-4">Discord Server</h2>
+              <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="discordCardTitle">Discord Server</h2>
               <p class="text-xs text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="discordCardDesc">
                 Aktywna społeczność, liczne konkursy oraz mnóstwo pomocnych kanałów, takich jak W2C, QC Check i wiele innych. Zawsze możesz liczyć na pomoc społeczności.
               </p>
@@ -1244,7 +1252,7 @@
            ===================================================================== -->
       <section id="view-converter" class="hidden space-y-5 section-fade">
         <div class="p-5 sm:p-6 surface-hero bg-luxury-grid">
-          <span class="font-mono text-[10px] uppercase tracking-widest text-acid">LINK CONVERTER</span>
+          <span class="font-mono text-[10px] uppercase tracking-widest text-acid" data-i18n="convBadge">LINK CONVERTER</span>
           <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text mt-0.5" data-i18n="convHeading">Konwerter linków</h1>
           <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 max-w-2xl leading-relaxed" data-i18n="convSub">
             Wklej link do produktu, a przekonwertujemy go dla wybranego agenta.
@@ -1655,10 +1663,21 @@
         EUR: { symbol: '€', label: 'EUR — Euro', rate: 0.131, position: 'before', decimals: 0 }
       };
 
+      // Supported languages: native name, flag symbol and <html lang> value
       const LANGUAGES = {
-        PL: { code: 'PL', label: 'Polski (PL)' },
-        EN: { code: 'EN', label: 'English (EN)' }
+        PL: { code: 'PL', name: 'Polski', label: 'Polski (PL)', flag: '#flag-pl', html: 'pl' },
+        EN: { code: 'EN', name: 'English', label: 'English (EN)', flag: '#flag-en', html: 'en' },
+        DE: { code: 'DE', name: 'Deutsch', label: 'Deutsch (DE)', flag: '#flag-de', html: 'de' },
+        FR: { code: 'FR', name: 'Français', label: 'Français (FR)', flag: '#flag-fr', html: 'fr' },
+        ES: { code: 'ES', name: 'Español', label: 'Español (ES)', flag: '#flag-es', html: 'es' },
+        IT: { code: 'IT', name: 'Italiano', label: 'Italiano (IT)', flag: '#flag-it', html: 'it' },
+        ZH: { code: 'ZH', name: '中文', label: '中文 (ZH)', flag: '#flag-zh', html: 'zh-CN' }
       };
+
+      function flagSvg(code, cls = 'w-5 h-3.5', onLight = false) {
+        const lang = LANGUAGES[code];
+        return lang ? `<svg class="${cls} shrink-0 rounded-[3px] ring-1 ${onLight ? 'ring-black/25' : 'ring-white/15'}" viewBox="0 0 20 14" aria-hidden="true"><use href="${lang.flag}"/></svg>` : '';
+      }
 
       // ---------------------------------------------------------------------
       // Marketplaces: canonical original (RAW) product URL rebuilt from the item ID only,
@@ -2050,7 +2069,19 @@
           convErrInvalid: 'To nie wygląda na link. Wklej pełny adres produktu zaczynający się od https://',
           convErrShort: 'To skrócony link ({host}). Otwórz go w przeglądarce i wklej pełny adres produktu, który się wyświetli.',
           convErrNoItem: 'Ten link nie wskazuje na konkretny produkt (np. strona sklepu lub wyszukiwarki). Wklej link do produktu.',
-          convErrUnsupported: 'Nieobsługiwany link. Nie udało się bezpiecznie rozpoznać produktu, więc nie generujemy linków, które mogłyby prowadzić do innego produktu.'
+          convErrUnsupported: 'Nieobsługiwany link. Nie udało się bezpiecznie rozpoznać produktu, więc nie generujemy linków, które mogłyby prowadzić do innego produktu.',
+          haulBadge: "HAUL BUILDER & LIVE SHIPPING PRICE",
+          shipLiveBadge: "LIVE CALCULATOR // 0–20 KG",
+          convBadge: "LINK CONVERTER",
+          discordCardTitle: "Discord Server",
+          resetBtn: "RESET",
+          liveBadge: "LIVE",
+          liveCatalogTitle: "Live Catalog",
+          bookmarkLabel: "Bookmark",
+          catalogCount: "{n} PRODUKTÓW",
+          toastCurrency: "Waluta zmieniona na {code}",
+          toastLanguage: "Język: {lang}",
+          toastWeightSynced: "Zaktualizowano wagę paczki z haula: {kg} kg"
         },
         EN: {
           searchPlaceholderShort: 'Search by name',
@@ -2196,18 +2227,825 @@
           convErrInvalid: 'This does not look like a link. Paste the full product address starting with https://',
           convErrShort: 'This is a short link ({host}). Open it in your browser and paste the full product address it shows.',
           convErrNoItem: 'This link does not point to a specific product (e.g. a store or search page). Paste a product link.',
-          convErrUnsupported: 'Unsupported link. The product could not be identified safely, so no links are generated that could lead to a different product.'
+          convErrUnsupported: 'Unsupported link. The product could not be identified safely, so no links are generated that could lead to a different product.',
+          haulBadge: "HAUL BUILDER & LIVE SHIPPING PRICE",
+          shipLiveBadge: "LIVE CALCULATOR // 0–20 KG",
+          convBadge: "LINK CONVERTER",
+          discordCardTitle: "Discord Server",
+          resetBtn: "RESET",
+          liveBadge: "LIVE",
+          liveCatalogTitle: "Live Catalog",
+          bookmarkLabel: "Bookmark",
+          catalogCount: "{n} PRODUCTS",
+          toastCurrency: "Currency switched to {code}",
+          toastLanguage: "Language: {lang}",
+          toastWeightSynced: "Synced parcel weight from haul: {kg} kg"
+        },
+        DE: {
+          navProducts: "ONGXREPS SPREADSHEET",
+          heroBadge: "ONGXREPS //",
+          heroTitleMain: "SPREADSHEET ONGXREPS.",
+          catalogHeading: "ONGXREPS SPREADSHEET",
+          iphoneGuideTitle: "iPhone",
+          androidGuideTitle: "Android",
+          tiktokCardTitle: "TikTok",
+          agentCardTitle: "{agent}",
+          mobPublish: "APP",
+          convRaw: "RAW",
+          promoCodeNote: "-55 PLN",
+          promoAmount: "-1500 PLN",
+          searchPlaceholderShort: "Nach Namen suchen",
+          searchByNamePlaceholder: "Nach Namen suchen",
+          navHeader: "NAVIGATION",
+          navHome: "Start",
+          navSaved: "Dein Haul Planner",
+          navCommunity: "ONGXREPS COMMUNITY",
+          navPublish: "App",
+          categoriesHeader: "KATEGORIEN",
+          sidebarCouponText: "Sichere dir bis zu 1500 PLN in Versandgutscheinen",
+          headerIphoneBtn: "App",
+          phoneBadge: "HANDY-APP // IPHONE & ANDROID",
+          phoneHeading: "Füge ONGXREPS zum Startbildschirm deines Handys hinzu",
+          phoneSub: "Füge ONGXREPS zum Startbildschirm deines Smartphones hinzu, um die Seite mit einem Tippen im Vollbild zu öffnen – genau wie eine normale App.",
+          iphoneGuideDesc: "Folge drei einfachen Schritten in Safari auf deinem iPhone:",
+          iphoneStep1: "Öffne ONGXREPS im Safari-Browser.",
+          iphoneStep2: "Tippe unten in der Leiste auf das Teilen-Symbol.",
+          iphoneStep3: "Wähle „Zum Home-Bildschirm“ und tippe dann auf „Hinzufügen“.",
+          androidGuideDesc: "Folge drei einfachen Schritten in Chrome auf deinem Android-Handy:",
+          androidStep1: "Öffne ONGXREPS im Chrome-Browser.",
+          androidStep2: "Tippe oben rechts auf das Drei-Punkte-Menü.",
+          androidStep3: "Wähle „Zum Startbildschirm hinzufügen“ oder „App installieren“, falls verfügbar.",
+          selectCurrencyLabel: "Währung wählen",
+          selectLangLabel: "Sprache wählen",
+          heroTitleSub: "BESTE PREISE UND BESTE BATCHES",
+          heroDesc: "Die offizielle ONGXREPS-Website. Hier findest du sorgfältig ausgewählte Produkte, die besten Batches, attraktive Preise und QC-Fotos.",
+          ctaExploreCatalog: "Artikel ansehen",
+          statProductsLabel: "VERFÜGBARE PRODUKTE",
+          statCommLabel: "COMMUNITY-MITGLIEDER",
+          vaultHeading: "Dein Haul Planner",
+          vaultSub: "Gespeicherte Produkte mit automatischer Berechnung des Paketgewichts, Live-Versandkosten und Gesamtkosten der Bestellung",
+          vaultSyncWeightBtn: "Gewicht zurücksetzen",
+          vaultItemsCountLabel: "Anzahl der Produkte",
+          vaultProductsValueLabel: "Produktpreis",
+          vaultShippingCostLabel: "Versandpreis",
+          vaultGrandTotalLabel: "Gesamtpreis",
+          copyHaulBtn: "Haul-Liste kopieren",
+          commHeading: "ONGXREPS COMMUNITY",
+          commSub: "Tritt unserem Discord-Server bei, schau dir tägliche TikToks an und sichere dir Rabatte in Form von Versandgutscheinen bei {agent}.",
+          discordCardDesc: "Aktive Community, zahlreiche Gewinnspiele und viele hilfreiche Kanäle wie W2C, QC Check und mehr. Auf die Hilfe der Community kannst du immer zählen.",
+          tiktokCardDesc: "Tägliche Reps-TikToks, interessante Funde, Neuheiten und volle Unterstützung von mir.",
+          agentCardDesc: "Erstelle ein Konto bei einem der günstigsten und schnellsten Agenten und sichere dir bis zu 1500 PLN Rabatt in Versandgutscheinen.",
+          shipCalcHeading: "Ungefähre Versandkosten",
+          shipOverallLabel: "Richtwert, der sich live aktualisiert, wenn du das Paketgewicht änderst oder den Versanddienst wechselst.",
+          shipIndicativeBadge: "GESCHÄTZTE KOSTEN",
+          shipSelectLineLabel: "VERSANDLINIE WÄHLEN",
+          shipWeightLabel: "PAKETGEWICHT (0 – 20 KG)",
+          couponPopupTitle: "Gutscheine bei {agent} sichern",
+          couponPopupClose: "Schließen",
+          mobHome: "Start",
+          mobProducts: "Produkte",
+          mobSaved: "Merkliste",
+          mobCommunity: "Community",
+          buyOnAgent: "Bei {agent} kaufen",
+          qcBtnLabel: "QC-Fotos",
+          rawBtnLabel: "Original-Link",
+          labelPrice: "PREIS",
+          labelBatch: "BATCH",
+          labelWeight: "GEWICHT",
+          sidebarCouponBadge: "{AGENT} GUTSCHEINE",
+          titleSelectCurrency: "Währung wählen",
+          titleSelectLanguage: "Sprache wählen",
+          sortFeatured: "Sortieren: Empfohlen",
+          sortNewest: "Sortieren: Neueste",
+          sortPriceAsc: "Preis: aufsteigend",
+          sortPriceDesc: "Preis: absteigend",
+          sortWeightDesc: "Gewicht: schwerste zuerst",
+          emptySearchTitle: "Keine Suchergebnisse",
+          emptySearchDesc: "Wir haben kein Produkt mit diesem Namen gefunden.",
+          emptySearchCta: "Alle Produkte anzeigen",
+          vaultSyncWeightTitle: "Paketgewicht auf 0.0 kg setzen",
+          emptyVaultTitle: "Deine Merkliste ist leer",
+          emptyVaultDesc: "Tippe auf das Lesezeichen-Symbol einer Produktkarte, um das Produkt zu deinem Haul hinzuzufügen.",
+          emptyVaultCta: "Zum Katalog",
+          discordMembersBadge: "MITGLIEDER",
+          discordJoinBtn: "Discord beitreten",
+          tiktokFollowBtn: "Auf TikTok folgen",
+          agentBadge: "GUTSCHEINE",
+          agentCardCta: "{agent}-Gutscheine sichern",
+          qcZoomTitle: "Zoom umschalten 1x / 1.75x",
+          closeLabel: "Schließen",
+          closePopupLabel: "Popup schließen",
+          openRawLink: "Original-Link öffnen",
+          copyRawLink: "Original-Link kopieren",
+          qcCopyLink: "Link kopieren",
+          saveToPlannerTitle: "Im Haul Planner speichern",
+          toastSaved: "Zum Haul Planner hinzugefügt",
+          toastRemoved: "Aus dem Haul Planner entfernt",
+          toastRawCopied: "Original-Link kopiert!",
+          toastCopiedDefault: "In die Zwischenablage kopiert!",
+          toastHaulEmpty: "Dein Haul Planner ist leer!",
+          toastHaulCopied: "Komplette Haul-Liste kopiert!",
+          toastWeightReset: "Paketgewicht auf 0.0 kg gesetzt",
+          viewGridTitle: "Große Karten",
+          viewListTitle: "Kompakte Liste",
+          popupStepLabel: "SCHRITT",
+          popupLangTitle: "Sprache der Website wählen",
+          popupLangDesc: "Du kannst sie jederzeit oben auf der Seite ändern.",
+          popupCurrTitle: "Währung wählen",
+          popupCurrDesc: "Produkt- und Versandpreise werden automatisch umgerechnet.",
+          popupNext: "Weiter",
+          popupBack: "Zurück",
+          promoText: "Erstelle ein Konto über unseren Link, gib dann im Tab „Gutscheine“ den Code {code} ein und sichere dir deine Gutscheine.",
+          promoCodeLabel: "RABATTCODE",
+          promoCopyCode: "Kopieren",
+          toastCodeCopied: "Code {code} kopiert!",
+          promoClaimTitle: "Gutscheine bei {agent} sichern",
+          promoCta: "Registrieren und Gutscheine sichern",
+          agentSwitchLabel: "EINKAUFSAGENT",
+          agentSwitchTitle: "Agent wählen",
+          toastAgent: "Agent: {agent}",
+          popupAgentTitle: "Wähle deinen Agenten",
+          popupAgentDesc: "Links, Buttons und Gutscheine werden an den gewählten Agenten angepasst. Du kannst ihn jederzeit oben auf der Seite ändern.",
+          agentChoiceCta: "Wählen",
+          agentChoiceActive: "Ausgewählt",
+          navConverter: "Link-Konverter",
+          mobConverter: "Konverter",
+          linkSoon: "Link folgt",
+          sampleBadge: "BEISPIEL",
+          sampleTitle: "Beispielprodukt – der Shop-Link wird bald hinzugefügt",
+          convHeading: "Link-Konverter",
+          convSub: "Füge einen Produktlink ein und wir konvertieren ihn für den gewählten Agenten.",
+          convPlaceholder: "Produktlink einfügen",
+          convBtn: "Konvertieren",
+          convClear: "Leeren",
+          convDetected: "Produkt erkannt",
+          convOpenIn: "In {agent} öffnen",
+          convUnavailable: "Nicht verfügbar",
+          convNoAgentPlatform: "{agent} unterstützt keine Produkte von {platform}.",
+          convErrInvalid: "Das sieht nicht nach einem Link aus. Füge die vollständige Produktadresse ein, die mit https:// beginnt.",
+          convErrShort: "Das ist ein Kurzlink ({host}). Öffne ihn im Browser und füge die vollständige Produktadresse ein, die dort angezeigt wird.",
+          convErrNoItem: "Dieser Link führt zu keinem bestimmten Produkt (z. B. eine Shop- oder Suchseite). Füge einen Produktlink ein.",
+          convErrUnsupported: "Nicht unterstützter Link. Das Produkt konnte nicht sicher erkannt werden, daher erstellen wir keine Links, die zu einem anderen Produkt führen könnten.",
+          haulBadge: "HAUL BUILDER & LIVE-VERSANDPREIS",
+          shipLiveBadge: "LIVE-RECHNER // 0–20 KG",
+          convBadge: "LINK-KONVERTER",
+          discordCardTitle: "Discord-Server",
+          resetBtn: "LEEREN",
+          liveBadge: "LIVE",
+          liveCatalogTitle: "Live-Katalog",
+          bookmarkLabel: "Merken",
+          catalogCount: "{n} PRODUKTE",
+          toastCurrency: "Währung geändert zu {code}",
+          toastLanguage: "Sprache: {lang}",
+          toastWeightSynced: "Paketgewicht aus dem Haul übernommen: {kg} kg"
+        },
+        FR: {
+          navProducts: "ONGXREPS SPREADSHEET",
+          heroBadge: "ONGXREPS //",
+          heroTitleMain: "SPREADSHEET ONGXREPS.",
+          catalogHeading: "ONGXREPS SPREADSHEET",
+          iphoneGuideTitle: "iPhone",
+          androidGuideTitle: "Android",
+          tiktokCardTitle: "TikTok",
+          agentCardTitle: "{agent}",
+          mobPublish: "APP",
+          convRaw: "RAW",
+          promoCodeNote: "-55 PLN",
+          promoAmount: "-1500 PLN",
+          searchPlaceholderShort: "Rechercher par nom",
+          searchByNamePlaceholder: "Rechercher par nom",
+          navHeader: "NAVIGATION",
+          navHome: "Accueil",
+          navSaved: "Ton Haul Planner",
+          navCommunity: "COMMUNAUTÉ ONGXREPS",
+          navPublish: "Application",
+          categoriesHeader: "CATÉGORIES",
+          sidebarCouponText: "Obtiens jusqu'à 1500 PLN de bons de réduction sur la livraison",
+          headerIphoneBtn: "Application",
+          phoneBadge: "APPLI MOBILE // IPHONE & ANDROID",
+          phoneHeading: "Ajoute ONGXREPS à l'écran d'accueil de ton téléphone",
+          phoneSub: "Ajoute ONGXREPS à l'écran d'accueil de ton smartphone pour l'ouvrir d'un seul geste en plein écran — exactement comme une application classique.",
+          iphoneGuideDesc: "Suis trois étapes simples dans Safari sur ton iPhone :",
+          iphoneStep1: "Ouvre ONGXREPS dans le navigateur Safari.",
+          iphoneStep2: "Appuie sur l'icône Partager dans la barre du bas.",
+          iphoneStep3: "Choisis « Sur l'écran d'accueil », puis appuie sur « Ajouter ».",
+          androidGuideDesc: "Suis trois étapes simples dans Chrome sur ton téléphone Android :",
+          androidStep1: "Ouvre ONGXREPS dans le navigateur Chrome.",
+          androidStep2: "Appuie sur le menu à trois points en haut à droite.",
+          androidStep3: "Choisis « Ajouter à l'écran d'accueil » ou « Installer l'application » si l'option est disponible.",
+          selectCurrencyLabel: "Choisir la devise",
+          selectLangLabel: "Choisir la langue",
+          heroTitleSub: "LES MEILLEURS PRIX ET LES MEILLEURS BATCHS",
+          heroDesc: "Le site officiel d'ONGXREPS. Tu y trouveras des produits soigneusement sélectionnés, les meilleurs batchs, des prix attractifs et des photos QC.",
+          ctaExploreCatalog: "Voir les articles",
+          statProductsLabel: "PRODUITS DISPONIBLES",
+          statCommLabel: "MEMBRES DE LA COMMUNAUTÉ",
+          vaultHeading: "Ton Haul Planner",
+          vaultSub: "Produits enregistrés avec calcul automatique du poids du colis, frais de port en direct et coût total de la commande",
+          vaultSyncWeightBtn: "Réinitialiser le poids",
+          vaultItemsCountLabel: "Nombre de produits",
+          vaultProductsValueLabel: "Prix des produits",
+          vaultShippingCostLabel: "Frais de port",
+          vaultGrandTotalLabel: "Prix total",
+          copyHaulBtn: "Copier la liste Haul",
+          commHeading: "COMMUNAUTÉ ONGXREPS",
+          commSub: "Rejoins notre serveur Discord, regarde nos TikToks quotidiens et profite de réductions en bons de livraison sur {agent}.",
+          discordCardDesc: "Une communauté active, de nombreux concours et plein de salons utiles comme W2C, QC Check et bien d'autres. Tu peux toujours compter sur l'aide de la communauté.",
+          tiktokCardDesc: "Des TikToks reps tous les jours, des trouvailles intéressantes, des nouveautés et tout mon soutien.",
+          agentCardDesc: "Crée un compte chez l'un des agents les moins chers et les plus rapides et obtiens jusqu'à 1500 PLN de réduction en bons de livraison.",
+          shipCalcHeading: "Frais de port estimés",
+          shipOverallLabel: "Tarif indicatif mis à jour en direct quand tu modifies le poids du colis ou le transporteur.",
+          shipIndicativeBadge: "COÛT ESTIMÉ",
+          shipSelectLineLabel: "CHOIX DE LA LIGNE D'EXPÉDITION",
+          shipWeightLabel: "POIDS DU COLIS (0 – 20 KG)",
+          couponPopupTitle: "Récupère tes bons sur {agent}",
+          couponPopupClose: "Fermer",
+          mobHome: "Accueil",
+          mobProducts: "Produits",
+          mobSaved: "Favoris",
+          mobCommunity: "Communauté",
+          buyOnAgent: "Acheter sur {agent}",
+          qcBtnLabel: "Photos QC",
+          rawBtnLabel: "Lien d'origine",
+          labelPrice: "PRIX",
+          labelBatch: "BATCH",
+          labelWeight: "POIDS",
+          sidebarCouponBadge: "BONS {AGENT}",
+          titleSelectCurrency: "Choisir la devise",
+          titleSelectLanguage: "Choisir la langue",
+          sortFeatured: "Trier : Recommandés",
+          sortNewest: "Trier : Nouveautés",
+          sortPriceAsc: "Prix : croissant",
+          sortPriceDesc: "Prix : décroissant",
+          sortWeightDesc: "Poids : du plus lourd",
+          emptySearchTitle: "Aucun résultat",
+          emptySearchDesc: "Aucun produit ne correspond à ce nom.",
+          emptySearchCta: "Afficher tous les produits",
+          vaultSyncWeightTitle: "Mettre le poids du colis à 0.0 kg",
+          emptyVaultTitle: "Ta liste est vide",
+          emptyVaultDesc: "Appuie sur l'icône de signet d'une fiche produit pour l'ajouter à ton haul.",
+          emptyVaultCta: "Voir le catalogue",
+          discordMembersBadge: "MEMBRES",
+          discordJoinBtn: "Rejoindre Discord",
+          tiktokFollowBtn: "Suivre sur TikTok",
+          agentBadge: "BONS",
+          agentCardCta: "Récupérer les bons {agent}",
+          qcZoomTitle: "Changer le zoom 1x / 1.75x",
+          closeLabel: "Fermer",
+          closePopupLabel: "Fermer la fenêtre",
+          openRawLink: "Ouvrir le lien d'origine",
+          copyRawLink: "Copier le lien d'origine",
+          qcCopyLink: "Copier le lien",
+          saveToPlannerTitle: "Enregistrer dans le Haul Planner",
+          toastSaved: "Ajouté au Haul Planner",
+          toastRemoved: "Retiré du Haul Planner",
+          toastRawCopied: "Lien d'origine copié !",
+          toastCopiedDefault: "Copié dans le presse-papiers !",
+          toastHaulEmpty: "Ton Haul Planner est vide !",
+          toastHaulCopied: "Liste Haul complète copiée !",
+          toastWeightReset: "Poids du colis réglé sur 0.0 kg",
+          viewGridTitle: "Grandes cartes",
+          viewListTitle: "Liste compacte",
+          popupStepLabel: "ÉTAPE",
+          popupLangTitle: "Choisis la langue du site",
+          popupLangDesc: "Tu peux la changer à tout moment en haut de la page.",
+          popupCurrTitle: "Choisis la devise",
+          popupCurrDesc: "Les prix des produits et de la livraison seront convertis automatiquement.",
+          popupNext: "Suivant",
+          popupBack: "Retour",
+          promoText: "Crée un compte avec notre lien, puis dans l'onglet Bons, saisis le code {code} et récupère tes bons.",
+          promoCodeLabel: "CODE PROMO",
+          promoCopyCode: "Copier",
+          toastCodeCopied: "Code {code} copié !",
+          promoClaimTitle: "Récupère tes bons sur {agent}",
+          promoCta: "Inscris-toi et récupère tes bons",
+          agentSwitchLabel: "AGENT D'ACHAT",
+          agentSwitchTitle: "Choisir l'agent",
+          toastAgent: "Agent : {agent}",
+          popupAgentTitle: "Choisis ton agent",
+          popupAgentDesc: "Les liens, boutons et bons s'adapteront à l'agent choisi. Tu peux le changer à tout moment en haut de la page.",
+          agentChoiceCta: "Choisir",
+          agentChoiceActive: "Sélectionné",
+          navConverter: "Convertisseur de liens",
+          mobConverter: "Convertir",
+          linkSoon: "Lien bientôt",
+          sampleBadge: "EXEMPLE",
+          sampleTitle: "Produit d'exemple — le lien de la boutique sera ajouté bientôt",
+          convHeading: "Convertisseur de liens",
+          convSub: "Colle le lien d'un produit et nous le convertirons pour l'agent choisi.",
+          convPlaceholder: "Colle le lien du produit",
+          convBtn: "Convertir",
+          convClear: "Effacer",
+          convDetected: "Produit reconnu",
+          convOpenIn: "Ouvrir sur {agent}",
+          convUnavailable: "Indisponible",
+          convNoAgentPlatform: "{agent} ne prend pas en charge les produits {platform}.",
+          convErrInvalid: "Ce n'est pas un lien valide. Colle l'adresse complète du produit commençant par https://",
+          convErrShort: "C'est un lien raccourci ({host}). Ouvre-le dans ton navigateur et colle l'adresse complète du produit qui s'affiche.",
+          convErrNoItem: "Ce lien ne mène pas à un produit précis (par exemple une page de boutique ou de recherche). Colle le lien d'un produit.",
+          convErrUnsupported: "Lien non pris en charge. Le produit n'a pas pu être identifié de façon sûre, nous ne générons donc aucun lien qui pourrait mener à un autre produit.",
+          haulBadge: "HAUL BUILDER & FRAIS DE PORT EN DIRECT",
+          shipLiveBadge: "CALCULATEUR EN DIRECT // 0–20 KG",
+          convBadge: "CONVERTISSEUR DE LIENS",
+          discordCardTitle: "Serveur Discord",
+          resetBtn: "EFFACER",
+          liveBadge: "EN DIRECT",
+          liveCatalogTitle: "Catalogue en direct",
+          bookmarkLabel: "Enregistrer",
+          catalogCount: "{n} PRODUITS",
+          toastCurrency: "Devise changée en {code}",
+          toastLanguage: "Langue : {lang}",
+          toastWeightSynced: "Poids du colis repris du haul : {kg} kg"
+        },
+        ES: {
+          navProducts: "ONGXREPS SPREADSHEET",
+          heroBadge: "ONGXREPS //",
+          heroTitleMain: "SPREADSHEET ONGXREPS.",
+          catalogHeading: "ONGXREPS SPREADSHEET",
+          iphoneGuideTitle: "iPhone",
+          androidGuideTitle: "Android",
+          tiktokCardTitle: "TikTok",
+          agentCardTitle: "{agent}",
+          mobPublish: "APP",
+          convRaw: "RAW",
+          promoCodeNote: "-55 PLN",
+          promoAmount: "-1500 PLN",
+          searchPlaceholderShort: "Buscar por nombre",
+          searchByNamePlaceholder: "Buscar por nombre",
+          navHeader: "NAVEGACIÓN",
+          navHome: "Inicio",
+          navSaved: "Tu Haul Planner",
+          navCommunity: "COMUNIDAD ONGXREPS",
+          navPublish: "Aplicación",
+          categoriesHeader: "CATEGORÍAS",
+          sidebarCouponText: "Consigue hasta 1500 PLN en cupones de envío",
+          headerIphoneBtn: "Aplicación",
+          phoneBadge: "APP MÓVIL // IPHONE & ANDROID",
+          phoneHeading: "Añade ONGXREPS a la pantalla de inicio de tu móvil",
+          phoneSub: "Añade ONGXREPS a la pantalla de inicio de tu smartphone para abrirla con un solo toque a pantalla completa, igual que una app normal.",
+          iphoneGuideDesc: "Sigue tres sencillos pasos en Safari en tu iPhone:",
+          iphoneStep1: "Abre ONGXREPS en el navegador Safari.",
+          iphoneStep2: "Toca el icono Compartir en la barra inferior.",
+          iphoneStep3: "Elige «Añadir a pantalla de inicio» y después toca «Añadir».",
+          androidGuideDesc: "Sigue tres sencillos pasos en Chrome en tu móvil Android:",
+          androidStep1: "Abre ONGXREPS en el navegador Chrome.",
+          androidStep2: "Toca el menú de tres puntos en la esquina superior derecha.",
+          androidStep3: "Elige «Añadir a pantalla de inicio» o «Instalar aplicación», si está disponible.",
+          selectCurrencyLabel: "Elegir moneda",
+          selectLangLabel: "Elegir idioma",
+          heroTitleSub: "LOS MEJORES PRECIOS Y LOS MEJORES BATCHES",
+          heroDesc: "La web oficial de ONGXREPS. Aquí encontrarás productos cuidadosamente seleccionados, los mejores batches, precios atractivos y fotos QC.",
+          ctaExploreCatalog: "Ver artículos",
+          statProductsLabel: "PRODUCTOS DISPONIBLES",
+          statCommLabel: "MIEMBROS DE LA COMUNIDAD",
+          vaultHeading: "Tu Haul Planner",
+          vaultSub: "Productos guardados con cálculo automático del peso del paquete, coste de envío en tiempo real y coste total del pedido",
+          vaultSyncWeightBtn: "Restablecer peso",
+          vaultItemsCountLabel: "Cantidad de productos",
+          vaultProductsValueLabel: "Precio de los productos",
+          vaultShippingCostLabel: "Precio del envío",
+          vaultGrandTotalLabel: "Precio total",
+          copyHaulBtn: "Copiar lista Haul",
+          commHeading: "COMUNIDAD ONGXREPS",
+          commSub: "Únete a nuestro servidor de Discord, mira TikToks a diario y consigue descuentos en cupones de envío en {agent}.",
+          discordCardDesc: "Una comunidad activa, muchos sorteos y un montón de canales útiles como W2C, QC Check y muchos más. Siempre puedes contar con la ayuda de la comunidad.",
+          tiktokCardDesc: "TikToks de reps a diario, hallazgos interesantes, novedades y todo mi apoyo.",
+          agentCardDesc: "Crea una cuenta en uno de los agentes más baratos y rápidos y consigue hasta 1500 PLN de descuento en cupones de envío.",
+          shipCalcHeading: "Coste de envío aproximado",
+          shipOverallLabel: "Tarifa orientativa que se actualiza en tiempo real al cambiar el peso del paquete o el transportista.",
+          shipIndicativeBadge: "COSTE ESTIMADO",
+          shipSelectLineLabel: "LÍNEA DE ENVÍO",
+          shipWeightLabel: "PESO DEL PAQUETE (0 – 20 KG)",
+          couponPopupTitle: "Consigue cupones en {agent}",
+          couponPopupClose: "Cerrar",
+          mobHome: "Inicio",
+          mobProducts: "Productos",
+          mobSaved: "Guardados",
+          mobCommunity: "Comunidad",
+          buyOnAgent: "Comprar en {agent}",
+          qcBtnLabel: "Fotos QC",
+          rawBtnLabel: "Enlace original",
+          labelPrice: "PRECIO",
+          labelBatch: "BATCH",
+          labelWeight: "PESO",
+          sidebarCouponBadge: "CUPONES {AGENT}",
+          titleSelectCurrency: "Elegir moneda",
+          titleSelectLanguage: "Elegir idioma",
+          sortFeatured: "Ordenar: Destacados",
+          sortNewest: "Ordenar: Más nuevos",
+          sortPriceAsc: "Precio: de menor a mayor",
+          sortPriceDesc: "Precio: de mayor a menor",
+          sortWeightDesc: "Peso: más pesados primero",
+          emptySearchTitle: "Sin resultados",
+          emptySearchDesc: "No hemos encontrado ningún producto con ese nombre.",
+          emptySearchCta: "Mostrar todos los productos",
+          vaultSyncWeightTitle: "Poner el peso del paquete a 0.0 kg",
+          emptyVaultTitle: "Tu lista está vacía",
+          emptyVaultDesc: "Toca el icono de marcador en cualquier producto para añadirlo a tu haul.",
+          emptyVaultCta: "Ir al catálogo",
+          discordMembersBadge: "MIEMBROS",
+          discordJoinBtn: "Unirse a Discord",
+          tiktokFollowBtn: "Seguir en TikTok",
+          agentBadge: "CUPONES",
+          agentCardCta: "Consigue cupones de {agent}",
+          qcZoomTitle: "Cambiar zoom 1x / 1.75x",
+          closeLabel: "Cerrar",
+          closePopupLabel: "Cerrar ventana",
+          openRawLink: "Abrir enlace original",
+          copyRawLink: "Copiar enlace original",
+          qcCopyLink: "Copiar enlace",
+          saveToPlannerTitle: "Guardar en tu Haul Planner",
+          toastSaved: "Añadido a tu Haul Planner",
+          toastRemoved: "Eliminado de tu Haul Planner",
+          toastRawCopied: "¡Enlace original copiado!",
+          toastCopiedDefault: "¡Copiado al portapapeles!",
+          toastHaulEmpty: "¡Tu Haul Planner está vacío!",
+          toastHaulCopied: "¡Lista Haul completa copiada!",
+          toastWeightReset: "Peso del paquete fijado en 0.0 kg",
+          viewGridTitle: "Tarjetas grandes",
+          viewListTitle: "Lista compacta",
+          popupStepLabel: "PASO",
+          popupLangTitle: "Elige el idioma de la web",
+          popupLangDesc: "Puedes cambiarlo en cualquier momento en la parte superior de la página.",
+          popupCurrTitle: "Elige la moneda",
+          popupCurrDesc: "Los precios de los productos y del envío se convertirán automáticamente.",
+          popupNext: "Siguiente",
+          popupBack: "Atrás",
+          promoText: "Crea una cuenta con nuestro enlace, luego en la pestaña Cupones introduce el código {code} y consigue tus cupones.",
+          promoCodeLabel: "CÓDIGO DE DESCUENTO",
+          promoCopyCode: "Copiar",
+          toastCodeCopied: "¡Código {code} copiado!",
+          promoClaimTitle: "Consigue cupones en {agent}",
+          promoCta: "Regístrate y consigue cupones",
+          agentSwitchLabel: "AGENTE DE COMPRAS",
+          agentSwitchTitle: "Elegir agente",
+          toastAgent: "Agente: {agent}",
+          popupAgentTitle: "Elige tu agente",
+          popupAgentDesc: "Los enlaces, botones y cupones se adaptarán al agente elegido. Puedes cambiarlo en cualquier momento en la parte superior de la página.",
+          agentChoiceCta: "Elegir",
+          agentChoiceActive: "Seleccionado",
+          navConverter: "Conversor de enlaces",
+          mobConverter: "Conversor",
+          linkSoon: "Enlace pronto",
+          sampleBadge: "EJEMPLO",
+          sampleTitle: "Producto de ejemplo: el enlace de la tienda se añadirá pronto",
+          convHeading: "Conversor de enlaces",
+          convSub: "Pega el enlace de un producto y lo convertiremos para el agente elegido.",
+          convPlaceholder: "Pega el enlace del producto",
+          convBtn: "Convertir",
+          convClear: "Borrar",
+          convDetected: "Producto reconocido",
+          convOpenIn: "Abrir en {agent}",
+          convUnavailable: "No disponible",
+          convNoAgentPlatform: "{agent} no admite productos de {platform}.",
+          convErrInvalid: "Esto no parece un enlace. Pega la dirección completa del producto que empieza por https://",
+          convErrShort: "Es un enlace acortado ({host}). Ábrelo en tu navegador y pega la dirección completa del producto que aparezca.",
+          convErrNoItem: "Este enlace no lleva a un producto concreto (por ejemplo, una página de tienda o de búsqueda). Pega el enlace de un producto.",
+          convErrUnsupported: "Enlace no compatible. No se ha podido identificar el producto con seguridad, así que no generamos enlaces que podrían llevar a otro producto.",
+          haulBadge: "HAUL BUILDER Y ENVÍO EN TIEMPO REAL",
+          shipLiveBadge: "CALCULADORA EN VIVO // 0–20 KG",
+          convBadge: "CONVERSOR DE ENLACES",
+          discordCardTitle: "Servidor de Discord",
+          resetBtn: "BORRAR",
+          liveBadge: "EN VIVO",
+          liveCatalogTitle: "Catálogo en vivo",
+          bookmarkLabel: "Guardar",
+          catalogCount: "{n} PRODUCTOS",
+          toastCurrency: "Moneda cambiada a {code}",
+          toastLanguage: "Idioma: {lang}",
+          toastWeightSynced: "Peso del paquete tomado del haul: {kg} kg"
+        },
+        IT: {
+          navProducts: "ONGXREPS SPREADSHEET",
+          heroBadge: "ONGXREPS //",
+          heroTitleMain: "SPREADSHEET ONGXREPS.",
+          catalogHeading: "ONGXREPS SPREADSHEET",
+          iphoneGuideTitle: "iPhone",
+          androidGuideTitle: "Android",
+          tiktokCardTitle: "TikTok",
+          agentCardTitle: "{agent}",
+          mobPublish: "APP",
+          convRaw: "RAW",
+          promoCodeNote: "-55 PLN",
+          promoAmount: "-1500 PLN",
+          searchPlaceholderShort: "Cerca per nome",
+          searchByNamePlaceholder: "Cerca per nome",
+          navHeader: "NAVIGAZIONE",
+          navHome: "Home",
+          navSaved: "Il tuo Haul Planner",
+          navCommunity: "COMMUNITY ONGXREPS",
+          navPublish: "App",
+          categoriesHeader: "CATEGORIE",
+          sidebarCouponText: "Ottieni fino a 1500 PLN in coupon per la spedizione",
+          headerIphoneBtn: "App",
+          phoneBadge: "APP PER TELEFONO // IPHONE & ANDROID",
+          phoneHeading: "Aggiungi ONGXREPS alla schermata Home del telefono",
+          phoneSub: "Aggiungi ONGXREPS alla schermata Home del tuo smartphone per aprirla con un solo tocco a schermo intero, proprio come una normale app.",
+          iphoneGuideDesc: "Segui tre semplici passaggi in Safari sul tuo iPhone:",
+          iphoneStep1: "Apri ONGXREPS nel browser Safari.",
+          iphoneStep2: "Tocca l'icona Condividi nella barra in basso.",
+          iphoneStep3: "Scegli «Aggiungi alla schermata Home», poi tocca «Aggiungi».",
+          androidGuideDesc: "Segui tre semplici passaggi in Chrome sul tuo telefono Android:",
+          androidStep1: "Apri ONGXREPS nel browser Chrome.",
+          androidStep2: "Tocca il menu con tre puntini in alto a destra.",
+          androidStep3: "Scegli «Aggiungi a schermata Home» o «Installa app», se disponibile.",
+          selectCurrencyLabel: "Scegli la valuta",
+          selectLangLabel: "Scegli la lingua",
+          heroTitleSub: "I MIGLIORI PREZZI E I MIGLIORI BATCH",
+          heroDesc: "Il sito ufficiale di ONGXREPS. Qui trovi prodotti selezionati con cura, i migliori batch, prezzi interessanti e foto QC.",
+          ctaExploreCatalog: "Sfoglia gli articoli",
+          statProductsLabel: "PRODOTTI DISPONIBILI",
+          statCommLabel: "MEMBRI DELLA COMMUNITY",
+          vaultHeading: "Il tuo Haul Planner",
+          vaultSub: "Prodotti salvati con calcolo automatico del peso del pacco, costo di spedizione in tempo reale e costo totale dell'ordine",
+          vaultSyncWeightBtn: "Azzera peso",
+          vaultItemsCountLabel: "Numero di prodotti",
+          vaultProductsValueLabel: "Prezzo dei prodotti",
+          vaultShippingCostLabel: "Prezzo della spedizione",
+          vaultGrandTotalLabel: "Prezzo totale",
+          copyHaulBtn: "Copia lista Haul",
+          commHeading: "COMMUNITY ONGXREPS",
+          commSub: "Unisciti al nostro server Discord, guarda i TikTok quotidiani e ottieni sconti in coupon per la spedizione su {agent}.",
+          discordCardDesc: "Una community attiva, tanti giveaway e molti canali utili come W2C, QC Check e tanti altri. Puoi sempre contare sull'aiuto della community.",
+          tiktokCardDesc: "TikTok quotidiani sulle reps, scoperte interessanti, novità e tutto il mio supporto.",
+          agentCardDesc: "Crea un account su uno degli agenti più economici e veloci e ottieni fino a 1500 PLN di sconto in coupon per la spedizione.",
+          shipCalcHeading: "Costo di spedizione indicativo",
+          shipOverallLabel: "Tariffa indicativa aggiornata in tempo reale mentre modifichi il peso del pacco o cambi corriere.",
+          shipIndicativeBadge: "COSTO STIMATO",
+          shipSelectLineLabel: "SCELTA DELLA LINEA DI SPEDIZIONE",
+          shipWeightLabel: "PESO DEL PACCO (0 – 20 KG)",
+          couponPopupTitle: "Ottieni i coupon su {agent}",
+          couponPopupClose: "Chiudi",
+          mobHome: "Home",
+          mobProducts: "Prodotti",
+          mobSaved: "Salvati",
+          mobCommunity: "Community",
+          buyOnAgent: "Compra su {agent}",
+          qcBtnLabel: "Foto QC",
+          rawBtnLabel: "Link originale",
+          labelPrice: "PREZZO",
+          labelBatch: "BATCH",
+          labelWeight: "PESO",
+          sidebarCouponBadge: "COUPON {AGENT}",
+          titleSelectCurrency: "Scegli la valuta",
+          titleSelectLanguage: "Scegli la lingua",
+          sortFeatured: "Ordina: In evidenza",
+          sortNewest: "Ordina: Più recenti",
+          sortPriceAsc: "Prezzo: dal più basso",
+          sortPriceDesc: "Prezzo: dal più alto",
+          sortWeightDesc: "Peso: dal più pesante",
+          emptySearchTitle: "Nessun risultato",
+          emptySearchDesc: "Non abbiamo trovato prodotti con questo nome.",
+          emptySearchCta: "Mostra tutti i prodotti",
+          vaultSyncWeightTitle: "Imposta il peso del pacco a 0.0 kg",
+          emptyVaultTitle: "La tua lista è vuota",
+          emptyVaultDesc: "Tocca l'icona del segnalibro su un prodotto per aggiungerlo al tuo haul.",
+          emptyVaultCta: "Vai al catalogo",
+          discordMembersBadge: "MEMBRI",
+          discordJoinBtn: "Entra su Discord",
+          tiktokFollowBtn: "Segui su TikTok",
+          agentBadge: "COUPON",
+          agentCardCta: "Ottieni i coupon {agent}",
+          qcZoomTitle: "Cambia zoom 1x / 1.75x",
+          closeLabel: "Chiudi",
+          closePopupLabel: "Chiudi popup",
+          openRawLink: "Apri link originale",
+          copyRawLink: "Copia link originale",
+          qcCopyLink: "Copia link",
+          saveToPlannerTitle: "Salva nel tuo Haul Planner",
+          toastSaved: "Aggiunto al tuo Haul Planner",
+          toastRemoved: "Rimosso dal tuo Haul Planner",
+          toastRawCopied: "Link originale copiato!",
+          toastCopiedDefault: "Copiato negli appunti!",
+          toastHaulEmpty: "Il tuo Haul Planner è vuoto!",
+          toastHaulCopied: "Lista Haul completa copiata!",
+          toastWeightReset: "Peso del pacco impostato a 0.0 kg",
+          viewGridTitle: "Schede grandi",
+          viewListTitle: "Lista compatta",
+          popupStepLabel: "PASSO",
+          popupLangTitle: "Scegli la lingua del sito",
+          popupLangDesc: "Puoi cambiarla in qualsiasi momento in alto nella pagina.",
+          popupCurrTitle: "Scegli la valuta",
+          popupCurrDesc: "I prezzi dei prodotti e della spedizione verranno convertiti automaticamente.",
+          popupNext: "Avanti",
+          popupBack: "Indietro",
+          promoText: "Crea un account con il nostro link, poi nella scheda Coupon inserisci il codice {code} e ottieni i tuoi coupon.",
+          promoCodeLabel: "CODICE SCONTO",
+          promoCopyCode: "Copia",
+          toastCodeCopied: "Codice {code} copiato!",
+          promoClaimTitle: "Ottieni i coupon su {agent}",
+          promoCta: "Registrati e ottieni i coupon",
+          agentSwitchLabel: "AGENTE DI ACQUISTO",
+          agentSwitchTitle: "Scegli l'agente",
+          toastAgent: "Agente: {agent}",
+          popupAgentTitle: "Scegli il tuo agente",
+          popupAgentDesc: "Link, pulsanti e coupon si adatteranno all'agente scelto. Puoi cambiarlo in qualsiasi momento in alto nella pagina.",
+          agentChoiceCta: "Scegli",
+          agentChoiceActive: "Selezionato",
+          navConverter: "Convertitore di link",
+          mobConverter: "Converti",
+          linkSoon: "Link in arrivo",
+          sampleBadge: "ESEMPIO",
+          sampleTitle: "Prodotto di esempio: il link al negozio verrà aggiunto a breve",
+          convHeading: "Convertitore di link",
+          convSub: "Incolla il link di un prodotto e lo convertiremo per l'agente scelto.",
+          convPlaceholder: "Incolla il link del prodotto",
+          convBtn: "Converti",
+          convClear: "Cancella",
+          convDetected: "Prodotto riconosciuto",
+          convOpenIn: "Apri su {agent}",
+          convUnavailable: "Non disponibile",
+          convNoAgentPlatform: "{agent} non supporta i prodotti di {platform}.",
+          convErrInvalid: "Questo non sembra un link. Incolla l'indirizzo completo del prodotto che inizia con https://",
+          convErrShort: "È un link abbreviato ({host}). Aprilo nel browser e incolla l'indirizzo completo del prodotto che compare.",
+          convErrNoItem: "Questo link non porta a un prodotto specifico (ad esempio una pagina del negozio o di ricerca). Incolla il link di un prodotto.",
+          convErrUnsupported: "Link non supportato. Non è stato possibile identificare il prodotto in modo sicuro, quindi non generiamo link che potrebbero portare a un altro prodotto.",
+          haulBadge: "HAUL BUILDER E SPEDIZIONE IN TEMPO REALE",
+          shipLiveBadge: "CALCOLATORE LIVE // 0–20 KG",
+          convBadge: "CONVERTITORE DI LINK",
+          discordCardTitle: "Server Discord",
+          resetBtn: "AZZERA",
+          liveBadge: "LIVE",
+          liveCatalogTitle: "Catalogo live",
+          bookmarkLabel: "Salva",
+          catalogCount: "{n} PRODOTTI",
+          toastCurrency: "Valuta cambiata in {code}",
+          toastLanguage: "Lingua: {lang}",
+          toastWeightSynced: "Peso del pacco preso dall'haul: {kg} kg"
+        },
+        ZH: {
+          navProducts: "ONGXREPS SPREADSHEET",
+          heroBadge: "ONGXREPS //",
+          heroTitleMain: "SPREADSHEET ONGXREPS.",
+          catalogHeading: "ONGXREPS SPREADSHEET",
+          iphoneGuideTitle: "iPhone",
+          androidGuideTitle: "Android",
+          tiktokCardTitle: "TikTok",
+          agentCardTitle: "{agent}",
+          mobPublish: "APP",
+          convRaw: "RAW",
+          promoCodeNote: "-55 PLN",
+          promoAmount: "-1500 PLN",
+          searchPlaceholderShort: "按名称搜索",
+          searchByNamePlaceholder: "按名称搜索",
+          navHeader: "导航",
+          navHome: "首页",
+          navSaved: "你的 Haul Planner",
+          navCommunity: "ONGXREPS 社区",
+          navPublish: "应用",
+          categoriesHeader: "分类",
+          sidebarCouponText: "领取最高 1500 PLN 的运费优惠券",
+          headerIphoneBtn: "应用",
+          phoneBadge: "手机应用 // IPHONE & ANDROID",
+          phoneHeading: "将 ONGXREPS 添加到手机主屏幕",
+          phoneSub: "将 ONGXREPS 添加到智能手机主屏幕，一键全屏打开，就像普通应用一样。",
+          iphoneGuideDesc: "在 iPhone 的 Safari 中完成三个简单步骤：",
+          iphoneStep1: "在 Safari 浏览器中打开 ONGXREPS。",
+          iphoneStep2: "点击底部栏中的“分享”图标。",
+          iphoneStep3: "选择“添加到主屏幕”，然后点击“添加”。",
+          androidGuideDesc: "在 Android 手机的 Chrome 中完成三个简单步骤：",
+          androidStep1: "在 Chrome 浏览器中打开 ONGXREPS。",
+          androidStep2: "点击右上角的三点菜单。",
+          androidStep3: "选择“添加到主屏幕”或“安装应用”（如有）。",
+          selectCurrencyLabel: "选择货币",
+          selectLangLabel: "选择语言",
+          heroTitleSub: "最低价格与最佳批次",
+          heroDesc: "ONGXREPS 官方网站。在这里你可以找到精心挑选的商品、最佳批次、优惠价格以及 QC 照片。",
+          ctaExploreCatalog: "浏览商品",
+          statProductsLabel: "可用商品数量",
+          statCommLabel: "社区成员数量",
+          vaultHeading: "你的 Haul Planner",
+          vaultSub: "已保存的商品，自动计算包裹重量、实时运费和订单总费用",
+          vaultSyncWeightBtn: "重置重量",
+          vaultItemsCountLabel: "商品数量",
+          vaultProductsValueLabel: "商品价格",
+          vaultShippingCostLabel: "运费",
+          vaultGrandTotalLabel: "总价",
+          copyHaulBtn: "复制 Haul 清单",
+          commHeading: "ONGXREPS 社区",
+          commSub: "加入我们的 Discord 服务器，观看每日 TikTok，并在 {agent} 领取运费优惠券。",
+          discordCardDesc: "活跃的社区、众多抽奖活动，以及 W2C、QC Check 等大量实用频道。你随时都能获得社区的帮助。",
+          tiktokCardDesc: "每日 reps 主题 TikTok、有趣的好物、新品，以及我的全力支持。",
+          agentCardDesc: "在最便宜、最快的代购平台之一注册账户，领取最高 1500 PLN 的运费优惠券。",
+          shipCalcHeading: "预估运费",
+          shipOverallLabel: "参考价格，会在调整包裹重量或更换承运商时实时更新。",
+          shipIndicativeBadge: "预估费用",
+          shipSelectLineLabel: "选择运输线路",
+          shipWeightLabel: "包裹重量（0 – 20 KG）",
+          couponPopupTitle: "在 {agent} 领取优惠券",
+          couponPopupClose: "关闭",
+          mobHome: "首页",
+          mobProducts: "商品",
+          mobSaved: "收藏",
+          mobCommunity: "社区",
+          buyOnAgent: "在 {agent} 购买",
+          qcBtnLabel: "QC 照片",
+          rawBtnLabel: "原始链接",
+          labelPrice: "价格",
+          labelBatch: "批次",
+          labelWeight: "重量",
+          sidebarCouponBadge: "{AGENT} 优惠券",
+          titleSelectCurrency: "选择货币",
+          titleSelectLanguage: "选择语言",
+          sortFeatured: "排序：推荐",
+          sortNewest: "排序：最新",
+          sortPriceAsc: "价格：从低到高",
+          sortPriceDesc: "价格：从高到低",
+          sortWeightDesc: "重量：从重到轻",
+          emptySearchTitle: "没有搜索结果",
+          emptySearchDesc: "没有找到与该名称匹配的商品。",
+          emptySearchCta: "显示全部商品",
+          vaultSyncWeightTitle: "将包裹重量设为 0.0 kg",
+          emptyVaultTitle: "收藏为空",
+          emptyVaultDesc: "点击任意商品卡片上的书签图标，即可将其加入你的 haul。",
+          emptyVaultCta: "前往商品目录",
+          discordMembersBadge: "成员",
+          discordJoinBtn: "加入 Discord",
+          tiktokFollowBtn: "在 TikTok 关注",
+          agentBadge: "优惠券",
+          agentCardCta: "领取 {agent} 优惠券",
+          qcZoomTitle: "切换缩放 1x / 1.75x",
+          closeLabel: "关闭",
+          closePopupLabel: "关闭弹窗",
+          openRawLink: "打开原始链接",
+          copyRawLink: "复制原始链接",
+          qcCopyLink: "复制链接",
+          saveToPlannerTitle: "保存到你的 Haul Planner",
+          toastSaved: "已添加到你的 Haul Planner",
+          toastRemoved: "已从你的 Haul Planner 移除",
+          toastRawCopied: "原始链接已复制！",
+          toastCopiedDefault: "已复制到剪贴板！",
+          toastHaulEmpty: "你的 Haul Planner 为空！",
+          toastHaulCopied: "已复制完整 Haul 清单！",
+          toastWeightReset: "包裹重量已设为 0.0 kg",
+          viewGridTitle: "大卡片",
+          viewListTitle: "紧凑列表",
+          popupStepLabel: "步骤",
+          popupLangTitle: "选择网站语言",
+          popupLangDesc: "你可以随时在页面顶部更改。",
+          popupCurrTitle: "选择货币",
+          popupCurrDesc: "商品和运费价格将自动换算。",
+          popupNext: "下一步",
+          popupBack: "返回",
+          promoText: "使用我们的链接注册账户，然后在“优惠券”页面输入代码 {code} 领取优惠券。",
+          promoCodeLabel: "优惠码",
+          promoCopyCode: "复制",
+          toastCodeCopied: "代码 {code} 已复制！",
+          promoClaimTitle: "在 {agent} 领取优惠券",
+          promoCta: "注册并领取优惠券",
+          agentSwitchLabel: "代购平台",
+          agentSwitchTitle: "选择代购平台",
+          toastAgent: "代购平台：{agent}",
+          popupAgentTitle: "选择你的代购平台",
+          popupAgentDesc: "链接、按钮和优惠券将与所选代购平台匹配。你可以随时在页面顶部更改。",
+          agentChoiceCta: "选择",
+          agentChoiceActive: "已选择",
+          navConverter: "链接转换器",
+          mobConverter: "转换",
+          linkSoon: "链接即将上线",
+          sampleBadge: "示例",
+          sampleTitle: "示例商品 — 店铺链接即将添加",
+          convHeading: "链接转换器",
+          convSub: "粘贴商品链接，我们将为所选代购平台进行转换。",
+          convPlaceholder: "粘贴商品链接",
+          convBtn: "转换",
+          convClear: "清除",
+          convDetected: "已识别商品",
+          convOpenIn: "在 {agent} 打开",
+          convUnavailable: "不可用",
+          convNoAgentPlatform: "{agent} 不支持来自 {platform} 的商品。",
+          convErrInvalid: "这看起来不是链接。请粘贴以 https:// 开头的完整商品地址。",
+          convErrShort: "这是短链接（{host}）。请在浏览器中打开它，然后粘贴显示的完整商品地址。",
+          convErrNoItem: "此链接并未指向具体商品（例如店铺或搜索页面）。请粘贴商品链接。",
+          convErrUnsupported: "不支持的链接。无法安全识别该商品，因此我们不会生成可能指向其他商品的链接。",
+          haulBadge: "HAUL 规划与实时运费",
+          shipLiveBadge: "实时计算器 // 0–20 KG",
+          convBadge: "链接转换器",
+          discordCardTitle: "Discord 服务器",
+          resetBtn: "重置",
+          liveBadge: "实时",
+          liveCatalogTitle: "实时目录",
+          bookmarkLabel: "收藏",
+          catalogCount: "{n} 件商品",
+          toastCurrency: "货币已切换为 {code}",
+          toastLanguage: "语言：{lang}",
+          toastWeightSynced: "已根据 haul 更新包裹重量：{kg} kg"
         }
       };
 
       const CATEGORIES = [
-        { id: 'All', pl: 'Wszystkie', en: 'All Items' },
-        { id: 'Shoes', pl: 'Buty', en: 'Shoes' },
-        { id: 'Hoodies & Jackets', pl: 'Bluzy & Kurtki', en: 'Hoodies & Jackets' },
-        { id: 'Tees', pl: 'Koszulki', en: 'Tees' },
-        { id: 'Pants', pl: 'Spodnie', en: 'Pants' },
-        { id: 'Accessories', pl: 'Akcesoria', en: 'Accessories' }
+        { id: 'All', pl: 'Wszystkie', en: 'All Items', de: 'Alle Artikel', fr: 'Tous les articles', es: 'Todos los artículos', it: 'Tutti gli articoli', zh: '全部商品' },
+        { id: 'Shoes', pl: 'Buty', en: 'Shoes', de: 'Schuhe', fr: 'Chaussures', es: 'Zapatos', it: 'Scarpe', zh: '鞋子' },
+        { id: 'Hoodies & Jackets', pl: 'Bluzy & Kurtki', en: 'Hoodies & Jackets', de: 'Hoodies & Jacken', fr: 'Sweats & Vestes', es: 'Sudaderas y chaquetas', it: 'Felpe e giacche', zh: '卫衣与夹克' },
+        { id: 'Tees', pl: 'Koszulki', en: 'Tees', de: 'T-Shirts', fr: 'T-shirts', es: 'Camisetas', it: 'T-shirt', zh: 'T恤' },
+        { id: 'Pants', pl: 'Spodnie', en: 'Pants', de: 'Hosen', fr: 'Pantalons', es: 'Pantalones', it: 'Pantaloni', zh: '裤子' },
+        { id: 'Accessories', pl: 'Akcesoria', en: 'Accessories', de: 'Accessoires', fr: 'Accessoires', es: 'Accesorios', it: 'Accessori', zh: '配饰' }
       ];
+
+      // Category name in the current language
+      function catLabel(c) {
+        return c[state.lang.toLowerCase()] || c.en;
+      }
 
       // 18 Curated Luxury Streetwear Products (Zero GSM / fabric weight references; total product weight_g & batch preserved)
       // sample: true = demo listing without a verified marketplace link. Agent and RAW links are generated
@@ -2534,12 +3372,9 @@
       }
 
       function getCategoryLabel(catId) {
-        if (catId === 'Hoodies' || catId === 'Jackets') {
-          return state.lang === 'PL' ? 'Bluzy & Kurtki' : 'Hoodies & Jackets';
-        }
-        const found = CATEGORIES.find(c => c.id.toLowerCase() === (catId || '').toLowerCase());
-        if (!found) return catId;
-        return state.lang === 'PL' ? found.pl : found.en;
+        const id = catId === 'Hoodies' || catId === 'Jackets' ? 'Hoodies & Jackets' : (catId || '');
+        const found = CATEGORIES.find(c => c.id.toLowerCase() === id.toLowerCase());
+        return found ? catLabel(found) : catId;
       }
 
       function matchesCategory(productCat, selectedCat) {
@@ -2615,7 +3450,7 @@
         closeAllDropdowns();
         renderAll();
         if (!silent) {
-          showToast(state.lang === 'PL' ? `Waluta zmieniona na ${state.currency}` : `Currency switched to ${state.currency}`);
+          showToast(t('toastCurrency').replace('{code}', state.currency));
         }
       }
 
@@ -2626,7 +3461,7 @@
         closeAllDropdowns();
         renderAll();
         if (!silent) {
-          showToast(state.lang === 'PL' ? 'Język: Polski (PL)' : 'Language: English (EN)');
+          showToast(t('toastLanguage').replace('{lang}', LANGUAGES[state.lang].label));
         }
       }
 
@@ -2636,7 +3471,8 @@
       }
 
       function toggleLanguage() {
-        selectLanguage(state.lang === 'PL' ? 'EN' : 'PL');
+        const codes = Object.keys(LANGUAGES);
+        selectLanguage(codes[(codes.indexOf(state.lang) + 1) % codes.length]);
       }
 
 
@@ -2772,7 +3608,8 @@
               }">
                 <span class="flex items-center gap-3">
                   <span class="font-mono text-[11px] font-bold w-8 py-1 radius-badge text-center ${active ? 'bg-black text-white' : 'bg-charcoal-800 text-[#9E9EA9] border border-hairline'}">${code}</span>
-                  <span class="text-sm">${LANGUAGES[code].label.replace(/ \(.*\)$/, '')}</span>
+                  ${flagSvg(code, 'w-5 h-3.5', active)}
+                  <span class="text-sm">${LANGUAGES[code].name}</span>
                 </span>
                 <span class="w-2 h-2 rounded-full ${active ? 'bg-black' : 'bg-white/10'}"></span>
               </button>
@@ -2844,7 +3681,7 @@
                 active ? 'bg-white text-black font-bold' : 'text-[#F4F4F6] hover:bg-charcoal-800'
               }"
             >
-              <span>${cfg.label}</span>
+              <span class="flex items-center gap-2">${flagSvg(code, 'w-[18px] h-3', active)}<span>${cfg.label}</span></span>
               ${active ? '<span class="w-1.5 h-1.5 rounded-full bg-black"></span>' : ''}
             </button>
           `;
@@ -2888,7 +3725,7 @@
                       ? 'bg-acid text-black border border-acid shadow-[0_0_15px_rgba(226,255,50,0.35)]'
                       : 'glass-pill text-zinc-200 hover:text-white'
                   } flex items-center justify-center transition-all active:scale-90"
-                  aria-label="Bookmark"
+                  aria-label="${escapeHtml(t('bookmarkLabel'))}"
                   title="${dict.saveToPlannerTitle}"
                 >
                   <svg class="w-3.5 h-3.5" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
@@ -3053,7 +3890,7 @@
                       ? 'bg-acid text-black border border-acid shadow-[0_0_15px_rgba(226,255,50,0.35)]'
                       : 'btn-surface-secondary text-zinc-200 hover:text-white'
                   } flex items-center justify-center transition-all active:scale-90"
-                  aria-label="Bookmark"
+                  aria-label="${escapeHtml(t('bookmarkLabel'))}"
                   title="${dict.saveToPlannerTitle}"
                 >
                   <svg class="w-3.5 h-3.5" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
@@ -3132,6 +3969,7 @@
         if (hdrCurrCode) hdrCurrCode.textContent = state.currency;
         const hdrLangBtn = document.getElementById('header-lang-btn');
         if (hdrLangBtn) hdrLangBtn.textContent = state.lang;
+        document.documentElement.lang = (LANGUAGES[state.lang] || LANGUAGES.PL).html;
 
         const sideTotalBadge = document.getElementById('sidebar-total-badge');
         if (sideTotalBadge) sideTotalBadge.textContent = state.products.length;
@@ -3158,7 +3996,7 @@
               <button onclick="App.setCategory('${c.id}')" class="shrink-0 px-3.5 py-2 radius-control font-mono tabular-nums text-xs flex items-center gap-1.5 transition-all ${
                 active ? 'bg-white text-black font-bold shadow-sm' : 'btn-surface-secondary text-[#9E9EA9] hover:text-white'
               }">
-                <span>${state.lang === 'PL' ? c.pl : c.en}</span>
+                <span>${catLabel(c)}</span>
                 <span class="text-[10px] opacity-75">(${counts[c.id] || 0})</span>
               </button>
             `;
@@ -3169,7 +4007,7 @@
         if (sideCatsEl) {
           sideCatsEl.innerHTML = CATEGORIES.slice(1).map(c => `
             <button onclick="App.filterByCategoryAndOpen('${c.id}')" class="w-full flex items-center justify-between px-3.5 py-2 radius-control text-xs text-[#9E9EA9] hover:text-white hover:bg-charcoal-900 transition-all">
-              <span>${state.lang === 'PL' ? c.pl : c.en}</span>
+              <span>${catLabel(c)}</span>
               <span class="font-mono tabular-nums text-[10px] text-[#686873]">${counts[c.id] || 0}</span>
             </button>
           `).join('');
@@ -3228,7 +4066,7 @@
         const countLabelEl = document.getElementById('catalog-count-label');
         if (countLabelEl) {
           countLabelEl.textContent =
-            state.lang === 'PL' ? `${list.length} PRODUKTÓW` : `${list.length} PRODUCTS`;
+            t('catalogCount').replace('{n}', list.length);
         }
 
         const resetBtn = document.getElementById('reset-filters-btn');
@@ -3295,11 +4133,7 @@
         state.shipWeightKg = Math.min(20, Math.round((totalWeightG / 1000) * 10) / 10);
         renderShipCalc();
         if (!silent) {
-          showToast(
-            state.lang === 'PL'
-              ? `Zaktualizowano wagę paczki z haula: ${state.shipWeightKg.toFixed(1)} kg`
-              : `Synced parcel weight from haul: ${state.shipWeightKg.toFixed(1)} kg`
-          );
+          showToast(t('toastWeightSynced').replace('{kg}', state.shipWeightKg.toFixed(1)));
         }
       }
 
