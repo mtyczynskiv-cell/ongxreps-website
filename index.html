@@ -388,18 +388,21 @@
       }
     }
 
-    /* KakoBuy Logo Mark inside red buttons */
-    .kb-mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      width: 18px;
-      height: 18px;
-      border-radius: 5px;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      color: #FFFFFF;
+    /* KakoBuy Product Buttons (Community icon-tile style) */
+    .btn-kakobuy-soft {
+      background-color: rgba(232, 32, 46, 0.15);
+      border: 1px solid rgba(232, 32, 46, 0.35);
+      color: #FF4D45;
+      border-radius: var(--radius-control);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+    .btn-kakobuy-soft:hover {
+      background-color: rgba(232, 32, 46, 0.24);
+      border-color: rgba(232, 32, 46, 0.6);
+      color: #FF6B60;
+    }
+    .btn-kakobuy-soft:active {
+      transform: scale(0.98);
     }
 
     /* Compact List Product Rows */
@@ -496,6 +499,7 @@
     @media (hover: hover) and (pointer: fine) {
       .btn-primary-white:hover,
       .btn-kakobuy:hover,
+      .btn-kakobuy-soft:hover,
       .btn-discord:hover,
       .btn-surface-secondary:hover,
       .ship-line-btn:hover,
@@ -507,6 +511,7 @@
       }
       .btn-primary-white:active,
       .btn-kakobuy:active,
+      .btn-kakobuy-soft:active,
       .btn-discord:active {
         transform: scale(0.98);
       }
@@ -519,6 +524,7 @@
       }
       .btn-primary-white,
       .btn-kakobuy,
+      .btn-kakobuy-soft,
       .btn-discord,
       .btn-surface-secondary,
       .ship-line-btn,
@@ -592,44 +598,44 @@
     <nav class="flex-1 px-3.5 py-5 space-y-1.5 overflow-y-auto">
       <div class="px-3 pb-1.5 font-mono text-[10px] tracking-widest uppercase text-[#686873]" data-i18n="navHeader">NAWIGACJA</div>
 
-      <button onclick="App.navigate('home')" data-sidebar-nav="home" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
-        <span class="flex items-center gap-3">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          <span data-i18n="navHome">Start</span>
+      <button onclick="App.navigate('home')" data-sidebar-nav="home" class="sidebar-btn w-full h-11 flex items-center justify-between gap-2 px-3 radius-control text-left text-[13px] font-medium transition-all">
+        <span class="flex items-center gap-2.5 min-w-0">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span class="truncate" data-i18n="navHome">Start</span>
         </span>
-        <span class="font-mono tabular-nums text-[10px] opacity-60">01</span>
+        <span class="shrink-0 min-w-[28px] text-center font-mono tabular-nums text-[10px] opacity-60">01</span>
       </button>
 
-      <button onclick="App.navigate('products')" data-sidebar-nav="products" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
-        <span class="flex items-center gap-3">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
-          <span data-i18n="navProducts">ONGXREPS SPREADSHEET</span>
+      <button onclick="App.navigate('products')" data-sidebar-nav="products" class="sidebar-btn w-full h-11 flex items-center justify-between gap-2 px-3 radius-control text-left text-[13px] font-medium transition-all">
+        <span class="flex items-center gap-2.5 min-w-0">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+          <span class="truncate" data-i18n="navProducts">ONGXREPS SPREADSHEET</span>
         </span>
-        <span id="sidebar-total-badge" class="font-mono tabular-nums text-[11px] px-2 py-0.5 radius-badge bg-charcoal-800 text-zinc-200 border border-hairline">18</span>
+        <span id="sidebar-total-badge" class="shrink-0 min-w-[28px] text-center font-mono tabular-nums text-[11px] px-2 py-0.5 radius-badge bg-charcoal-800 text-zinc-200 border border-hairline">18</span>
       </button>
 
-      <button onclick="App.navigate('saved')" data-sidebar-nav="saved" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
-        <span class="flex items-center gap-3">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-          <span data-i18n="navSaved">Twój Haul Planner</span>
+      <button onclick="App.navigate('saved')" data-sidebar-nav="saved" class="sidebar-btn w-full h-11 flex items-center justify-between gap-2 px-3 radius-control text-left text-[13px] font-medium transition-all">
+        <span class="flex items-center gap-2.5 min-w-0">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+          <span class="truncate" data-i18n="navSaved">Twój Haul Planner</span>
         </span>
-        <span id="sidebar-saved-badge" class="font-mono tabular-nums text-[11px] px-2 py-0.5 radius-badge bg-charcoal-800 text-acid border border-hairline">2</span>
+        <span id="sidebar-saved-badge" class="shrink-0 min-w-[28px] text-center font-mono tabular-nums text-[11px] px-2 py-0.5 radius-badge bg-charcoal-800 text-acid border border-hairline">2</span>
       </button>
 
-      <button onclick="App.navigate('community')" data-sidebar-nav="community" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
-        <span class="flex items-center gap-3">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <span data-i18n="navCommunity">SPOŁECZNOŚĆ ONGXREPS</span>
+      <button onclick="App.navigate('community')" data-sidebar-nav="community" class="sidebar-btn w-full h-11 flex items-center justify-between gap-2 px-3 radius-control text-left text-[13px] font-medium transition-all">
+        <span class="flex items-center gap-2.5 min-w-0">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span class="truncate" data-i18n="navCommunity">SPOŁECZNOŚĆ ONGXREPS</span>
         </span>
-        <span class="font-mono tabular-nums text-[10px] opacity-60">04</span>
+        <span class="shrink-0 min-w-[28px] text-center font-mono tabular-nums text-[10px] opacity-60">04</span>
       </button>
 
-      <button onclick="App.navigate('publish')" data-sidebar-nav="publish" class="sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium transition-all">
-        <span class="flex items-center gap-3">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-          <span data-i18n="navPublish">Aplikacja</span>
+      <button onclick="App.navigate('publish')" data-sidebar-nav="publish" class="sidebar-btn w-full h-11 flex items-center justify-between gap-2 px-3 radius-control text-left text-[13px] font-medium transition-all">
+        <span class="flex items-center gap-2.5 min-w-0">
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          <span class="truncate" data-i18n="navPublish">Aplikacja</span>
         </span>
-        <span class="font-mono text-[10px] px-1.5 py-0.5 radius-badge bg-white text-black font-bold">APP</span>
+        <span class="shrink-0 min-w-[28px] text-center font-mono text-[10px] px-1.5 py-0.5 radius-badge bg-white text-black font-bold">APP</span>
       </button>
 
       <!-- Quick Divisions -->
@@ -639,35 +645,6 @@
 
     <!-- Sidebar Footer (Desktop Selectors & KakoBuy Popup Trigger) -->
     <div class="p-4 border-t border-hairline bg-obsidian/60 space-y-3">
-      <div class="grid grid-cols-2 gap-2">
-        <!-- Desktop Currency Dropdown -->
-        <div class="relative" data-dropdown-root>
-          <button onclick="App.toggleDropdown('sidebar-curr-menu', event)" class="w-full h-9 px-3 radius-control btn-surface-secondary font-mono tabular-nums text-xs font-semibold text-white flex items-center justify-between">
-            <span class="flex items-center gap-1.5">
-              <span class="text-acid" id="sidebar-curr-symbol">zł</span>
-              <span id="sidebar-curr-code">PLN</span>
-            </span>
-            <svg class="w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div id="sidebar-curr-menu" class="dropdown-menu hidden absolute bottom-full left-0 mb-2 w-44 p-1.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-1">
-            <div class="px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectCurrencyLabel">Wybierz walutę</div>
-            <div data-currency-options></div>
-          </div>
-        </div>
-
-        <!-- Desktop Language Dropdown -->
-        <div class="relative" data-dropdown-root>
-          <button onclick="App.toggleDropdown('sidebar-lang-menu', event)" class="w-full h-9 px-3 radius-control btn-surface-secondary font-mono text-xs font-semibold text-white flex items-center justify-between">
-            <span id="sidebar-lang-code">PL</span>
-            <svg class="w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <div id="sidebar-lang-menu" class="dropdown-menu hidden absolute bottom-full right-0 mb-2 w-40 p-1.5 surface-bento bg-charcoal-950/95 backdrop-blur-xl shadow-2xl z-50 space-y-1">
-            <div class="px-2.5 py-1 font-mono text-[9px] uppercase tracking-widest text-[#686873]" data-i18n="selectLangLabel">Wybierz język</div>
-            <div data-lang-options></div>
-          </div>
-        </div>
-      </div>
-
       <button onclick="App.openCouponPopup()" class="w-full text-left block p-3.5 radius-card surface-bento group">
         <div class="flex items-center justify-between">
           <span class="flex items-center gap-2">
@@ -1370,8 +1347,8 @@
 
           <!-- Sticky Bottom Action Bar inside Modal -->
           <div class="space-y-2 pt-3 border-t border-hairline sticky bottom-0 bg-charcoal-900/95 backdrop-blur-md">
-            <a id="qc-kakobuy-link" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 btn-kakobuy font-bold text-xs flex items-center justify-center gap-2 group">
-              <span class="kb-mark"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
+            <a id="qc-kakobuy-link" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-4 btn-kakobuy-soft font-bold text-xs flex items-center justify-center gap-2 group">
+              <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg>
               <span data-i18n="buyOnKakoBuy">Kup na KakoBuy</span>
               <svg class="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
@@ -2100,8 +2077,8 @@
         document.querySelectorAll('.sidebar-btn').forEach(btn => {
           const active = btn.getAttribute('data-sidebar-nav') === state.view;
           btn.className = active
-            ? 'sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-bold bg-white text-black shadow-sm transition-all'
-            : 'sidebar-btn w-full flex items-center justify-between px-3.5 py-2.5 radius-control text-sm font-medium text-[#9E9EA9] hover:text-white hover:bg-charcoal-900 transition-all';
+            ? 'sidebar-btn w-full h-11 flex items-center justify-between gap-2 px-3 radius-control text-left text-[13px] font-medium bg-white text-black shadow-sm transition-all'
+            : 'sidebar-btn w-full h-11 flex items-center justify-between gap-2 px-3 radius-control text-left text-[13px] font-medium text-[#9E9EA9] hover:text-white hover:bg-charcoal-900 transition-all';
         });
 
         document.querySelectorAll('.mob-nav-btn').forEach(btn => {
@@ -2379,9 +2356,9 @@
                 href="${p.kakobuy_url}"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full py-2.5 px-3.5 btn-kakobuy font-bold text-xs flex items-center justify-center gap-1.5 group/cta"
+                class="w-full py-2.5 px-3.5 btn-kakobuy-soft font-bold text-xs flex items-center justify-center gap-1.5 group/cta"
               >
-                <span class="kb-mark"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
+                <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg>
                 <span>${dict.buyOnKakoBuy}</span>
                 <svg class="w-3.5 h-3.5 group-hover/cta:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
@@ -2476,11 +2453,11 @@
                   href="${p.kakobuy_url}"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="h-8 px-2 sm:px-3 btn-kakobuy font-bold text-[11px] flex items-center gap-1.5"
+                  class="h-8 px-2 sm:px-3 btn-kakobuy-soft font-bold text-[11px] flex items-center gap-1.5"
                   title="${dict.buyOnKakoBuy}"
                   aria-label="${dict.buyOnKakoBuy}"
                 >
-                  <span class="kb-mark"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg></span>
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true"><use href="#kakobuy-logo"/></svg>
                   <span class="hidden sm:inline">KakoBuy</span>
                 </a>
               </div>
@@ -2544,12 +2521,6 @@
         if (hdrCurrCode) hdrCurrCode.textContent = state.currency;
         const hdrLangBtn = document.getElementById('header-lang-btn');
         if (hdrLangBtn) hdrLangBtn.textContent = state.lang;
-        const sideCurrSym = document.getElementById('sidebar-curr-symbol');
-        if (sideCurrSym) sideCurrSym.textContent = currCfg.symbol;
-        const sideCurrCode = document.getElementById('sidebar-curr-code');
-        if (sideCurrCode) sideCurrCode.textContent = state.currency;
-        const sideLangCode = document.getElementById('sidebar-lang-code');
-        if (sideLangCode) sideLangCode.textContent = state.lang;
 
         const sideTotalBadge = document.getElementById('sidebar-total-badge');
         if (sideTotalBadge) sideTotalBadge.textContent = state.products.length;
