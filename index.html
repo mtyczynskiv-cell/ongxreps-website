@@ -568,13 +568,8 @@
     <!-- Brand Identity -->
     <div class="p-6 border-b border-hairline">
       <div class="flex items-center justify-between">
-        <button onclick="App.navigate('home')" class="flex items-center gap-3 text-left group focus:outline-none">
-          <div class="w-9 h-9 radius-control bg-white text-black flex items-center justify-center font-display font-bold text-xl tracking-tighter shadow-sm group-hover:bg-acid transition-colors">
-            O
-          </div>
-          <div>
-            <span class="font-display font-bold text-xl tracking-tight text-white block leading-none">ONGXREPS</span>
-          </div>
+        <button onclick="App.navigate('home')" class="flex items-center h-9 text-left group focus:outline-none">
+          <span class="font-display font-bold text-2xl tracking-tight text-white block leading-none group-hover:text-acid transition-colors">ONGXREPS</span>
         </button>
         <span class="font-mono text-[10px] px-2 py-0.5 radius-badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 flex items-center gap-1.5">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot"></span>
@@ -664,17 +659,14 @@
   <div class="flex-1 lg:pl-72 flex flex-col min-h-screen">
 
     <!-- STICKY TOP MOBILE & DESKTOP HEADER (Ergonomic for 375px-430px iPhone Screens) -->
-    <header class="sticky top-0 z-30 glass-bar px-3 py-2.5 sm:px-6 lg:px-8 lg:py-3.5">
-      <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+    <header class="sticky top-0 z-30 glass-bar py-2.5 lg:py-3.5">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between gap-2">
 
         <!-- Left: Brand Identity + Live Sync Dot -->
         <div class="flex items-center gap-2 min-w-0">
-          <button onclick="App.navigate('home')" class="flex items-center gap-2.5 text-left focus:outline-none group min-w-0">
-            <div class="w-8 h-8 radius-control bg-white text-black flex items-center justify-center font-display font-bold text-lg tracking-tighter shrink-0 shadow-sm group-active:scale-95 transition-transform">
-              O
-            </div>
-            <div class="min-w-0 flex items-center gap-1.5">
-              <span class="font-display font-bold text-base sm:text-lg tracking-tight text-white leading-none truncate">ONGXREPS</span>
+          <button onclick="App.navigate('home')" class="flex items-center h-8 pl-0.5 sm:pl-0 text-left focus:outline-none group min-w-0">
+            <div class="min-w-0 flex items-center gap-2">
+              <span class="font-display font-bold text-xl sm:text-2xl tracking-tight text-white leading-none truncate">ONGXREPS</span>
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot shrink-0" title="Live Catalog"></span>
             </div>
           </button>
