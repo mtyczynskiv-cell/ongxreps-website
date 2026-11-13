@@ -365,6 +365,29 @@
       transform: scale(0.98);
     }
 
+    /* Discord Brand CTA */
+    .btn-discord {
+      background-color: #5865F2;
+      color: #FFFFFF;
+      border-radius: var(--radius-control);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+    }
+    .btn-discord:hover {
+      background-color: #4752C4;
+    }
+    .btn-discord:active {
+      transform: scale(0.98);
+    }
+
+    /* Community CTAs: keep one line in the narrow 3-column laptop range */
+    @media (min-width: 1024px) and (max-width: 1099.98px) {
+      .community-cta {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        white-space: nowrap;
+      }
+    }
+
     /* KakoBuy Monogram Icon */
     .kb-icon {
       display: inline-flex;
@@ -491,6 +514,7 @@
     @media (hover: hover) and (pointer: fine) {
       .btn-primary-white:hover,
       .btn-kakobuy:hover,
+      .btn-discord:hover,
       .btn-surface-secondary:hover,
       .ship-line-btn:hover,
       .view-mode-btn:hover {
@@ -499,12 +523,26 @@
       .sidebar-btn:hover {
         transform: scale(1.015);
       }
+      .btn-primary-white:active,
+      .btn-kakobuy:active,
+      .btn-discord:active {
+        transform: scale(0.98);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
         transition-duration: 0.01ms !important;
+      }
+      .btn-primary-white,
+      .btn-kakobuy,
+      .btn-discord,
+      .btn-surface-secondary,
+      .ship-line-btn,
+      .view-mode-btn,
+      .sidebar-btn {
+        transform: none !important;
       }
     }
 
@@ -1071,7 +1109,7 @@
               </p>
             </div>
             <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
-              <a href="https://discord.gg/9yaAhBdBDy" target="_blank" rel="noopener noreferrer" class="ext-action-link flex-1 py-3 px-4 radius-control bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold text-xs text-center transition-all" data-i18n="discordJoinBtn">
+              <a href="https://discord.gg/9yaAhBdBDy" target="_blank" rel="noopener noreferrer" class="ext-action-link community-cta flex-1 py-3 px-4 btn-discord font-bold text-xs text-center" data-i18n="discordJoinBtn">
                 Dołącz do Discorda
               </a>
             </div>
@@ -1092,18 +1130,18 @@
               </p>
             </div>
             <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
-              <a href="https://tiktok.com/@ongxr3ps" target="_blank" rel="noopener noreferrer" class="ext-action-link flex-1 py-3 px-4 btn-primary-white font-bold text-xs text-center" data-i18n="tiktokFollowBtn">
+              <a href="https://tiktok.com/@ongxr3ps" target="_blank" rel="noopener noreferrer" class="ext-action-link community-cta flex-1 py-3 px-4 btn-primary-white font-bold text-xs text-center" data-i18n="tiktokFollowBtn">
                 Obserwuj na TikTok
               </a>
             </div>
           </div>
 
           <!-- KakoBuy Store / Affiliate -->
-          <div class="p-6 surface-bento border-[#E8202E]/30 flex flex-col justify-between">
+          <div class="p-6 surface-bento flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between">
-                <div class="kb-icon w-12 h-12 radius-card text-lg">
-                  KB
+                <div class="w-12 h-12 radius-card bg-[#E8202E]/15 border border-[#E8202E]/35 flex items-center justify-center text-[#FF4D45]">
+                  <svg class="w-6 h-6" fill="currentColor" viewBox="44.5 46 420 420" aria-hidden="true"><path d="M120 72H222V222C235.3 213.2 295 134 389 112V213C288.4 251.4 235.3 362.9 222 376V440H120ZM267 341H365V440H267Z"/></svg>
                 </div>
                 <span class="font-mono tabular-nums text-[10px] px-2.5 py-1 radius-badge bg-[#E8202E]/15 text-[#FF5A4E] border border-[#E8202E]/35 font-bold" data-i18n="kakobuyBadge">KUPONY</span>
               </div>
@@ -1112,17 +1150,9 @@
                 Załóż konto na jednym z najtańszych i najszybszych agentów i odbierz nawet 1500 zł zniżek w kuponach na dostawę.
               </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-hairline flex">
-              <a
-                id="community-kakobuy-link"
-                href="https://ikako.vip/r/OngxReps"
-                target="_blank"
-                rel="noopener noreferrer"
-                style="position:relative; z-index:50; pointer-events:auto; touch-action:manipulation;"
-                class="ext-action-link flex-1 py-3 px-4 btn-kakobuy font-bold text-xs text-center flex items-center justify-center gap-2"
-              >
-                <span class="kb-mark" style="pointer-events:none;">KB</span>
-                <span style="pointer-events:none;" data-i18n="kakobuyCardCta">Odbierz Kupony KakoBuy</span>
+            <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
+              <a id="community-kakobuy-link" href="https://ikako.vip/r/OngxReps" target="_blank" rel="noopener noreferrer" class="ext-action-link community-cta flex-1 py-3 px-4 btn-kakobuy font-bold text-xs text-center" data-i18n="kakobuyCardCta">
+                Odbierz Kupony KakoBuy
               </a>
             </div>
           </div>
