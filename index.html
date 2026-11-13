@@ -1634,15 +1634,8 @@
         <div id="popup-dots" class="flex-1 grid grid-flow-col auto-cols-fr gap-1.5"></div>
       </div>
 
-      <!-- Step: Agent -->
-      <div data-popup-step="agent" class="mt-5 section-fade">
-        <h3 class="font-display text-xl sm:text-2xl font-bold text-white leading-snug" data-i18n="popupAgentTitle">Wybierz swojego agenta</h3>
-        <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="popupAgentDesc">Linki, przyciski i kupony dopasujemy do wybranego agenta. Możesz go zmienić w każdej chwili w nagłówku strony.</p>
-        <div id="popup-agent-options" class="mt-5 grid grid-cols-2 gap-3"></div>
-      </div>
-
       <!-- Step: Language -->
-      <div data-popup-step="lang" class="hidden mt-5 section-fade">
+      <div data-popup-step="lang" class="mt-5 section-fade">
         <h3 class="font-display text-xl sm:text-2xl font-bold text-white leading-snug" data-i18n="popupLangTitle">Wybierz język strony</h3>
         <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="popupLangDesc">Możesz go zmienić w każdej chwili w nagłówku strony.</p>
         <div id="popup-lang-options" class="mt-5 grid grid-cols-8 gap-3" role="group"></div>
@@ -1666,6 +1659,16 @@
             <span data-i18n="popupNext">Dalej</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </button>
+        </div>
+      </div>
+
+      <!-- Step: Agent -->
+      <div data-popup-step="agent" class="hidden mt-5 section-fade">
+        <h3 class="font-display text-xl sm:text-2xl font-bold text-white leading-snug" data-i18n="popupAgentTitle">Wybierz swojego agenta</h3>
+        <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="popupAgentDesc">Linki, przyciski i kupony dopasujemy do wybranego agenta. Możesz go zmienić w każdej chwili w nagłówku strony.</p>
+        <div id="popup-agent-options" class="mt-5 grid grid-cols-2 gap-3"></div>
+        <div class="mt-3 flex items-center justify-between">
+          <button onclick="App.popupBack()" class="px-2 py-1.5 font-mono text-[11px] text-[#9E9EA9] hover:text-white transition-colors" data-i18n="popupBack">Wstecz</button>
         </div>
       </div>
 
@@ -3607,8 +3610,10 @@
 
       // Opens on the agent promotion by default; the welcome flow starts at the first step
       function openCouponPopup(step = 'promo') {
-        state.popupSteps = state.agentChosen ? ['lang', 'curr', 'promo'] : ['agent', 'lang', 'curr', 'promo'];
-        if (step === 'agent') state.popupSteps = ['agent', 'lang', 'curr', 'promo'];
+        // Always: language → currency → agent → coupon of the chosen agent
+        state.popupSteps = ['lang', 'curr', 'agent', 'promo'];
+        // The coupon step is only reachable once an agent has been chosen (no default KakoBuy coupon)
+        if (step === 'promo' && !state.agentChosen) step = 'agent';
         setPopupStep(step === 'first' ? state.popupSteps[0] : step);
         const popup = document.getElementById('agent-popup');
         if (popup) popup.classList.remove('hidden');
@@ -3624,6 +3629,7 @@
         closeAllDropdowns();
         renderAll();
         if (opts.fromPopup) {
+          // Choosing the agent leads to the coupon of that agent
           popupNext();
         } else if (changed) {
           showToast(t('toastAgent'));
