@@ -543,7 +543,6 @@
           </div>
           <div>
             <span class="font-display font-bold text-xl tracking-tight text-white block leading-none">ONGXREPS</span>
-            <span class="font-mono text-[10px] tracking-widest text-[#9E9EA9] uppercase mt-1 block">ARCHIVE // VERIFIED</span>
           </div>
         </button>
         <span class="font-mono text-[10px] px-2 py-0.5 radius-badge bg-emerald-500/10 text-emerald-400 border border-emerald-500/25 flex items-center gap-1.5">
@@ -672,12 +671,9 @@
             <div class="w-8 h-8 radius-control bg-white text-black flex items-center justify-center font-display font-bold text-lg tracking-tighter shrink-0 shadow-sm group-active:scale-95 transition-transform">
               O
             </div>
-            <div class="min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span class="font-display font-bold text-sm sm:text-base tracking-tight text-white leading-none truncate">ONGXREPS</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot shrink-0" title="Live Catalog"></span>
-              </div>
-              <span class="font-mono text-[9px] tracking-widest text-[#9E9EA9] uppercase block mt-0.5 truncate">VERIFIED ARCHIVE</span>
+            <div class="min-w-0 flex items-center gap-1.5">
+              <span class="font-display font-bold text-base sm:text-lg tracking-tight text-white leading-none truncate">ONGXREPS</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 live-dot shrink-0" title="Live Catalog"></span>
             </div>
           </button>
         </div>
@@ -1305,10 +1301,6 @@
               onclick="App.toggleQcZoom()"
               class="w-full h-full object-cover qc-zoom-img qc-unzoomed"
             />
-            <!-- Top-Left Product Hashtag -->
-            <div class="absolute top-3 left-3 px-2.5 py-1 radius-badge glass-pill font-mono tabular-nums text-[11px] font-bold text-acid pointer-events-none" id="qc-id-badge">
-              #ONGX-001
-            </div>
             <!-- Bottom-Right Product Weight Readout -->
             <div class="absolute bottom-4 right-3 px-2.5 py-1 radius-badge glass-pill font-mono tabular-nums text-[11px] font-bold text-acid pointer-events-none" id="qc-weight-stamp">
               WAGA: 960 g
@@ -1599,9 +1591,9 @@
           copyRawLink: 'Kopiuj Raw Link',
           qcCopyLink: 'Kopiuj Link',
           saveToPlannerTitle: 'Zapisz do Twój Haul Planner',
-          toastSaved: 'Dodano #{id} do Twój Haul Planner',
-          toastRemoved: 'Usunięto #{id} z Twój Haul Planner',
-          toastRawCopied: 'Skopiowano Raw Link ({id})!',
+          toastSaved: 'Dodano do Twój Haul Planner',
+          toastRemoved: 'Usunięto z Twój Haul Planner',
+          toastRawCopied: 'Skopiowano Raw Link!',
           toastCopiedDefault: 'Skopiowano do schowka!',
           toastHaulEmpty: 'Twój Haul Planner jest pusty!',
           toastHaulCopied: 'Skopiowano pełną listę Haul!',
@@ -1719,9 +1711,9 @@
           copyRawLink: 'Copy Raw Link',
           qcCopyLink: 'Copy Link',
           saveToPlannerTitle: 'Save to Your Haul Planner',
-          toastSaved: 'Added #{id} to Your Haul Planner',
-          toastRemoved: 'Removed #{id} from Your Haul Planner',
-          toastRawCopied: 'Raw Link copied ({id})!',
+          toastSaved: 'Added to Your Haul Planner',
+          toastRemoved: 'Removed from Your Haul Planner',
+          toastRawCopied: 'Raw Link copied!',
           toastCopiedDefault: 'Copied to clipboard!',
           toastHaulEmpty: 'Your Haul Planner is empty!',
           toastHaulCopied: 'Full haul list copied!',
@@ -2041,7 +2033,7 @@
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
           <rect width="800" height="800" fill="#111114"/>
           <rect x="80" y="80" width="640" height="640" rx="28" fill="#18181D" stroke="#26262E" stroke-width="3"/>
-          <text x="400" y="365" text-anchor="middle" fill="#E2FF32" font-family="monospace" font-weight="bold" font-size="38">ONGXREPS // ${code}</text>
+          <text x="400" y="365" text-anchor="middle" fill="#E2FF32" font-family="monospace" font-weight="bold" font-size="38">ONGXREPS</text>
           <text x="400" y="425" text-anchor="middle" fill="#FAFAFA" font-family="sans-serif" font-weight="bold" font-size="22">${title.slice(0, 32)}</text>
           <text x="400" y="475" text-anchor="middle" fill="#9CA3AF" font-family="monospace" font-size="16">QC PHOTOS</text>
         </svg>`;
@@ -2306,13 +2298,6 @@
                   class="ongx-card-img cursor-pointer"
                 />
 
-                <!-- Top-Left ID Pill -->
-                <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 pointer-events-none">
-                  <span class="px-2.5 py-1 radius-badge glass-pill font-mono tabular-nums text-[10px] font-semibold text-white">
-                    #${p.id.replace('ONGX-', '')}
-                  </span>
-                </div>
-
                 <!-- Top-Right Floating Circular Glass Bookmark/Vault Button -->
                 <button
                   onclick="App.toggleSave('${p.id}')"
@@ -2445,8 +2430,6 @@
 
             <div onclick="App.openQcModal('${p.id}')" class="flex-1 min-w-0 cursor-pointer">
               <div class="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-[#9E9EA9] min-w-0">
-                <span class="text-acid font-semibold tabular-nums shrink-0">#${p.id.replace('ONGX-', '')}</span>
-                <span class="text-[#686873]">•</span>
                 <span class="truncate">${getCategoryLabel(p.category)}</span>
               </div>
               <h3 class="font-display font-bold text-[13px] sm:text-[15px] text-[#F4F4F6] mt-1 ongx-title-clamp">${p.name}</h3>
@@ -2825,7 +2808,6 @@
           if (el) el.textContent = txt;
         };
 
-        setElText('qc-id-badge', `#${p.id}`);
         setElText('qc-zoom-label', '1.0x');
         setElText('qc-weight-stamp', `${t('labelWeight')}: ${p.weight_g} g`);
         setElText('qc-cat', getCategoryLabel(p.category));
