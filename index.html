@@ -602,6 +602,85 @@
       transform: scale(0.95);
     }
 
+    /* My Haul dashboard: compact rounded graphite cards, subtle separators */
+    .haul-card {
+      background-color: #111114;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      box-shadow: var(--specular-top);
+    }
+    .haul-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #868692;
+    }
+    .haul-label-strong {
+      font-size: 12px;
+      color: #ECECF1;
+    }
+    .haul-segment {
+      background-color: #0C0C0F;
+      border-radius: 12px;
+      padding: 4px;
+    }
+    .haul-range {
+      height: 4px;
+      background: linear-gradient(to right, #E2FF32 0%, #E2FF32 var(--fill, 0%), #2A2A32 var(--fill, 0%), #2A2A32 100%);
+    }
+    .haul-range::-webkit-slider-thumb {
+      width: 18px;
+      height: 18px;
+      background: #FFFFFF;
+      border: 0;
+      box-shadow: 0 0 0 4px rgba(226, 255, 50, 0.22), 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    .haul-range::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      background: #FFFFFF;
+      border: 0;
+      box-shadow: 0 0 0 4px rgba(226, 255, 50, 0.22), 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    .haul-ticks {
+      position: relative;
+      height: 14px;
+    }
+    .haul-ticks span {
+      position: absolute;
+      top: 0;
+      left: calc(9px + (100% - 18px) * var(--p));
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .haul-ticks span:last-child {
+      left: auto;
+      right: 0;
+      transform: none;
+    }
+    .haul-view-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #9E9EA9;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    }
+    .haul-view-btn:hover { color: #FFFFFF; background-color: rgba(255, 255, 255, 0.05); }
+    .haul-view-btn:active { transform: scale(0.94); }
+    .haul-view-btn.is-active { background-color: #FFFFFF; color: #080809; }
+    .haul-row-img {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #16161A;
+      flex-shrink: 0;
+    }
+
     /* Animated Range Slider */
     .ongx-range {
       -webkit-appearance: none;
@@ -1069,181 +1148,131 @@
            SECTION 3: SAVED VAULT / HAUL PLANNER (TWÓJ HAUL PLANNER)
            ===================================================================== -->
       <section id="view-saved" class="hidden space-y-5 section-fade">
-        <!-- Haul Planner Header & Live Total Cost Summary -->
-        <div class="p-5 sm:p-6 surface-bento space-y-5">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div>
-              <span class="font-mono text-[10px] uppercase tracking-widest text-acid" data-i18n="haulBadge">HAUL BUILDER & LIVE SHIPPING PRICE</span>
-              <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text mt-0.5" data-i18n="vaultHeading">Twój Haul Planner</h1>
-              <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="vaultSub">
-                Zapisane produkty z automatycznym podliczeniem wagi paczki, kosztem wysyłki na żywo i całkowitego kosztu zamówienia
-              </p>
+        <div class="max-w-3xl mx-auto space-y-4 sm:space-y-5">
+          <!-- 1. Header -->
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pt-1">
+            <div class="min-w-0">
+              <span class="haul-label" data-i18n="haulEyebrow">HAUL PLANNER</span>
+              <h1 class="font-display text-3xl sm:text-4xl font-bold text-white leading-tight mt-1.5" data-i18n="haulTitle">My Haul</h1>
+              <p class="text-sm text-[#9E9EA9] mt-1.5" data-i18n="haulDesc">Zarządzaj produktami i kosztami przesyłki</p>
+            </div>
+            <button onclick="App.exportHaulList()" class="self-start sm:self-auto shrink-0 h-10 px-4 btn-primary-white font-bold text-xs flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              <span data-i18n="copyHaulBtn">Kopiuj listę Haul</span>
+            </button>
+          </div>
+
+          <!-- 2. Two small stat cards -->
+          <div class="grid grid-cols-2 gap-3 sm:gap-4">
+            <div class="haul-card p-4 sm:p-5">
+              <span class="haul-label block" data-i18n="mobProducts">Produkty</span>
+              <span id="vault-count" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white whitespace-nowrap block mt-2">2</span>
+            </div>
+            <div class="haul-card p-4 sm:p-5">
+              <span class="haul-label block" data-i18n="labelWeight">WAGA</span>
+              <span id="vault-weight" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white whitespace-nowrap block mt-2">2.14 kg</span>
+            </div>
+          </div>
+
+          <!-- 3. Products price -->
+          <div class="haul-card px-4 py-4 sm:px-6 sm:py-5 flex items-center justify-between gap-4">
+            <span class="haul-label haul-label-strong" data-i18n="vaultProductsValueLabel">Cena produktów</span>
+            <span id="vault-total" class="font-display tabular-nums text-xl sm:text-2xl font-bold text-acid whitespace-nowrap shrink-0">312&nbsp;zł</span>
+          </div>
+
+          <!-- 4. Shipping price -->
+          <div class="haul-card px-4 py-4 sm:px-6 sm:py-5 flex items-center justify-between gap-4">
+            <div class="min-w-0">
+              <span class="haul-label haul-label-strong block" data-i18n="vaultShippingCostLabel">Cena wysyłki</span>
+              <span id="vault-shipping-sub" class="font-mono tabular-nums text-xs text-[#A8A8B3] whitespace-nowrap block mt-1">DPD • 2.1 kg</span>
+            </div>
+            <span id="vault-shipping" class="font-display tabular-nums text-xl sm:text-2xl font-bold text-acid whitespace-nowrap shrink-0">140&nbsp;zł</span>
+          </div>
+
+          <!-- 5. Grand total (existing framed style) -->
+          <div class="px-4 py-4 sm:px-6 sm:py-5 radius-card bg-gradient-to-r from-[#16161B] to-obsidian border-2 border-[#E2FF32] shadow-[0_0_28px_rgba(226,255,50,0.14)] flex items-center justify-between gap-4">
+            <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-tight" data-i18n="vaultGrandTotalLabel">Całkowita cena</span>
+            <span id="vault-grand-total" class="font-display tabular-nums text-2xl sm:text-3xl font-bold text-acid tracking-tight whitespace-nowrap shrink-0">452&nbsp;zł</span>
+          </div>
+
+          <!-- 6. Shipping calculator (live, 0–20 kg) -->
+          <div class="haul-card p-4 sm:p-6">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-acid live-dot"></span>
+                <span class="haul-label" data-i18n="shipLiveBadge">LIVE CALCULATOR // 0–20 KG</span>
+              </div>
+              <h2 class="font-display text-lg sm:text-xl font-bold text-white mt-1.5" data-i18n="shipCalcHeading">Przybliżony koszt wysyłki</h2>
+              <p class="text-xs text-[#868692] mt-1 leading-relaxed" data-i18n="shipOverallLabel">Orientacyjna cena aktualizowana na żywo podczas przesuwania wagi lub zmiany przewoźnika.</p>
             </div>
 
-            <div class="flex flex-wrap items-center gap-2">
-              <button onclick="App.exportHaulList()" class="px-4 py-2.5 btn-primary-white font-bold text-xs flex items-center gap-1.5">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                <span data-i18n="copyHaulBtn">Kopiuj listę Haul</span>
+            <!-- Estimated cost: label + current carrier badge (left) · amount (right) -->
+            <div id="ship-result-card" class="mt-4 flex items-center justify-between gap-3 px-4 py-3.5 rounded-xl bg-[#0C0C0F]">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="haul-label whitespace-nowrap" data-i18n="shipIndicativeBadge">SZACUNKOWY KOSZT</span>
+                <span class="font-mono text-[10px] font-bold px-1.5 py-0.5 radius-badge text-acid bg-[#E2FF32]/[0.06] border border-[#E2FF32]/40 whitespace-nowrap" id="ship-summary-line">DPD</span>
+              </div>
+              <span id="ship-overall-cost" class="font-display tabular-nums text-xl sm:text-2xl font-bold text-acid whitespace-nowrap shrink-0">140&nbsp;zł</span>
+            </div>
+
+            <div class="mt-5 pt-5 border-t border-white/[0.06] space-y-5">
+              <!-- Carrier Selection: Exclusively DPD, DHL, ETL -->
+              <div>
+                <span class="haul-label block" data-i18n="shipSelectLineLabel">WYBÓR LINII TRANSPORTOWEJ</span>
+                <div class="haul-segment grid grid-cols-3 gap-1 mt-2.5">
+                  <button type="button" onclick="App.selectShipLine('DPD')" data-ship-line="DPD" class="ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"><span>DPD</span></button>
+                  <button type="button" onclick="App.selectShipLine('DHL')" data-ship-line="DHL" class="ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"><span>DHL</span></button>
+                  <button type="button" onclick="App.selectShipLine('ETL')" data-ship-line="ETL" class="ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"><span>ETL</span></button>
+                </div>
+              </div>
+
+              <!-- Live Weight Slider (0 to 20 kg) -->
+              <div>
+                <div class="flex items-center justify-between gap-3">
+                  <span class="haul-label" data-i18n="shipWeightLabel">WAGA PACZKI (0 – 20 KG)</span>
+                  <div class="flex items-center gap-2 shrink-0">
+                    <span id="ship-weight-display" class="font-display tabular-nums text-lg font-bold text-white whitespace-nowrap">2.1 kg</span>
+                    <button onclick="App.resetShipWeight()" class="w-8 h-8 btn-surface-secondary text-[#9E9EA9] hover:text-white flex items-center justify-center" title="Ustaw wagę paczki na 0.0 kg" aria-label="Zeruj wagę" data-i18n-title="vaultSyncWeightTitle" data-i18n-aria-label="vaultSyncWeightBtn">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <input id="ship-weight-slider" type="range" min="0" max="20" step="0.1" value="2.1" oninput="App.setShipWeight(this.value)" class="ongx-range haul-range w-full mt-4 mb-2.5 cursor-pointer" />
+                <div class="haul-ticks font-mono tabular-nums text-[10px] text-[#686873]">
+                  <span style="--p: 0">0</span>
+                  <span style="--p: 0.1">2</span>
+                  <span style="--p: 0.25">5</span>
+                  <span style="--p: 0.5">10</span>
+                  <span style="--p: 0.75">15</span>
+                  <span style="--p: 1">20 kg</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Products header with the Haul view switch (independent from the catalog switch) -->
+          <div class="haul-card px-4 py-3 sm:px-6 sm:py-3.5 flex items-center justify-between gap-4">
+            <h2 class="font-display text-lg sm:text-xl font-bold text-white" data-i18n="mobProducts">Produkty</h2>
+            <div id="saved-view-toggle" class="haul-segment flex items-center gap-1" role="group">
+              <button type="button" onclick="App.setHaulViewMode('list')" data-haul-view="list" class="haul-view-btn" title="Kompaktowa lista" aria-label="Kompaktowa lista" data-i18n-title="viewListTitle" data-i18n-aria-label="viewListTitle">
+                <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1" stroke-width="1.8"/><rect x="4" y="15" width="4" height="4" rx="1" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M11 7h9M11 17h9"/></svg>
+              </button>
+              <button type="button" onclick="App.setHaulViewMode('grid')" data-haul-view="grid" class="haul-view-btn" title="Duże karty" aria-label="Duże karty" data-i18n-title="viewGridTitle" data-i18n-aria-label="viewGridTitle">
+                <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/></svg>
               </button>
             </div>
           </div>
 
-          <!-- 4 Vertical Rows Cost Summary (One Below Another) -->
-          <div class="space-y-2.5">
-            <!-- Row 1: Ilość produktów -->
-            <div class="px-4 py-3.5 radius-control bg-obsidian border border-hairline flex items-center justify-between gap-4">
-              <div class="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2.5">
-                <span class="font-sans text-xs sm:text-sm font-medium text-[#9E9EA9]" data-i18n="vaultItemsCountLabel">Ilość produktów</span>
-                <span id="vault-weight" class="font-mono tabular-nums text-[11px] text-[#686873] whitespace-nowrap">(2.14 kg)</span>
-              </div>
-              <span id="vault-count" class="font-mono tabular-nums text-base sm:text-lg font-bold text-white whitespace-nowrap shrink-0">2</span>
-            </div>
+          <!-- 8. Saved products (list rows or cards) -->
+          <div id="saved-grid" class="haul-card px-4 sm:px-6 divide-y divide-white/[0.06]"></div>
 
-            <!-- Row 2: Cena produktów -->
-            <div class="px-4 py-3.5 radius-control bg-obsidian border border-hairline flex items-center justify-between gap-4">
-              <span class="font-sans text-xs sm:text-sm font-medium text-[#9E9EA9]" data-i18n="vaultProductsValueLabel">Cena produktów</span>
-              <div class="flex items-baseline gap-2 shrink-0 whitespace-nowrap">
-                <span id="vault-total" class="font-mono tabular-nums text-base sm:text-lg font-bold text-white whitespace-nowrap">312&nbsp;zł</span>
-              </div>
-            </div>
-
-            <!-- Row 3: Cena wysyłki -->
-            <div class="px-4 py-3.5 radius-control bg-obsidian border border-hairline flex items-center justify-between gap-4">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="font-sans text-xs sm:text-sm font-medium text-[#9E9EA9]" data-i18n="vaultShippingCostLabel">Cena wysyłki</span>
-                <span id="vault-shipping-sub" class="font-mono tabular-nums text-[10px] px-2 py-0.5 radius-badge bg-charcoal-800 text-acid border border-hairline whitespace-nowrap shrink-0">DPD • 2.1 kg</span>
-              </div>
-              <span id="vault-shipping" class="font-mono tabular-nums text-base sm:text-lg font-bold text-zinc-200 whitespace-nowrap shrink-0">140&nbsp;zł</span>
-            </div>
-
-            <!-- Row 4: Całkowita cena (Visually Highlighted & Most Prominent) -->
-            <div class="px-4 py-4 sm:px-5 sm:py-4.5 radius-card bg-gradient-to-r from-[#16161B] to-obsidian border-2 border-[#E2FF32] shadow-[0_0_28px_rgba(226,255,50,0.14)] flex items-center justify-between gap-4">
-              <div>
-                <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-tight block" data-i18n="vaultGrandTotalLabel">Całkowita cena</span>
-              </div>
-              <span id="vault-grand-total" class="font-display tabular-nums text-2xl sm:text-3xl font-bold text-acid tracking-tight whitespace-nowrap shrink-0">452&nbsp;zł</span>
-            </div>
-          </div>
-
-          <!-- Integrated Live Shipping Cost Calculator (0-20 kg, DPD / DHL / ETL, No Confirmation Button) -->
-          <div class="p-4 sm:p-5 radius-card bg-obsidian/90 border border-hairline space-y-5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-hairline">
-              <div>
-                <div class="flex items-center gap-2">
-                  <span class="w-1.5 h-1.5 rounded-full bg-acid live-dot"></span>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-acid" data-i18n="shipLiveBadge">LIVE CALCULATOR // 0–20 KG</span>
-                </div>
-                <h2 class="font-display text-lg sm:text-xl font-bold text-white mt-0.5" data-i18n="shipCalcHeading">Przybliżony koszt wysyłki</h2>
-                <p class="text-[11px] text-[#9E9EA9] mt-0.5" data-i18n="shipOverallLabel">
-                  Orientacyjna stawka aktualizowana na żywo podczas przesuwania wagi lub zmiany przewoźnika.
-                </p>
-              </div>
-
-              <!-- Prominent Live Shipping Cost Readout Right Above/Beside Controls -->
-              <div id="ship-result-card" class="px-3 py-2 radius-control bg-charcoal-900 border border-hairline flex sm:flex-col items-center sm:items-end justify-between gap-2 min-w-0 max-w-full overflow-hidden shrink-0">
-                <div class="flex items-center gap-1.5 whitespace-nowrap">
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9]" data-i18n="shipIndicativeBadge">SZACUNKOWY KOSZT</span>
-                  <span class="font-mono text-[10px] px-1.5 py-0.5 radius-badge bg-white/5 text-acid border border-hairline whitespace-nowrap" id="ship-summary-line">DPD</span>
-                </div>
-                <div class="flex items-baseline gap-1.5 shrink-0 whitespace-nowrap">
-                  <span id="ship-overall-cost" class="font-mono tabular-nums text-sm sm:text-base font-bold text-acid whitespace-nowrap leading-tight">140&nbsp;zł</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Carrier Selection: Exclusively DPD, DHL, ETL -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9]" data-i18n="shipSelectLineLabel">
-                  WYBÓR LINII TRANSPORTOWEJ
-                </span>
-              </div>
-              <div class="grid grid-cols-3 gap-2.5">
-                <button
-                  type="button"
-                  onclick="App.selectShipLine('DPD')"
-                  data-ship-line="DPD"
-                  class="ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"
-                >
-                  <span>DPD</span>
-                </button>
-                <button
-                  type="button"
-                  onclick="App.selectShipLine('DHL')"
-                  data-ship-line="DHL"
-                  class="ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"
-                >
-                  <span>DHL</span>
-                </button>
-                <button
-                  type="button"
-                  onclick="App.selectShipLine('ETL')"
-                  data-ship-line="ETL"
-                  class="ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"
-                >
-                  <span>ETL</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Live Weight Slider (0 to 20 kg) -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9]" data-i18n="shipWeightLabel">
-                  WAGA PACZKI (0 – 20 KG)
-                </span>
-                <div class="flex items-center gap-2">
-                  <span id="ship-weight-display" class="font-mono tabular-nums text-sm sm:text-base font-bold text-white">
-                    2.1 kg
-                  </span>
-                </div>
-              </div>
-              <div class="grid grid-cols-[1fr_auto] items-center gap-x-3">
-                <input
-                  id="ship-weight-slider"
-                  type="range"
-                  min="0"
-                  max="20"
-                  step="0.1"
-                  value="2.1"
-                  oninput="App.setShipWeight(this.value)"
-                  class="ongx-range w-full my-2 cursor-pointer"
-                />
-                <button onclick="App.resetShipWeight()" class="px-2.5 sm:px-3 py-2 btn-surface-secondary font-mono text-[11px] sm:text-xs text-zinc-200 hover:text-white flex items-center gap-1.5 whitespace-nowrap" title="Ustaw wagę paczki na 0.0 kg" aria-label="Zeruj wagę" data-i18n-title="vaultSyncWeightTitle" data-i18n-aria-label="vaultSyncWeightBtn">
-                  <svg class="w-3.5 h-3.5 text-acid" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                  <span class="hidden sm:inline" data-i18n="vaultSyncWeightBtn">Zeruj wagę</span>
-                </button>
-                <div class="flex items-center justify-between font-mono tabular-nums text-[10px] text-[#686873]">
-                  <span>0 kg</span>
-                  <span>2 kg</span>
-                  <span>5 kg</span>
-                  <span>10 kg</span>
-                  <span>15 kg</span>
-                  <span>20 kg</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="saved-view-toggle" class="flex justify-center pt-1">
-          <div class="flex items-center gap-1 p-1 radius-control bg-charcoal-900 border border-white/10 shadow-sm" role="group">
-            <button type="button" onclick="App.setViewMode('grid')" data-view-mode="grid" class="view-mode-btn w-10 h-10 radius-badge flex items-center justify-center transition-all" title="Duże karty" aria-label="Duże karty" data-i18n-title="viewGridTitle" data-i18n-aria-label="viewGridTitle">
-              <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/></svg>
-            </button>
-            <button type="button" onclick="App.setViewMode('list')" data-view-mode="list" class="view-mode-btn w-10 h-10 radius-badge flex items-center justify-center transition-all" title="Kompaktowa lista" aria-label="Kompaktowa lista" data-i18n-title="viewListTitle" data-i18n-aria-label="viewListTitle">
-              <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1" stroke-width="1.8"/><rect x="4" y="15" width="4" height="4" rx="1" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M11 7h9M11 17h9"/></svg>
+          <div id="saved-empty" class="hidden p-10 haul-card text-center">
+            <p class="font-display text-lg font-bold text-white" data-i18n="emptyVaultTitle">Schowek jest pusty</p>
+            <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="emptyVaultDesc">Dotknij ikony zakładki na dowolnej karcie produktu, aby dodać go do swojego Haula.</p>
+            <button onclick="App.navigate('products')" class="mt-4 px-5 py-2.5 btn-primary-white font-bold text-xs" data-i18n="emptyVaultCta">
+              Przejdź do Katalogu
             </button>
           </div>
-        </div>
-        <div id="saved-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 items-stretch"></div>
-
-        <div id="saved-empty" class="hidden p-10 surface-bento text-center max-w-md mx-auto">
-          <p class="font-display text-lg font-bold text-white" data-i18n="emptyVaultTitle">Schowek jest pusty</p>
-          <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="emptyVaultDesc">Dotknij ikony zakładki na dowolnej karcie produktu, aby dodać go do swojego Haula.</p>
-          <button onclick="App.navigate('products')" class="mt-4 px-5 py-2.5 btn-primary-white font-bold text-xs" data-i18n="emptyVaultCta">
-            Przejdź do Katalogu
-          </button>
         </div>
       </section>
 
@@ -2069,7 +2098,7 @@
           agentCardTitle: '{agent}',
           agentCardDesc: 'Załóż konto na jednym z najtańszych i najszybszych agentów i odbierz nawet 1500 zł zniżek w kuponach na dostawę.',
           shipCalcHeading: 'Przybliżony koszt wysyłki',
-          shipOverallLabel: 'Orientacyjna stawka aktualizowana na żywo podczas przesuwania wagi lub zmiany przewoźnika.',
+          shipOverallLabel: 'Orientacyjna cena aktualizowana na żywo podczas przesuwania wagi lub zmiany przewoźnika.',
           shipIndicativeBadge: 'SZACUNKOWY KOSZT',
           shipSelectLineLabel: 'WYBÓR LINII TRANSPORTOWEJ',
           shipWeightLabel: 'WAGA PACZKI (0 – 20 KG)',
@@ -2174,7 +2203,11 @@
           catalogCount: "{n} PRODUKTÓW",
           toastCurrency: "Waluta zmieniona na {code}",
           toastLanguage: "Język: {lang}",
-          toastWeightSynced: "Zaktualizowano wagę paczki z haula: {kg} kg"
+          toastWeightSynced: "Zaktualizowano wagę paczki z haula: {kg} kg",
+          haulEyebrow: "HAUL PLANNER",
+          haulTitle: "My Haul",
+          haulDesc: "Zarządzaj produktami i kosztami przesyłki",
+          costSummaryTitle: "Podsumowanie kosztów"
         },
         EN: {
           searchPlaceholderShort: 'Search by name',
@@ -2227,7 +2260,7 @@
           agentCardTitle: '{agent}',
           agentCardDesc: 'Create an account with one of the cheapest and fastest agents and claim up to 1500 PLN in shipping discount coupons.',
           shipCalcHeading: 'Approximate shipping cost',
-          shipOverallLabel: 'Indicative rate updated live as you slide parcel weight or switch carrier.',
+          shipOverallLabel: 'Indicative price updated live as you slide parcel weight or switch carrier.',
           shipIndicativeBadge: 'APPROXIMATE COST',
           shipSelectLineLabel: 'SELECT SHIPPING LINE',
           shipWeightLabel: 'PARCEL WEIGHT (0 – 20 KG)',
@@ -2332,7 +2365,11 @@
           catalogCount: "{n} PRODUCTS",
           toastCurrency: "Currency switched to {code}",
           toastLanguage: "Language: {lang}",
-          toastWeightSynced: "Synced parcel weight from haul: {kg} kg"
+          toastWeightSynced: "Synced parcel weight from haul: {kg} kg",
+          haulEyebrow: "HAUL PLANNER",
+          haulTitle: "My Haul",
+          haulDesc: "Manage your products and shipping costs",
+          costSummaryTitle: "Cost summary"
         },
         DE: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -2389,7 +2426,7 @@
           tiktokCardDesc: "Tägliche Reps-TikToks, interessante Funde, Neuheiten und volle Unterstützung von mir.",
           agentCardDesc: "Erstelle ein Konto bei einem der günstigsten und schnellsten Agenten und sichere dir bis zu 1500 PLN Rabatt in Versandgutscheinen.",
           shipCalcHeading: "Ungefähre Versandkosten",
-          shipOverallLabel: "Richtwert, der sich live aktualisiert, wenn du das Paketgewicht änderst oder den Versanddienst wechselst.",
+          shipOverallLabel: "Richtpreis, der sich live aktualisiert, wenn du das Paketgewicht änderst oder den Versanddienst wechselst.",
           shipIndicativeBadge: "GESCHÄTZTE KOSTEN",
           shipSelectLineLabel: "VERSANDLINIE WÄHLEN",
           shipWeightLabel: "PAKETGEWICHT (0 – 20 KG)",
@@ -2490,7 +2527,11 @@
           catalogCount: "{n} PRODUKTE",
           toastCurrency: "Währung geändert zu {code}",
           toastLanguage: "Sprache: {lang}",
-          toastWeightSynced: "Paketgewicht aus dem Haul übernommen: {kg} kg"
+          toastWeightSynced: "Paketgewicht aus dem Haul übernommen: {kg} kg",
+          haulEyebrow: "HAUL PLANNER",
+          haulTitle: "My Haul",
+          haulDesc: "Verwalte deine Produkte und Versandkosten",
+          costSummaryTitle: "Kostenübersicht"
         },
         FR: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -2547,7 +2588,7 @@
           tiktokCardDesc: "Des TikToks reps tous les jours, des trouvailles intéressantes, des nouveautés et tout mon soutien.",
           agentCardDesc: "Crée un compte chez l'un des agents les moins chers et les plus rapides et obtiens jusqu'à 1500 PLN de réduction en bons de livraison.",
           shipCalcHeading: "Frais de port estimés",
-          shipOverallLabel: "Tarif indicatif mis à jour en direct quand tu modifies le poids du colis ou le transporteur.",
+          shipOverallLabel: "Prix indicatif mis à jour en direct quand tu modifies le poids du colis ou le transporteur.",
           shipIndicativeBadge: "COÛT ESTIMÉ",
           shipSelectLineLabel: "CHOIX DE LA LIGNE D'EXPÉDITION",
           shipWeightLabel: "POIDS DU COLIS (0 – 20 KG)",
@@ -2648,7 +2689,11 @@
           catalogCount: "{n} PRODUITS",
           toastCurrency: "Devise changée en {code}",
           toastLanguage: "Langue : {lang}",
-          toastWeightSynced: "Poids du colis repris du haul : {kg} kg"
+          toastWeightSynced: "Poids du colis repris du haul : {kg} kg",
+          haulEyebrow: "HAUL PLANNER",
+          haulTitle: "My Haul",
+          haulDesc: "Gère tes produits et tes frais d'expédition",
+          costSummaryTitle: "Récapitulatif des coûts"
         },
         ES: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -2705,7 +2750,7 @@
           tiktokCardDesc: "TikToks de reps a diario, hallazgos interesantes, novedades y todo mi apoyo.",
           agentCardDesc: "Crea una cuenta en uno de los agentes más baratos y rápidos y consigue hasta 1500 PLN de descuento en cupones de envío.",
           shipCalcHeading: "Coste de envío aproximado",
-          shipOverallLabel: "Tarifa orientativa que se actualiza en tiempo real al cambiar el peso del paquete o el transportista.",
+          shipOverallLabel: "Precio orientativo que se actualiza en tiempo real al cambiar el peso del paquete o el transportista.",
           shipIndicativeBadge: "COSTE ESTIMADO",
           shipSelectLineLabel: "LÍNEA DE ENVÍO",
           shipWeightLabel: "PESO DEL PAQUETE (0 – 20 KG)",
@@ -2806,7 +2851,11 @@
           catalogCount: "{n} PRODUCTOS",
           toastCurrency: "Moneda cambiada a {code}",
           toastLanguage: "Idioma: {lang}",
-          toastWeightSynced: "Peso del paquete tomado del haul: {kg} kg"
+          toastWeightSynced: "Peso del paquete tomado del haul: {kg} kg",
+          haulEyebrow: "HAUL PLANNER",
+          haulTitle: "My Haul",
+          haulDesc: "Gestiona tus productos y los costes de envío",
+          costSummaryTitle: "Resumen de costes"
         },
         IT: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -2863,7 +2912,7 @@
           tiktokCardDesc: "TikTok quotidiani sulle reps, scoperte interessanti, novità e tutto il mio supporto.",
           agentCardDesc: "Crea un account su uno degli agenti più economici e veloci e ottieni fino a 1500 PLN di sconto in coupon per la spedizione.",
           shipCalcHeading: "Costo di spedizione indicativo",
-          shipOverallLabel: "Tariffa indicativa aggiornata in tempo reale mentre modifichi il peso del pacco o cambi corriere.",
+          shipOverallLabel: "Prezzo indicativo aggiornato in tempo reale mentre modifichi il peso del pacco o cambi corriere.",
           shipIndicativeBadge: "COSTO STIMATO",
           shipSelectLineLabel: "SCELTA DELLA LINEA DI SPEDIZIONE",
           shipWeightLabel: "PESO DEL PACCO (0 – 20 KG)",
@@ -2964,7 +3013,11 @@
           catalogCount: "{n} PRODOTTI",
           toastCurrency: "Valuta cambiata in {code}",
           toastLanguage: "Lingua: {lang}",
-          toastWeightSynced: "Peso del pacco preso dall'haul: {kg} kg"
+          toastWeightSynced: "Peso del pacco preso dall'haul: {kg} kg",
+          haulEyebrow: "HAUL PLANNER",
+          haulTitle: "My Haul",
+          haulDesc: "Gestisci i tuoi prodotti e i costi di spedizione",
+          costSummaryTitle: "Riepilogo dei costi"
         },
         ZH: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -3122,7 +3175,11 @@
           catalogCount: "{n} 件商品",
           toastCurrency: "货币已切换为 {code}",
           toastLanguage: "语言：{lang}",
-          toastWeightSynced: "已根据 haul 更新包裹重量：{kg} kg"
+          toastWeightSynced: "已根据 haul 更新包裹重量：{kg} kg",
+          haulEyebrow: "HAUL PLANNER",
+          haulTitle: "My Haul",
+          haulDesc: "管理你的商品和运费",
+          costSummaryTitle: "费用汇总"
         }
       };
 
@@ -3390,6 +3447,11 @@
         return readStorage('ongx_view') === 'list' ? 'list' : 'grid';
       }
 
+      // Haul Planner has its own list / cards switch (default list), independent from the catalog
+      function loadHaulViewMode() {
+        return readStorage('ongx_haul_view') === 'grid' ? 'grid' : 'list';
+      }
+
       function loadSavedIds() {
         const fallback = ['ONGX-001', 'ONGX-002'];
         const raw = readStorage('ongx_saved');
@@ -3418,6 +3480,7 @@
         shipLine: 'DPD',
         shipWeightKg: 2.1,
         viewMode: loadViewMode(),
+        haulViewMode: loadHaulViewMode(),
         popupSteps: ['agent', 'lang', 'curr', 'promo'],
         popupStep: 'agent',
         converterInput: '',
@@ -3763,7 +3826,8 @@
         });
       }
 
-      function renderProductCard(p, index = 0) {
+      // opts.haul: Haul Planner card — the save button sits first in the action row, followed by the agent button
+      function renderProductCard(p, index = 0, opts = {}) {
         const isSaved = state.savedIds.includes(p.id);
         const agent = currentAgent();
         const parsed = productParsed(p);
@@ -3788,7 +3852,7 @@
                   class="ongx-card-img cursor-pointer"
                 />
 
-                <!-- Top-Right Floating Circular Glass Bookmark/Vault Button -->
+                ${opts.haul ? '' : `<!-- Top-Right Floating Circular Glass Bookmark/Vault Button -->
                 <button
                   onclick="App.toggleSave('${p.id}')"
                   class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full ${
@@ -3802,7 +3866,7 @@
                   <svg class="w-3.5 h-3.5" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
                   </svg>
-                </button>
+                </button>`}
 
                 ${p.sample ? `
                 <!-- Top-Left Sample Tag (demo listing without a verified store link) -->
@@ -3854,6 +3918,22 @@
 
             <!-- Card Footer Actions: Primary White CTA + 2-Col Secondary Control Bar -->
             <div class="px-4 pb-4 space-y-2">
+              ${opts.haul ? `<div class="flex items-center gap-2">
+                <button
+                  onclick="App.toggleSave('${p.id}')"
+                  class="w-9 h-9 shrink-0 rounded-full ${
+                    isSaved
+                      ? 'bg-acid text-black border border-acid shadow-[0_0_15px_rgba(226,255,50,0.35)]'
+                      : 'glass-pill text-zinc-200 hover:text-white'
+                  } flex items-center justify-center transition-all active:scale-90"
+                  aria-label="${escapeHtml(t('bookmarkLabel'))}"
+                  title="${dict.saveToPlannerTitle}"
+                >
+                  <svg class="w-3.5 h-3.5" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                  </svg>
+                </button>
+                <div class="flex-1 min-w-0">` : ''}
               ${agentUrl ? `
               <a
                 href="${escapeHtml(agentUrl)}"
@@ -3873,6 +3953,7 @@
                 <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" aria-hidden="true"><use href="${agent.logo}"/></svg>
                 <span>${t('linkSoon')}</span>
               </span>`}
+              ${opts.haul ? '</div></div>' : ''}
 
               <div class="grid grid-cols-2 gap-2">
                 <!-- Left: QC Photos (4) with Camera Icon -->
@@ -3914,6 +3995,36 @@
               </div>
             </div>
           </article>
+        `;
+      }
+
+      // My Haul list row: thumbnail · name · variant (batch) · price, with the existing actions
+      function renderHaulRow(p) {
+        const agent = currentAgent();
+        const agentUrl = productAgentUrl(p, agent.id);
+        const buyLabel = escapeHtml(agentUrl ? t('buyOnAgent') : t('sampleTitle'));
+        const fallback = getFallbackSvg(p.name, p.id);
+        return `
+          <div class="flex items-center gap-3 sm:gap-4 py-3.5">
+            <div onclick="App.openQcModal('${p.id}')" class="haul-row-img cursor-pointer">
+              <img src="${p.image}" alt="${p.name.replace(/"/g, '&quot;')}" loading="lazy" onerror="this.onerror=null;this.src='${fallback}';" class="w-full h-full object-cover" />
+            </div>
+            <div onclick="App.openQcModal('${p.id}')" class="flex-1 min-w-0 cursor-pointer">
+              <p class="text-sm font-semibold text-[#F4F4F6] truncate">${p.name}</p>
+              <p class="font-mono tabular-nums text-[11px] text-[#868692] truncate mt-0.5">${p.batch} • ${p.weight_g} g</p>
+            </div>
+            <div class="shrink-0 flex flex-col items-end gap-1.5">
+              <span class="font-display tabular-nums text-base sm:text-lg font-bold text-acid whitespace-nowrap">${formatPrice(p.price_cny, state.currency)}</span>
+              <div class="flex items-center gap-1.5">
+                <button onclick="App.toggleSave('${p.id}')" class="w-7 h-7 rounded-full bg-acid text-black flex items-center justify-center transition-all active:scale-90" aria-label="${escapeHtml(t('bookmarkLabel'))}" title="${escapeHtml(t('saveToPlannerTitle'))}">
+                  <svg class="w-3 h-3" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+                </button>
+                <${agentUrl ? 'a' : 'span'} ${agentUrl ? `href="${escapeHtml(agentUrl)}" target="_blank" rel="noopener noreferrer"` : 'aria-disabled="true"'} class="w-7 h-7 btn-agent-soft${agentUrl ? '' : ' is-disabled'} flex items-center justify-center" title="${buyLabel}" aria-label="${buyLabel}">
+                  <svg class="w-3.5 h-3.5" fill="currentColor" aria-hidden="true"><use href="${agent.logo}"/></svg>
+                </${agentUrl ? 'a' : 'span'}>
+              </div>
+            </div>
+          </div>
         `;
       }
 
@@ -4000,6 +4111,13 @@
             ? 'view-mode-btn w-10 h-10 radius-badge flex items-center justify-center bg-white text-black shadow-sm transition-all'
             : 'view-mode-btn w-10 h-10 radius-badge flex items-center justify-center text-[#C9C9D1] hover:text-white hover:bg-white/5 transition-all';
         });
+      }
+
+      function setHaulViewMode(mode) {
+        if (!['grid', 'list'].includes(mode)) return;
+        state.haulViewMode = mode;
+        writeStorage('ongx_haul_view', mode);
+        renderVault();
       }
 
       function setViewMode(mode) {
@@ -4180,7 +4298,7 @@
         }
         const vaultWeightEl = document.getElementById('vault-weight');
         if (vaultWeightEl) {
-          vaultWeightEl.textContent = `(${(totalWeightG / 1000).toFixed(2)} kg)`;
+          vaultWeightEl.textContent = `${(totalWeightG / 1000).toFixed(2)} kg`;
         }
         const vaultTotalEl = document.getElementById('vault-total');
         if (vaultTotalEl) vaultTotalEl.textContent = formatPrice(totalCny, state.currency);
@@ -4191,14 +4309,25 @@
         const empty = document.getElementById('saved-empty');
         const savedToggle = document.getElementById('saved-view-toggle');
         if (savedToggle) savedToggle.classList.toggle('hidden', !saved.length);
+        document.querySelectorAll('.haul-view-btn').forEach(btn => {
+          const active = btn.getAttribute('data-haul-view') === state.haulViewMode;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
         if (!grid || !empty) return;
         if (!saved.length) {
           grid.innerHTML = '';
+          grid.className = 'hidden';
           empty.classList.remove('hidden');
         } else {
           empty.classList.add('hidden');
-          grid.className = state.viewMode === 'list' ? LIST_LAYOUT_CLASS : GRID_LAYOUT_CLASS;
-          grid.innerHTML = renderProductItems(saved);
+          if (state.haulViewMode === 'grid') {
+            grid.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch';
+            grid.innerHTML = saved.map((p, idx) => renderProductCard(p, idx, { haul: true })).join('');
+          } else {
+            grid.className = 'haul-card px-4 sm:px-6 divide-y divide-white/[0.06]';
+            grid.innerHTML = saved.map(renderHaulRow).join('');
+          }
         }
       }
 
@@ -4257,8 +4386,8 @@
           const line = btn.getAttribute('data-ship-line');
           const active = line === state.shipLine;
           btn.className = active
-            ? 'ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center bg-acid text-black border border-acid shadow-[0_0_20px_rgba(226,255,50,0.22)] transition-all'
-            : 'ship-line-btn py-3 px-3 radius-control font-display font-bold text-xs sm:text-sm flex items-center justify-center btn-surface-secondary text-[#F4F4F6] transition-all';
+            ? 'ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center bg-white text-black shadow-sm transition-all'
+            : 'ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center text-[#9E9EA9] hover:text-white hover:bg-white/[0.04] transition-all';
         });
 
         const shipCny = computeIndicativeShipCny(state.shipWeightKg, state.shipLine);
@@ -4803,6 +4932,7 @@
         clearConverter,
         copyPromoCode,
         setViewMode,
+        setHaulViewMode,
         resetShipWeight,
         setCategory,
         filterByCategoryAndOpen,
