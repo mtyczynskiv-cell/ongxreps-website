@@ -281,6 +281,18 @@
       transform: scale(0.97);
     }
 
+    /* Home statistics: fade-in + rise and count-up, armed by JS only (content is never hidden without JS) */
+    #home-stats.stats-armed .stat-card:not(.is-revealed) { opacity: 0; transform: translateY(16px); }
+    #home-stats .stat-card.is-revealing { animation: statReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    #home-stats .stat-card[data-stat="members"].is-revealing { animation-delay: 0.14s; }
+    @keyframes statReveal {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .stat-num { display: inline-block; letter-spacing: -0.02em; }
+    .stat-num.is-pending { color: #3A3A44; animation: statPending 1.4s ease-in-out infinite; }
+    @keyframes statPending { 50% { opacity: 0.45; } }
+
     /* Smooth Section & Card Stagger Animations */
     .section-fade {
       animation: fadeSlideUp 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -1100,21 +1112,21 @@
         </div>
 
         <!-- Two Simple, Elegant Statistics (Available Products & Community Members) -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
-          <div onclick="App.navigate('products')" class="cursor-pointer p-5 sm:p-6 surface-bento frame-white flex items-center justify-between">
+        <div id="home-stats" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
+          <div onclick="App.navigate('products')" data-stat="products" class="stat-card cursor-pointer p-5 sm:p-6 surface-bento frame-white flex items-center justify-between">
             <div>
               <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9] block" data-i18n="statProductsLabel">LICZBA DOSTĘPNYCH PRODUKTÓW</span>
-              <div id="stat-products-val" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white mt-2">18</div>
+              <div class="font-display tabular-nums text-4xl sm:text-5xl leading-none font-bold text-white mt-3"><span id="stat-products-val" class="stat-num" aria-hidden="true">0</span><span id="stat-products-sr" class="sr-only"></span></div>
             </div>
             <div class="w-11 h-11 radius-control bg-charcoal-800 border border-[#E2FF32]/45 flex items-center justify-center text-acid">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
             </div>
           </div>
 
-          <div onclick="App.navigate('community')" class="cursor-pointer p-5 sm:p-6 surface-bento frame-white flex items-center justify-between">
+          <div onclick="App.navigate('community')" data-stat="members" class="stat-card cursor-pointer p-5 sm:p-6 surface-bento frame-white flex items-center justify-between">
             <div>
               <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9] block" data-i18n="statCommLabel">LICZBA CZŁONKÓW SPOŁECZNOŚCI</span>
-              <div id="stat-discord-members" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white mt-2">...</div>
+              <div class="font-display tabular-nums text-4xl sm:text-5xl leading-none font-bold text-white mt-3"><span id="stat-discord-members" class="stat-num is-pending" aria-hidden="true">—</span><span id="stat-discord-sr" class="sr-only"></span></div>
             </div>
             <div class="w-11 h-11 radius-control bg-charcoal-800 border border-emerald-400/45 flex items-center justify-center text-emerald-400">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -4248,9 +4260,9 @@
         renderPopupOptions();
         updateViewModeButtons();
 
-        // Stats on Home Page
-        const statProdEl = document.getElementById('stat-products-val');
-        if (statProdEl) statProdEl.textContent = state.products.length;
+        // Stats on Home Page: product count always follows the current product list
+        HomeStats.setTarget('products', state.products.length);
+        HomeStats.repaint();
 
         // Category pills
         const counts = { All: state.products.length };
@@ -4879,45 +4891,161 @@
         setTimeout(() => el.remove(), 2500);
       }
 
-      // Live Official Discord Member Count Fetcher (Invite API + Server Widget API, Zero Fake Fallback)
-      async function fetchDiscordMemberCount() {
-        const homeEl = document.getElementById('stat-discord-members');
-        const commEl = document.getElementById('community-discord-count');
-        const setDiscordCount = (val) => {
-          if (homeEl) homeEl.textContent = val;
-          if (commEl) commEl.textContent = val;
+      // Home statistics: real values only, count-up 0 → value once per visit when the cards scroll into view
+      const HomeStats = (() => {
+        const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+        const stats = {
+          products: { el: 'stat-products-val', sr: 'stat-products-sr', target: null, shown: 0, phase: 'idle', delay: 0, dur: 1300 },
+          members: { el: 'stat-discord-members', sr: 'stat-discord-sr', target: null, shown: 0, phase: 'idle', delay: 140, dur: 1900, failed: false }
         };
+        let armed = false;
+        const fmt = n => new Intl.NumberFormat((LANGUAGES[state.lang] || LANGUAGES.PL).html).format(Math.round(n));
+        const easeOut = t => 1 - Math.pow(1 - t, 4);
 
-        try {
-          const res = await fetch('https://discord.com/api/v10/invites/9yaAhBdBDy?with_counts=true', {
-            method: 'GET',
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (res.ok) {
-            const data = await res.json();
-            if (typeof data.approximate_member_count === 'number') {
-              setDiscordCount(data.approximate_member_count.toLocaleString('pl-PL'));
-              return;
-            }
-            if (data.guild && data.guild.id) {
-              const widgetRes = await fetch(`https://discord.com/api/guilds/${data.guild.id}/widget.json`, {
-                method: 'GET',
-                headers: { 'Accept': 'application/json' }
-              });
-              if (widgetRes.ok) {
-                const widgetData = await widgetRes.json();
-                if (typeof widgetData.presence_count === 'number') {
-                  setDiscordCount(widgetData.presence_count.toLocaleString('pl-PL'));
-                  return;
-                }
-              }
-            }
+        function paint(key) {
+          const s = stats[key];
+          const el = document.getElementById(s.el);
+          const sr = document.getElementById(s.sr);
+          if (!el) return;
+          if (s.target === null) {
+            el.textContent = '—';
+            el.classList.toggle('is-pending', !s.failed);
+            if (sr) sr.textContent = '—';
+          } else {
+            el.classList.remove('is-pending');
+            el.textContent = fmt(s.phase === 'idle' && armed ? 0 : s.shown);
+            if (sr) sr.textContent = fmt(s.target);
           }
-          setDiscordCount('—');
-        } catch (err) {
-          setDiscordCount('—');
+          if (key === 'members') {
+            const comm = document.getElementById('community-discord-count');
+            if (comm) comm.textContent = s.target === null ? '—' : fmt(s.target);
+          }
         }
+
+        function tween(key, from, dur) {
+          const s = stats[key];
+          cancelAnimationFrame(s.raf);
+          s.phase = 'counting';
+          const t0 = performance.now();
+          const step = now => {
+            const p = Math.min(1, (now - t0) / dur);
+            s.shown = from + (s.target - from) * easeOut(p);
+            if (p >= 1) { s.shown = s.target; s.phase = 'done'; }
+            paint(key);
+            if (p < 1) s.raf = requestAnimationFrame(step);
+          };
+          s.raf = requestAnimationFrame(step);
+        }
+
+        function start(key) {
+          const s = stats[key];
+          if (s.target === null) { s.phase = 'waiting'; paint(key); return; }
+          if (reduce || !armed) { s.shown = s.target; s.phase = 'done'; paint(key); return; }
+          s.phase = 'counting';
+          setTimeout(() => tween(key, 0, s.dur), s.delay);
+        }
+
+        function setTarget(key, value) {
+          const s = stats[key];
+          if (typeof value !== 'number' || !isFinite(value)) return;
+          const prev = s.target;
+          s.target = value;
+          s.failed = false;
+          if (s.phase === 'waiting') start(key);
+          else if (s.phase === 'done' && prev !== value) {
+            if (reduce) { s.shown = value; paint(key); } else tween(key, s.shown, 700);
+          } else if (s.phase === 'idle' && !armed) { s.shown = value; paint(key); }
+          else paint(key);
+        }
+
+        function fail(key) {
+          const s = stats[key];
+          if (s.target !== null) return; // keep the last real value
+          s.failed = true;
+          paint(key);
+        }
+
+        function reveal() {
+          const box = document.getElementById('home-stats');
+          if (box && armed && !reduce) {
+            box.querySelectorAll('.stat-card').forEach(card => {
+              card.classList.add('is-revealing');
+              card.addEventListener('animationend', () => { card.classList.remove('is-revealing'); card.classList.add('is-revealed'); }, { once: true });
+            });
+          }
+          Object.keys(stats).forEach(start);
+        }
+
+        function init() {
+          const box = document.getElementById('home-stats');
+          if (!box || reduce || !('IntersectionObserver' in window)) {
+            Object.keys(stats).forEach(k => { stats[k].phase = 'waiting'; start(k); });
+            return;
+          }
+          armed = true;
+          box.classList.add('stats-armed');
+          Object.keys(stats).forEach(paint);
+          // Start only when the cards are on screen AND not covered by the welcome popup (it opens on every visit)
+          const popup = document.getElementById('agent-popup');
+          let inView = false, covered = !!popup, popupSeen = false, done = false;
+          const tryReveal = () => {
+            if (done || !inView || covered) return;
+            done = true; io.disconnect(); if (mo) mo.disconnect(); clearTimeout(safety);
+            reveal();
+          };
+          const io = new IntersectionObserver(entries => {
+            inView = entries.some(e => e.isIntersecting);
+            tryReveal();
+          }, { threshold: 0.35 });
+          const mo = popup ? new MutationObserver(() => {
+            const open = !popup.classList.contains('hidden');
+            if (open) popupSeen = true;
+            covered = open;
+            tryReveal();
+          }) : null;
+          if (mo) mo.observe(popup, { attributes: true, attributeFilter: ['class'] });
+          // Safety: if the popup never opens, do not keep the statistics waiting
+          const safety = setTimeout(() => { if (!popupSeen) { covered = false; tryReveal(); } }, 1500);
+          io.observe(box);
+        }
+
+        return { init, setTarget, fail, repaint: () => Object.keys(stats).forEach(paint) };
+      })();
+
+      // Discord member count: official Discord API via our server endpoint (/api/discord-members, bot token stays on the server).
+      // If that endpoint is unreachable (e.g. local preview), the public invite endpoint of the official API is used.
+      // Never shows an invented number: on failure the counter stays "—" (or keeps the last real value).
+      const DISCORD_INVITE_CODE = '9yaAhBdBDy';
+      const DISCORD_REFRESH_MS = 5 * 60 * 1000;
+      let discordLastFetch = 0;
+      async function fetchDiscordMemberCount() {
+        discordLastFetch = Date.now();
+        const getJson = async url => {
+          const res = await fetch(url, { headers: { Accept: 'application/json' }, cache: 'no-cache' });
+          if (!res.ok) throw new Error(String(res.status));
+          return res.json();
+        };
+        let members = null;
+        try {
+          const d = await getJson('/api/discord-members');
+          if (typeof d.members === 'number') members = d.members;
+        } catch (e) { /* endpoint not available */ }
+        if (members === null) {
+          try {
+            const d = await getJson(`https://discord.com/api/v10/invites/${DISCORD_INVITE_CODE}?with_counts=true`);
+            if (typeof d.approximate_member_count === 'number') members = d.approximate_member_count;
+          } catch (e) { /* Discord unreachable */ }
+        }
+        if (members === null) HomeStats.fail('members');
+        else HomeStats.setTarget('members', members);
+      }
+
+      // Keep the count current while the page is open
+      function startDiscordAutoRefresh() {
+        setInterval(() => { if (!document.hidden) fetchDiscordMemberCount(); }, DISCORD_REFRESH_MS);
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden && Date.now() - discordLastFetch > DISCORD_REFRESH_MS) fetchDiscordMemberCount();
+        });
       }
 
       function setCategory(catId) {
@@ -4962,8 +5090,10 @@
 
       function init() {
         syncShipWeightWithHaul(true);
+        HomeStats.init();
         renderAll();
         fetchDiscordMemberCount();
+        startDiscordAutoRefresh();
 
         // Always show the welcome popup on startup: agent choice first (until chosen) → language → currency → agent coupons
         setTimeout(() => {
