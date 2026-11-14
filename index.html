@@ -616,6 +616,43 @@
       text-transform: uppercase;
       color: #868692;
     }
+    /* Summary: lime-framed section headers + neutral value tiles */
+    .haul-section-head {
+      border: 1.5px solid #E2FF32;
+      border-radius: 16px;
+      background-color: #111114;
+      padding: 14px 16px;
+      text-align: center;
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #FFFFFF;
+    }
+    .haul-value-tile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      min-height: 76px;
+      padding: 14px 8px;
+      border-radius: 16px;
+      background-color: #0F0F12;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-family: 'Space Grotesk', 'Inter', sans-serif;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      font-size: clamp(15px, 4.2vw, 24px);
+      line-height: 1.15;
+      color: #FFFFFF;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .haul-value-tile.is-price { color: #E2FF32; }
+    @media (min-width: 640px) {
+      .haul-value-tile { min-height: 92px; }
+    }
     .haul-label-strong {
       font-size: 12px;
       color: #ECECF1;
@@ -1162,40 +1199,35 @@
             </button>
           </div>
 
-          <!-- 2. Two small stat cards -->
-          <div class="grid grid-cols-2 gap-3 sm:gap-4">
-            <div class="haul-card p-4 sm:p-5">
-              <span class="haul-label block" data-i18n="mobProducts">Produkty</span>
-              <span id="vault-count" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white whitespace-nowrap block mt-2">2</span>
-            </div>
-            <div class="haul-card p-4 sm:p-5">
-              <span class="haul-label block" data-i18n="labelWeight">WAGA</span>
-              <span id="vault-weight" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white whitespace-nowrap block mt-2">2.14 kg</span>
+          <!-- 2. PRODUCTS: lime-framed header + three value tiles (count · weight · price) -->
+          <div class="space-y-3">
+            <div class="haul-section-head" data-i18n="mobProducts">Produkty</div>
+            <div class="grid grid-cols-3 gap-2.5 sm:gap-3">
+              <div class="haul-value-tile"><span><span id="vault-count">2</span>&nbsp;<span data-i18n="countUnit">szt.</span></span></div>
+              <div class="haul-value-tile"><span id="vault-weight">2.14 kg</span></div>
+              <div class="haul-value-tile is-price"><span id="vault-total">312&nbsp;zł</span></div>
             </div>
           </div>
 
-          <!-- 3. Products price -->
-          <div class="haul-card px-4 py-4 sm:px-6 sm:py-5 flex items-center justify-between gap-4">
-            <span class="haul-label haul-label-strong" data-i18n="vaultProductsValueLabel">Cena produktów</span>
-            <span id="vault-total" class="font-display tabular-nums text-xl sm:text-2xl font-bold text-acid whitespace-nowrap shrink-0">312&nbsp;zł</span>
-          </div>
-
-          <!-- 4. Shipping price -->
-          <div class="haul-card px-4 py-4 sm:px-6 sm:py-5 flex items-center justify-between gap-4">
-            <div class="min-w-0">
-              <span class="haul-label haul-label-strong block" data-i18n="vaultShippingCostLabel">Cena wysyłki</span>
-              <span id="vault-shipping-sub" class="font-mono tabular-nums text-xs text-[#A8A8B3] whitespace-nowrap block mt-1">DPD • 2.1 kg</span>
+          <!-- 3. SHIPPING: lime-framed header + three value tiles (carrier · parcel weight · price) -->
+          <div class="space-y-3 pt-3">
+            <div class="haul-section-head" data-i18n="shippingSectionTitle">Wysyłka</div>
+            <div class="grid grid-cols-3 gap-2.5 sm:gap-3">
+              <div class="haul-value-tile"><span id="vault-shipping-carrier">DPD</span></div>
+              <div class="haul-value-tile"><span id="vault-shipping-weight">2.1 kg</span></div>
+              <div class="haul-value-tile is-price"><span id="vault-shipping">140&nbsp;zł</span></div>
             </div>
-            <span id="vault-shipping" class="font-display tabular-nums text-xl sm:text-2xl font-bold text-acid whitespace-nowrap shrink-0">140&nbsp;zł</span>
+            <!-- carrier • weight summary kept for screen readers (existing id) -->
+            <span id="vault-shipping-sub" class="sr-only">DPD • 2.1 kg</span>
           </div>
 
-          <!-- 5. Grand total (existing framed style) -->
-          <div class="px-4 py-4 sm:px-6 sm:py-5 radius-card bg-gradient-to-r from-[#16161B] to-obsidian border-2 border-[#E2FF32] shadow-[0_0_28px_rgba(226,255,50,0.14)] flex items-center justify-between gap-4">
+          <!-- 4. Grand total (existing framed style, the most prominent element) -->
+          <div class="mt-3 px-4 py-5 sm:px-6 sm:py-6 radius-card bg-gradient-to-r from-[#16161B] to-obsidian border-2 border-[#E2FF32] shadow-[0_0_28px_rgba(226,255,50,0.14)] flex items-center justify-between gap-4">
             <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-tight" data-i18n="vaultGrandTotalLabel">Całkowita cena</span>
-            <span id="vault-grand-total" class="font-display tabular-nums text-2xl sm:text-3xl font-bold text-acid tracking-tight whitespace-nowrap shrink-0">452&nbsp;zł</span>
+            <span id="vault-grand-total" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-acid tracking-tight whitespace-nowrap shrink-0">452&nbsp;zł</span>
           </div>
 
-          <!-- 6. Shipping calculator (live, 0–20 kg) -->
+          <!-- 5. Shipping calculator (live, 0–20 kg) -->
           <div class="haul-card p-4 sm:p-6">
             <div class="min-w-0">
               <div class="flex items-center gap-2">
@@ -2207,7 +2239,9 @@
           haulEyebrow: "HAUL PLANNER",
           haulTitle: "My Haul",
           haulDesc: "Zarządzaj produktami i kosztami przesyłki",
-          costSummaryTitle: "Podsumowanie kosztów"
+          costSummaryTitle: "Podsumowanie kosztów",
+          shippingSectionTitle: "Wysyłka",
+          countUnit: "szt."
         },
         EN: {
           searchPlaceholderShort: 'Search by name',
@@ -2369,7 +2403,9 @@
           haulEyebrow: "HAUL PLANNER",
           haulTitle: "My Haul",
           haulDesc: "Manage your products and shipping costs",
-          costSummaryTitle: "Cost summary"
+          costSummaryTitle: "Cost summary",
+          shippingSectionTitle: "Shipping",
+          countUnit: "pcs"
         },
         DE: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -2531,7 +2567,9 @@
           haulEyebrow: "HAUL PLANNER",
           haulTitle: "My Haul",
           haulDesc: "Verwalte deine Produkte und Versandkosten",
-          costSummaryTitle: "Kostenübersicht"
+          costSummaryTitle: "Kostenübersicht",
+          shippingSectionTitle: "Versand",
+          countUnit: "Stk."
         },
         FR: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -2693,7 +2731,9 @@
           haulEyebrow: "HAUL PLANNER",
           haulTitle: "My Haul",
           haulDesc: "Gère tes produits et tes frais d'expédition",
-          costSummaryTitle: "Récapitulatif des coûts"
+          costSummaryTitle: "Récapitulatif des coûts",
+          shippingSectionTitle: "Expédition",
+          countUnit: "pcs"
         },
         ES: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -2855,7 +2895,9 @@
           haulEyebrow: "HAUL PLANNER",
           haulTitle: "My Haul",
           haulDesc: "Gestiona tus productos y los costes de envío",
-          costSummaryTitle: "Resumen de costes"
+          costSummaryTitle: "Resumen de costes",
+          shippingSectionTitle: "Envío",
+          countUnit: "uds."
         },
         IT: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -3017,7 +3059,9 @@
           haulEyebrow: "HAUL PLANNER",
           haulTitle: "My Haul",
           haulDesc: "Gestisci i tuoi prodotti e i costi di spedizione",
-          costSummaryTitle: "Riepilogo dei costi"
+          costSummaryTitle: "Riepilogo dei costi",
+          shippingSectionTitle: "Spedizione",
+          countUnit: "pz."
         },
         ZH: {
           navProducts: "ONGXREPS SPREADSHEET",
@@ -3179,7 +3223,9 @@
           haulEyebrow: "HAUL PLANNER",
           haulTitle: "My Haul",
           haulDesc: "管理你的商品和运费",
-          costSummaryTitle: "费用汇总"
+          costSummaryTitle: "费用汇总",
+          shippingSectionTitle: "配送",
+          countUnit: "件"
         }
       };
 
@@ -4412,6 +4458,10 @@
         if (vaultShipSubEl) {
           vaultShipSubEl.textContent = `${state.shipLine} • ${formattedWeight}`;
         }
+        const vaultShipWeightEl = document.getElementById('vault-shipping-weight');
+        if (vaultShipWeightEl) vaultShipWeightEl.textContent = formattedWeight;
+        const vaultShipCarrierEl = document.getElementById('vault-shipping-carrier');
+        if (vaultShipCarrierEl) vaultShipCarrierEl.textContent = state.shipLine;
 
         const vaultGrandEl = document.getElementById('vault-grand-total');
         if (vaultGrandEl) vaultGrandEl.textContent = formatPrice(grandTotalCny, state.currency);
