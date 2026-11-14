@@ -54,6 +54,12 @@
       --bg-card: #111114;
       --bg-interactive: #16161A;
       --border-hairline: rgba(255, 255, 255, 0.07);
+      /* Border system: panels/sections · controls · structural lines */
+      --line-panel: rgba(255, 255, 255, 0.55);
+      --line-panel-hover: rgba(255, 255, 255, 0.75);
+      --line-control: rgba(255, 255, 255, 0.40);
+      --line-control-hover: rgba(255, 255, 255, 0.65);
+      --line-structure: rgba(255, 255, 255, 0.16);
       --border-hover: rgba(255, 255, 255, 0.22);
       --specular-top: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
       --text-primary: #F4F4F6;
@@ -114,20 +120,20 @@
     /* Specular Surface Containers */
     .surface-hero {
       background: linear-gradient(165deg, #141418 0%, #0D0D10 100%);
-      border: 1px solid var(--border-hairline);
+      border: 1px solid var(--line-panel);
       box-shadow: var(--specular-top), 0 24px 48px -18px rgba(0, 0, 0, 0.85);
       border-radius: var(--radius-hero);
     }
 
     .surface-bento {
       background-color: var(--bg-card);
-      border: 1px solid var(--border-hairline);
+      border: 1px solid var(--line-panel);
       box-shadow: var(--specular-top);
       border-radius: var(--radius-card);
       transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.28s ease;
     }
     .surface-bento:hover {
-      border-color: var(--border-hover);
+      border-color: var(--line-panel-hover);
       background-color: #141418;
       box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14), 0 16px 32px -12px rgba(0, 0, 0, 0.75);
     }
@@ -150,14 +156,14 @@
       background: rgba(10, 10, 13, 0.84);
       backdrop-filter: blur(22px) saturate(185%);
       -webkit-backdrop-filter: blur(22px) saturate(185%);
-      box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.07);
+      box-shadow: inset 0 -1px 0 0 var(--line-structure);
     }
 
     .ios-bottom-dock {
       background: rgba(12, 12, 15, 0.86);
       backdrop-filter: blur(24px) saturate(190%);
       -webkit-backdrop-filter: blur(24px) saturate(190%);
-      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      border-top: 1px solid var(--line-structure);
       box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.06), 0 -12px 36px rgba(0, 0, 0, 0.75);
     }
 
@@ -195,7 +201,7 @@
     /* Ultra-Refined Product Card Architecture */
     .ongx-card {
       background-color: var(--bg-card);
-      border: 1px solid var(--border-hairline);
+      border: 1px solid var(--line-panel);
       box-shadow: var(--specular-top), 0 10px 26px -12px rgba(0, 0, 0, 0.7);
       border-radius: var(--radius-card);
       transition: transform 0.34s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.26s ease, box-shadow 0.34s cubic-bezier(0.16, 1, 0.3, 1);
@@ -203,7 +209,7 @@
     }
     .ongx-card:hover {
       transform: translateY(-4px);
-      border-color: var(--border-hover);
+      border-color: var(--line-panel-hover);
       box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14), 0 24px 48px -16px rgba(0, 0, 0, 0.92);
     }
 
@@ -261,14 +267,14 @@
     /* Secondary Interactive Control Surface */
     .btn-surface-secondary {
       background-color: var(--bg-interactive);
-      border: 1px solid var(--border-hairline);
+      border: 1px solid var(--line-control);
       box-shadow: var(--specular-top);
       border-radius: var(--radius-control);
       transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, transform 0.18s ease;
     }
     .btn-surface-secondary:hover {
       background-color: #1C1C22;
-      border-color: var(--border-hover);
+      border-color: var(--line-control-hover);
       color: #FFFFFF;
     }
     .btn-surface-secondary:active {
@@ -377,15 +383,15 @@
     }
     .agent-tile {
       background-color: rgba(var(--agent-rgb), 0.15);
-      border: 1px solid rgba(var(--agent-rgb), 0.35);
+      border: 1px solid rgba(var(--agent-rgb), 0.6);
       color: var(--agent-text);
     }
     .agent-text { color: var(--agent-text); }
     .agent-text-2 { color: var(--agent-text-2); }
     .agent-text-hover { color: var(--agent-text-hover); }
     .agent-hover-text:hover { color: var(--agent-text-hover); }
-    .agent-border-30 { border-color: rgba(var(--agent-rgb), 0.3) !important; }
-    .agent-border-35 { border-color: rgba(var(--agent-rgb), 0.35) !important; }
+    .agent-border-30 { border-color: rgba(var(--agent-rgb), 0.55) !important; }
+    .agent-border-35 { border-color: rgba(var(--agent-rgb), 0.7) !important; }
     .agent-promo-bg { background: linear-gradient(135deg, var(--agent-deep) 0%, #080809 100%); }
 
     /* Agent Gradient CTA (shared by every agent button) */
@@ -430,14 +436,14 @@
     /* Agent Product Buttons (Community icon-tile style) */
     .btn-agent-soft {
       background-color: rgba(var(--agent-rgb), 0.15);
-      border: 1px solid rgba(var(--agent-rgb), 0.35);
+      border: 1px solid rgba(var(--agent-rgb), 0.6);
       color: var(--agent-text);
       border-radius: var(--radius-control);
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
     .btn-agent-soft:hover {
       background-color: rgba(var(--agent-rgb), 0.24);
-      border-color: rgba(var(--agent-rgb), 0.6);
+      border-color: rgba(var(--agent-rgb), 0.85);
       color: var(--agent-text-hover);
     }
     .btn-agent-soft:active {
@@ -450,7 +456,7 @@
       cursor: not-allowed;
       transform: none;
       background-color: rgba(var(--agent-rgb), 0.15);
-      border-color: rgba(var(--agent-rgb), 0.35);
+      border-color: rgba(var(--agent-rgb), 0.6);
       color: var(--agent-text);
     }
 
@@ -459,7 +465,7 @@
       position: relative;
       border-radius: var(--radius-card);
       background: linear-gradient(160deg, rgba(var(--agent-rgb), 0.14) 0%, rgba(17, 17, 20, 0.95) 62%);
-      border: 1px solid rgba(var(--agent-rgb), 0.32);
+      border: 1px solid rgba(var(--agent-rgb), 0.6);
       box-shadow: var(--specular-top), 0 12px 30px -18px rgba(var(--agent-rgb), 0.6);
       transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.24s ease;
     }
@@ -482,7 +488,7 @@
       aspect-ratio: 1 / 1;
       border-radius: 18px;
       background-color: rgba(var(--flag-rgb), 0.15);
-      border: 1px solid rgba(var(--flag-rgb), 0.35);
+      border: 1px solid rgba(var(--flag-rgb), 0.55);
       cursor: pointer;
       transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, background-color 0.2s ease, border-color 0.2s ease;
     }
@@ -510,7 +516,7 @@
     }
     .lang-flag-btn:hover {
       background-color: rgba(var(--flag-rgb), 0.24);
-      border-color: rgba(var(--flag-rgb), 0.6);
+      border-color: rgba(var(--flag-rgb), 0.8);
       transform: translateY(-2px);
     }
     .lang-flag-btn:active {
@@ -519,7 +525,7 @@
     .lang-flag-btn.is-active {
       background-color: rgba(var(--flag-rgb), 0.26);
       border-color: rgba(var(--flag-rgb), 0.9);
-      box-shadow: 0 0 0 2px #0C0C0F, 0 0 0 4px #FFFFFF, 0 10px 24px -10px rgba(var(--flag-rgb), 0.7);
+      box-shadow: 0 0 0 2px #0C0C0F, 0 0 0 4px rgb(var(--flag-rgb)), 0 10px 24px -10px rgba(var(--flag-rgb), 0.7);
     }
     .lang-flag-btn.is-pop {
       animation: flagPop 0.34s cubic-bezier(0.16, 1, 0.3, 1);
@@ -551,11 +557,12 @@
     }
 
     /* Before an agent is chosen the welcome popup stays neutral (no agent colour) */
-    #agent-popup[data-step="agent"] .agent-border-30 { border-color: rgba(255, 255, 255, 0.12) !important; }
+    #agent-popup[data-step="agent"] .agent-border-30 { border-color: var(--line-panel) !important; }
     #agent-popup[data-step="agent"] .popup-dot.active { background: #FFFFFF; }
+    .agent-seg-btn { border-color: rgba(var(--agent-rgb), 0.45) !important; }
     .agent-seg-btn.is-active {
       background-color: rgba(var(--agent-rgb), 0.16);
-      border-color: rgba(var(--agent-rgb), 0.55);
+      border-color: var(--agent-g2) !important;
       color: #FFFFFF;
     }
 
@@ -616,6 +623,19 @@
       text-transform: uppercase;
       color: #868692;
     }
+    /* Site-wide border system: 1px, same radius as each element.
+       white = standard sections · lime = Link Converter / Android · blue = Discord
+       agent = selected agent (KakoBuy red / CapyBuy orange) · flag = selected language */
+    .frame-white { border: 1px solid var(--line-panel) !important; }
+    .frame-control { border: 1px solid var(--line-control) !important; }
+    .frame-android { border: 1px solid #3DDC84 !important; }
+    .frame-success { border: 1px solid rgba(52, 211, 153, 0.55) !important; }
+    .agent-line { border-color: rgba(var(--agent-rgb), 0.35) !important; }
+    .frame-lime { border: 1px solid #E2FF32 !important; }
+    .frame-discord { border: 1px solid #5865F2 !important; }
+    .frame-agent { border: 1px solid var(--agent-g2) !important; }
+    .frame-flag { border: 1px solid rgb(var(--flag-rgb, 255, 255, 255)) !important; }
+
     /* Summary: lime-framed section headers + neutral value tiles */
     .haul-section-head {
       border: 1.5px solid #E2FF32;
@@ -639,7 +659,7 @@
       padding: 14px 8px;
       border-radius: 16px;
       background-color: #0F0F12;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--line-panel);
       font-family: 'Space Grotesk', 'Inter', sans-serif;
       font-weight: 700;
       font-variant-numeric: tabular-nums;
@@ -690,11 +710,6 @@
       left: calc(9px + (100% - 18px) * var(--p));
       transform: translateX(-50%);
       white-space: nowrap;
-    }
-    .haul-ticks span:last-child {
-      left: auto;
-      right: 0;
-      transform: none;
     }
     .haul-view-btn {
       width: 36px;
@@ -865,9 +880,9 @@
   <!-- =========================================================================
        DESKTOP SIDEBAR (Automatically visible on screens >= 1024px)
        ========================================================================= -->
-  <aside class="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:inset-y-0 lg:left-0 bg-charcoal-950 border-r border-hairline z-40 select-none">
+  <aside class="hidden lg:flex lg:flex-col lg:w-72 lg:fixed lg:inset-y-0 lg:left-0 bg-charcoal-950 border-r border-[color:var(--line-structure)] z-40 select-none">
     <!-- Brand Identity -->
-    <div class="p-6 border-b border-hairline">
+    <div class="p-6 border-b border-[color:var(--line-structure)]">
       <div class="flex items-center justify-between">
         <button onclick="App.navigate('home')" class="flex items-center h-9 text-left group focus:outline-none">
           <span class="font-display font-bold text-2xl tracking-tight text-white block leading-none group-hover:text-acid transition-colors">ONGXREPS</span>
@@ -948,12 +963,12 @@
     </nav>
 
     <!-- Sidebar Footer (Agent Switch & Agent Coupon Popup Trigger) -->
-    <div class="p-4 border-t border-hairline bg-obsidian/60 space-y-3">
+    <div class="p-4 border-t border-[color:var(--line-structure)] bg-obsidian/60 space-y-3">
       <div>
         <div class="px-1 pb-1.5 font-mono text-[10px] tracking-widest uppercase text-[#686873]" data-i18n="agentSwitchLabel">AGENT ZAKUPOWY</div>
         <div class="grid grid-cols-2 gap-1.5" role="group" data-agent-switch></div>
       </div>
-      <button onclick="App.openCouponPopup()" class="w-full text-left block p-3.5 radius-card surface-bento group">
+      <button onclick="App.openCouponPopup()" class="w-full text-left block p-3.5 radius-card surface-bento frame-agent group">
         <div class="flex items-center justify-between">
           <span class="flex items-center gap-2">
             <span class="w-5 h-5 rounded-md agent-tile flex items-center justify-center shrink-0"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use data-agent-logo href="#kakobuy-logo"/></svg></span>
@@ -989,7 +1004,7 @@
         <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
           <!-- Agent Selector Dropdown (KakoBuy / CapyBuy) -->
           <div class="relative" data-dropdown-root>
-            <button onclick="App.toggleDropdown('header-agent-menu', event)" class="h-8 w-[30px] sm:w-auto px-0 sm:px-2 radius-control btn-surface-secondary flex items-center justify-center gap-1" title="Wybierz agenta" aria-label="Wybierz agenta" data-i18n-title="agentSwitchTitle" data-i18n-aria-label="agentSwitchTitle">
+            <button onclick="App.toggleDropdown('header-agent-menu', event)" class="h-8 w-[30px] sm:w-auto px-0 sm:px-2 radius-control btn-surface-secondary frame-agent flex items-center justify-center gap-1" title="Wybierz agenta" aria-label="Wybierz agenta" data-i18n-title="agentSwitchTitle" data-i18n-aria-label="agentSwitchTitle">
               <span class="w-5 h-5 rounded-md agent-tile flex items-center justify-center shrink-0"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use data-agent-logo href="#kakobuy-logo"/></svg></span>
               <span class="hidden sm:inline font-mono text-[11px] font-semibold text-[#F4F4F6]" data-agent-name>KakoBuy</span>
               <svg class="hidden sm:inline w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
@@ -1015,7 +1030,7 @@
 
           <!-- Language Selector Dropdown (flags only) -->
           <div class="relative" data-dropdown-root>
-            <button onclick="App.toggleDropdown('header-lang-menu', event)" class="h-8 w-[30px] sm:w-auto px-0 sm:px-2 radius-control btn-surface-secondary flex items-center justify-center gap-1" title="Wybierz język / Select Language" aria-label="Wybierz język / Select Language" data-i18n-title="titleSelectLanguage" data-i18n-aria-label="titleSelectLanguage">
+            <button id="header-lang-toggle" onclick="App.toggleDropdown('header-lang-menu', event)" class="h-8 w-[30px] sm:w-auto px-0 sm:px-2 radius-control btn-surface-secondary frame-flag flex items-center justify-center gap-1" title="Wybierz język / Select Language" aria-label="Wybierz język / Select Language" data-i18n-title="titleSelectLanguage" data-i18n-aria-label="titleSelectLanguage">
               <span id="header-lang-btn" class="lang-flag-mini"></span>
               <svg class="hidden sm:inline w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </button>
@@ -1049,7 +1064,7 @@
       <section id="view-home" class="space-y-6 sm:space-y-8 section-fade">
 
         <!-- Luxury Streetwear Editorial Hero Banner (22px radius + specular hairline) -->
-        <div class="relative surface-hero overflow-hidden bg-luxury-grid p-5 sm:p-8 lg:p-10">
+        <div class="relative surface-hero frame-white overflow-hidden bg-luxury-grid p-5 sm:p-8 lg:p-10">
           <div class="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-white/[0.04] blur-3xl"></div>
           <div class="pointer-events-none absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[#E2FF32]/[0.05] blur-3xl"></div>
 
@@ -1086,22 +1101,22 @@
 
         <!-- Two Simple, Elegant Statistics (Available Products & Community Members) -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-5">
-          <div onclick="App.navigate('products')" class="cursor-pointer p-5 sm:p-6 surface-bento flex items-center justify-between">
+          <div onclick="App.navigate('products')" class="cursor-pointer p-5 sm:p-6 surface-bento frame-white flex items-center justify-between">
             <div>
               <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9] block" data-i18n="statProductsLabel">LICZBA DOSTĘPNYCH PRODUKTÓW</span>
               <div id="stat-products-val" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white mt-2">18</div>
             </div>
-            <div class="w-11 h-11 radius-control bg-charcoal-800 border border-hairline flex items-center justify-center text-acid">
+            <div class="w-11 h-11 radius-control bg-charcoal-800 border border-[#E2FF32]/45 flex items-center justify-center text-acid">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
             </div>
           </div>
 
-          <div onclick="App.navigate('community')" class="cursor-pointer p-5 sm:p-6 surface-bento flex items-center justify-between">
+          <div onclick="App.navigate('community')" class="cursor-pointer p-5 sm:p-6 surface-bento frame-white flex items-center justify-between">
             <div>
               <span class="font-mono text-[10px] uppercase tracking-widest text-[#9E9EA9] block" data-i18n="statCommLabel">LICZBA CZŁONKÓW SPOŁECZNOŚCI</span>
               <div id="stat-discord-members" class="font-display tabular-nums text-3xl sm:text-4xl font-bold text-white mt-2">...</div>
             </div>
-            <div class="w-11 h-11 radius-control bg-charcoal-800 border border-hairline flex items-center justify-center text-emerald-400">
+            <div class="w-11 h-11 radius-control bg-charcoal-800 border border-emerald-400/45 flex items-center justify-center text-emerald-400">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
           </div>
@@ -1115,7 +1130,7 @@
       <section id="view-products" class="hidden space-y-5 section-fade">
 
         <!-- Filter & Search Control Box -->
-        <div class="p-4 sm:p-5 surface-bento space-y-3.5">
+        <div class="p-4 sm:p-5 surface-bento frame-white space-y-3.5">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <div class="flex items-center gap-2">
@@ -1144,7 +1159,7 @@
               oninput="App.setSearch(this.value)"
               placeholder="Szukaj po nazwie"
               data-i18n-placeholder="searchByNamePlaceholder"
-              class="w-full px-4 py-3 pl-10 pr-20 radius-control bg-obsidian border border-hairline focus:border-white/30 text-sm text-white placeholder-[#686873] focus:outline-none transition-colors"
+              class="w-full px-4 py-3 pl-10 pr-20 radius-control bg-obsidian border border-white/40 focus:border-white/70 text-sm text-white placeholder-[#686873] focus:outline-none transition-colors"
             />
             <svg class="w-4 h-4 text-[#686873] absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
@@ -1160,7 +1175,7 @@
 
         <!-- Product Grid -->
         <div id="catalog-view-toggle" class="flex justify-center pt-1">
-          <div class="flex items-center gap-1 p-1 radius-control bg-charcoal-900 border border-white/10 shadow-sm" role="group">
+          <div class="flex items-center gap-1 p-1 radius-control bg-charcoal-900 frame-control shadow-sm" role="group">
             <button type="button" onclick="App.setViewMode('grid')" data-view-mode="grid" class="view-mode-btn w-10 h-10 radius-badge flex items-center justify-center transition-all" title="Duże karty" aria-label="Duże karty" data-i18n-title="viewGridTitle" data-i18n-aria-label="viewGridTitle">
               <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="1.5" stroke-width="1.8"/></svg>
             </button>
@@ -1228,7 +1243,7 @@
           </div>
 
           <!-- 5. Shipping calculator (live, 0–20 kg) -->
-          <div class="haul-card p-4 sm:p-6">
+          <div class="haul-card frame-white p-4 sm:p-6">
             <div class="min-w-0">
               <div class="flex items-center gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-acid live-dot"></span>
@@ -1239,7 +1254,7 @@
             </div>
 
             <!-- Estimated cost: label + current carrier badge (left) · amount (right) -->
-            <div id="ship-result-card" class="mt-4 flex items-center justify-between gap-3 px-4 py-3.5 rounded-xl bg-[#0C0C0F]">
+            <div id="ship-result-card" class="mt-4 flex items-center justify-between gap-3 px-4 py-3.5 rounded-xl bg-[#0C0C0F] frame-white">
               <div class="flex items-center gap-2 min-w-0">
                 <span class="haul-label whitespace-nowrap" data-i18n="shipIndicativeBadge">SZACUNKOWY KOSZT</span>
                 <span class="font-mono text-[10px] font-bold px-1.5 py-0.5 radius-badge text-acid bg-[#E2FF32]/[0.06] border border-[#E2FF32]/40 whitespace-nowrap" id="ship-summary-line">DPD</span>
@@ -1251,7 +1266,7 @@
               <!-- Carrier Selection: Exclusively DPD, DHL, ETL -->
               <div>
                 <span class="haul-label block" data-i18n="shipSelectLineLabel">WYBÓR LINII TRANSPORTOWEJ</span>
-                <div class="haul-segment grid grid-cols-3 gap-1 mt-2.5">
+                <div class="haul-segment frame-control grid grid-cols-3 gap-1 mt-2.5">
                   <button type="button" onclick="App.selectShipLine('DPD')" data-ship-line="DPD" class="ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"><span>DPD</span></button>
                   <button type="button" onclick="App.selectShipLine('DHL')" data-ship-line="DHL" class="ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"><span>DHL</span></button>
                   <button type="button" onclick="App.selectShipLine('ETL')" data-ship-line="ETL" class="ship-line-btn py-2.5 px-3 radius-badge font-display font-bold text-xs sm:text-sm flex items-center justify-center transition-all"><span>ETL</span></button>
@@ -1270,22 +1285,36 @@
                   </div>
                 </div>
                 <input id="ship-weight-slider" type="range" min="0" max="20" step="0.1" value="2.1" oninput="App.setShipWeight(this.value)" class="ongx-range haul-range w-full mt-4 mb-2.5 cursor-pointer" />
-                <div class="haul-ticks font-mono tabular-nums text-[10px] text-[#686873]">
-                  <span style="--p: 0">0</span>
+                <div class="haul-ticks font-mono tabular-nums text-[9px] sm:text-[10px] text-[#686873]" aria-hidden="true">
+                  <span style="--p: 0.05">1</span>
                   <span style="--p: 0.1">2</span>
+                  <span style="--p: 0.15">3</span>
+                  <span style="--p: 0.2">4</span>
                   <span style="--p: 0.25">5</span>
+                  <span style="--p: 0.3">6</span>
+                  <span style="--p: 0.35">7</span>
+                  <span style="--p: 0.4">8</span>
+                  <span style="--p: 0.45">9</span>
                   <span style="--p: 0.5">10</span>
+                  <span style="--p: 0.55">11</span>
+                  <span style="--p: 0.6">12</span>
+                  <span style="--p: 0.65">13</span>
+                  <span style="--p: 0.7">14</span>
                   <span style="--p: 0.75">15</span>
-                  <span style="--p: 1">20 kg</span>
+                  <span style="--p: 0.8">16</span>
+                  <span style="--p: 0.85">17</span>
+                  <span style="--p: 0.9">18</span>
+                  <span style="--p: 0.95">19</span>
+                  <span style="--p: 1">20</span>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- 7. Products header with the Haul view switch (independent from the catalog switch) -->
-          <div class="haul-card px-4 py-3 sm:px-6 sm:py-3.5 flex items-center justify-between gap-4">
+          <div class="haul-card frame-white px-4 py-3 sm:px-6 sm:py-3.5 flex items-center justify-between gap-4">
             <h2 class="font-display text-lg sm:text-xl font-bold text-white" data-i18n="mobProducts">Produkty</h2>
-            <div id="saved-view-toggle" class="haul-segment flex items-center gap-1" role="group">
+            <div id="saved-view-toggle" class="haul-segment frame-control flex items-center gap-1" role="group">
               <button type="button" onclick="App.setHaulViewMode('list')" data-haul-view="list" class="haul-view-btn" title="Kompaktowa lista" aria-label="Kompaktowa lista" data-i18n-title="viewListTitle" data-i18n-aria-label="viewListTitle">
                 <svg class="w-[18px] h-[18px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="4" y="5" width="4" height="4" rx="1" stroke-width="1.8"/><rect x="4" y="15" width="4" height="4" rx="1" stroke-width="1.8"/><path stroke-linecap="round" stroke-width="1.8" d="M11 7h9M11 17h9"/></svg>
               </button>
@@ -1296,9 +1325,9 @@
           </div>
 
           <!-- 8. Saved products (list rows or cards) -->
-          <div id="saved-grid" class="haul-card px-4 sm:px-6 divide-y divide-white/[0.06]"></div>
+          <div id="saved-grid" class="haul-card frame-white px-4 sm:px-6 divide-y divide-white/[0.06]"></div>
 
-          <div id="saved-empty" class="hidden p-10 haul-card text-center">
+          <div id="saved-empty" class="hidden p-10 haul-card frame-white text-center">
             <p class="font-display text-lg font-bold text-white" data-i18n="emptyVaultTitle">Schowek jest pusty</p>
             <p class="text-xs text-[#9E9EA9] mt-1" data-i18n="emptyVaultDesc">Dotknij ikony zakładki na dowolnej karcie produktu, aby dodać go do swojego Haula.</p>
             <button onclick="App.navigate('products')" class="mt-4 px-5 py-2.5 btn-primary-white font-bold text-xs" data-i18n="emptyVaultCta">
@@ -1312,7 +1341,7 @@
            SECTION 4: COMMUNITY (SPOŁECZNOŚĆ ONGXREPS)
            ===================================================================== -->
       <section id="view-community" class="hidden space-y-6 section-fade">
-        <div class="p-6 surface-hero bg-luxury-grid">
+        <div class="p-6 surface-hero frame-white bg-luxury-grid">
           <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text" data-i18n="commHeading">COMMUNITY ONGXREPS</h1>
           <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 max-w-2xl leading-relaxed" data-i18n="commSub">
             Dołącz do naszego serwera Discord, oglądaj codzienne TikToki oraz odbierz zniżki w kuponach na dostawę w KakoBuy.
@@ -1322,20 +1351,20 @@
         <!-- 3 Big Community Cards: Discord, TikTok, Selected Agent -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <!-- Discord -->
-          <div class="p-6 surface-bento flex flex-col justify-between">
+          <div class="p-6 surface-bento frame-discord flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between">
-                <div class="w-12 h-12 radius-card bg-[#5865F2]/15 border border-[#5865F2]/35 flex items-center justify-center text-[#5865F2]">
+                <div class="w-12 h-12 radius-card bg-[#5865F2]/15 border border-[#5865F2]/60 flex items-center justify-center text-[#5865F2]">
                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
                 </div>
-                <span class="font-mono tabular-nums text-[10px] px-2.5 py-1 radius-badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 whitespace-nowrap"><span id="community-discord-count">—</span> <span data-i18n="discordMembersBadge">CZŁONKÓW</span></span>
+                <span class="font-mono tabular-nums text-[10px] px-2.5 py-1 radius-badge bg-[#5865F2]/15 text-[#AEB5FF] border border-[#5865F2]/60 whitespace-nowrap"><span id="community-discord-count">—</span> <span data-i18n="discordMembersBadge">CZŁONKÓW</span></span>
               </div>
               <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="discordCardTitle">Discord Server</h2>
               <p class="text-xs text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="discordCardDesc">
                 Aktywna społeczność, liczne konkursy oraz mnóstwo pomocnych kanałów, takich jak W2C, QC Check i wiele innych. Zawsze możesz liczyć na pomoc społeczności.
               </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
+            <div class="mt-5 pt-4 border-t border-[#5865F2]/30 flex gap-2">
               <a href="https://discord.gg/9yaAhBdBDy" target="_blank" rel="noopener noreferrer" class="ext-action-link community-cta flex-1 py-3 px-4 btn-discord font-bold text-xs text-center" data-i18n="discordJoinBtn">
                 Dołącz do Discorda
               </a>
@@ -1343,20 +1372,20 @@
           </div>
 
           <!-- TikTok -->
-          <div class="p-6 surface-bento flex flex-col justify-between">
+          <div class="p-6 surface-bento frame-white flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between">
-                <div class="w-12 h-12 radius-card bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                <div class="w-12 h-12 radius-card bg-white/10 border border-white/45 flex items-center justify-center text-white">
                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
                 </div>
-                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-zinc-200 border border-hairline">@ONGXR3PS</span>
+                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-zinc-200 border border-white/40">@ONGXR3PS</span>
               </div>
               <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="tiktokCardTitle">TikTok</h2>
               <p class="text-xs text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="tiktokCardDesc">
                 Codzienne TikToki o tematyce reps, ciekawe produkty, nowości i pełne wsparcie z mojej strony.
               </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
+            <div class="mt-5 pt-4 border-t border-white/20 flex gap-2">
               <a href="https://tiktok.com/@ongxr3ps" target="_blank" rel="noopener noreferrer" class="ext-action-link community-cta flex-1 py-3 px-4 btn-primary-white font-bold text-xs text-center" data-i18n="tiktokFollowBtn">
                 Obserwuj na TikTok
               </a>
@@ -1364,7 +1393,7 @@
           </div>
 
           <!-- Selected Agent Store / Affiliate -->
-          <div class="p-6 surface-bento flex flex-col justify-between">
+          <div class="p-6 surface-bento frame-agent flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between">
                 <div class="w-12 h-12 radius-card agent-tile flex items-center justify-center">
@@ -1377,7 +1406,7 @@
                 Załóż konto na jednym z najtańszych i najszybszych agentów i odbierz nawet 1500 zł zniżek w kuponach na dostawę.
               </p>
             </div>
-            <div class="mt-5 pt-4 border-t border-hairline flex gap-2">
+            <div class="mt-5 pt-4 border-t agent-line flex gap-2">
               <a id="community-agent-link" data-agent-register href="https://ikako.vip/r/OngxReps" target="_blank" rel="noopener noreferrer" class="ext-action-link community-cta flex-1 py-3 px-4 btn-agent font-bold text-xs text-center" data-i18n="agentCardCta">
                 Odbierz Kupony KakoBuy
               </a>
@@ -1390,7 +1419,7 @@
            SECTION 5: LINK CONVERTER (KAKOBUY / CAPYBUY / RAW)
            ===================================================================== -->
       <section id="view-converter" class="hidden space-y-5 section-fade">
-        <div class="p-5 sm:p-6 surface-hero bg-luxury-grid">
+        <div class="p-5 sm:p-6 surface-hero frame-lime bg-luxury-grid">
           <span class="font-mono text-[10px] uppercase tracking-widest text-acid" data-i18n="convBadge">LINK CONVERTER</span>
           <h1 class="font-display text-2xl sm:text-3xl font-bold editorial-gradient-text mt-0.5" data-i18n="convHeading">Konwerter linków</h1>
           <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 max-w-2xl leading-relaxed" data-i18n="convSub">
@@ -1409,7 +1438,7 @@
                 oninput="App.onConverterInput(this.value)"
                 placeholder="https://weidian.com/item.html?itemID=…"
                 data-i18n-placeholder="convPlaceholder"
-                class="w-full px-4 py-3 pl-10 radius-control bg-obsidian border border-hairline focus:border-white/30 text-sm text-white placeholder-[#686873] focus:outline-none transition-colors"
+                class="w-full px-4 py-3 pl-10 radius-control bg-obsidian border border-[#E2FF32] text-sm text-white placeholder-[#686873] focus:outline-none transition-colors"
               />
               <svg class="w-4 h-4 text-[#686873] absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
             </div>
@@ -1431,7 +1460,7 @@
            SECTION 6: PHONE HOME SCREEN APP GUIDE (IPHONE & ANDROID)
            ===================================================================== -->
       <section id="view-publish" class="hidden space-y-6 section-fade">
-        <div class="p-6 sm:p-8 surface-hero bg-luxury-grid">
+        <div class="p-6 sm:p-8 surface-hero frame-white bg-luxury-grid">
           <div class="inline-flex items-center gap-2 px-2.5 py-1 radius-badge bg-acid text-black font-mono text-[10px] font-bold uppercase mb-3" data-i18n="phoneBadge">
             APLIKACJA NA TELEFON // IPHONE & ANDROID
           </div>
@@ -1445,15 +1474,15 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <!-- iPhone (Safari) Card -->
-          <div class="p-6 surface-bento flex flex-col justify-between space-y-5">
+          <div class="p-6 surface-bento frame-white flex flex-col justify-between space-y-5">
             <div>
               <div class="flex items-center justify-between">
-                <div class="w-11 h-11 radius-control bg-white/10 border border-white/20 flex items-center justify-center text-white">
+                <div class="w-11 h-11 radius-control bg-white/10 border border-white/45 flex items-center justify-center text-white">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                   </svg>
                 </div>
-                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-acid border border-hairline font-bold">IPHONE</span>
+                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-acid border border-white/40 font-bold">IPHONE</span>
               </div>
 
               <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="iphoneGuideTitle">iPhone</h2>
@@ -1462,15 +1491,15 @@
               </p>
 
               <div class="mt-4 space-y-2.5 text-xs text-zinc-200">
-                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                <div class="p-3.5 radius-control bg-obsidian border border-white/25 flex items-start gap-3">
                   <span class="w-6 h-6 radius-badge bg-acid text-black font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
                   <span class="leading-relaxed" data-i18n="iphoneStep1">Otwórz stronę ONGXREPS w przeglądarce Safari.</span>
                 </div>
-                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                <div class="p-3.5 radius-control bg-obsidian border border-white/25 flex items-start gap-3">
                   <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">2</span>
                   <span class="leading-relaxed" data-i18n="iphoneStep2">Kliknij ikonę „Udostępnij” na dolnym pasku.</span>
                 </div>
-                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                <div class="p-3.5 radius-control bg-obsidian border border-white/25 flex items-start gap-3">
                   <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">3</span>
                   <span class="leading-relaxed" data-i18n="iphoneStep3">Wybierz „Dodaj do ekranu początkowego”, a następnie kliknij „Dodaj”.</span>
                 </div>
@@ -1479,15 +1508,15 @@
           </div>
 
           <!-- Android (Chrome) Card -->
-          <div class="p-6 surface-bento flex flex-col justify-between space-y-5">
+          <div class="p-6 surface-bento frame-android flex flex-col justify-between space-y-5">
             <div>
               <div class="flex items-center justify-between">
-                <div class="w-11 h-11 radius-control bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <div class="w-11 h-11 radius-control bg-emerald-500/15 border border-[#3DDC84]/60 flex items-center justify-center text-emerald-400">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
                   </svg>
                 </div>
-                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-emerald-400 border border-hairline font-bold">ANDROID</span>
+                <span class="font-mono text-[10px] px-2.5 py-1 radius-badge bg-charcoal-800 text-emerald-400 border border-[#3DDC84]/60 font-bold">ANDROID</span>
               </div>
 
               <h2 class="font-display text-xl font-bold text-white mt-4" data-i18n="androidGuideTitle">Android</h2>
@@ -1496,15 +1525,15 @@
               </p>
 
               <div class="mt-4 space-y-2.5 text-xs text-zinc-200">
-                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                <div class="p-3.5 radius-control bg-obsidian border border-[#3DDC84]/35 flex items-start gap-3">
                   <span class="w-6 h-6 radius-badge bg-acid text-black font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
                   <span class="leading-relaxed" data-i18n="androidStep1">Otwórz stronę ONGXREPS w przeglądarce Chrome.</span>
                 </div>
-                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                <div class="p-3.5 radius-control bg-obsidian border border-[#3DDC84]/35 flex items-start gap-3">
                   <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">2</span>
                   <span class="leading-relaxed" data-i18n="androidStep2">Kliknij menu z trzema kropkami w prawym górnym rogu.</span>
                 </div>
-                <div class="p-3.5 radius-control bg-obsidian border border-hairline flex items-start gap-3">
+                <div class="p-3.5 radius-control bg-obsidian border border-[#3DDC84]/35 flex items-start gap-3">
                   <span class="w-6 h-6 radius-badge bg-charcoal-800 text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 mt-0.5 border border-hairline">3</span>
                   <span class="leading-relaxed" data-i18n="androidStep3">Wybierz „Dodaj do ekranu głównego” lub „Zainstaluj aplikację”, jeśli taka opcja jest dostępna.</span>
                 </div>
@@ -1599,7 +1628,7 @@
       <div class="flex-1 overflow-y-auto grid grid-cols-1 lg:grid-cols-12">
         <!-- Left: Interactive Inspection Viewport + Filmstrip -->
         <div class="lg:col-span-7 p-3.5 sm:p-5 bg-obsidian border-b lg:border-b-0 lg:border-r border-hairline flex flex-col justify-between">
-          <div class="relative aspect-square radius-card overflow-hidden bg-[#0C0C0F] border border-hairline select-none">
+          <div class="relative aspect-square radius-card overflow-hidden bg-[#0C0C0F] border border-white/30 select-none">
             <img
               id="qc-main-img"
               src=""
@@ -1634,7 +1663,7 @@
                           CENA
                  BATCH            WAGA
             -->
-            <div class="p-4 sm:p-5 radius-card bg-obsidian border border-hairline space-y-4">
+            <div class="p-4 sm:p-5 radius-card bg-obsidian frame-white space-y-4">
               <!-- Center Top: PRICE -->
               <div class="text-center pb-4 border-b border-hairline">
                 <span class="font-mono text-[10px] text-[#686873] uppercase tracking-widest block" data-i18n="labelPrice">CENA</span>
@@ -3941,7 +3970,7 @@
                 </div>
 
                 <!-- Symmetrical Price (Top Center) / Batch (Left) / Weight (Right) Layout -->
-                <div onclick="App.openQcModal('${p.id}')" class="mt-3.5 p-3 radius-control bg-obsidian/90 border border-hairline cursor-pointer">
+                <div onclick="App.openQcModal('${p.id}')" class="mt-3.5 p-3 radius-control bg-obsidian/90 frame-white cursor-pointer">
                   <div class="text-center pb-2.5 border-b border-hairline">
                     <span class="font-mono text-[9px] uppercase tracking-widest text-[#686873] block">${dict.labelPrice}</span>
                     <div class="mt-0.5 flex items-baseline justify-center gap-1.5">
@@ -4206,6 +4235,8 @@
         if (hdrLangBtn) {
           const curLang = LANGUAGES[state.lang] ? state.lang : 'PL';
           hdrLangBtn.style.setProperty('--flag-rgb', LANGUAGES[curLang].rgb);
+          const hdrLangToggle = document.getElementById('header-lang-toggle');
+          if (hdrLangToggle) hdrLangToggle.style.setProperty('--flag-rgb', LANGUAGES[curLang].rgb);
           hdrLangBtn.innerHTML = flagIcon(curLang);
         }
         document.documentElement.lang = (LANGUAGES[state.lang] || LANGUAGES.PL).html;
@@ -4371,7 +4402,7 @@
             grid.className = 'grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch';
             grid.innerHTML = saved.map((p, idx) => renderProductCard(p, idx, { haul: true })).join('');
           } else {
-            grid.className = 'haul-card px-4 sm:px-6 divide-y divide-white/[0.06]';
+            grid.className = 'haul-card frame-white px-4 sm:px-6 divide-y divide-white/[0.06]';
             grid.innerHTML = saved.map(renderHaulRow).join('');
           }
         }
@@ -4780,7 +4811,7 @@
           const dict = I18N[state.lang];
           const msgKey = { short: 'convErrShort', noItem: 'convErrNoItem', invalid: 'convErrInvalid', empty: 'convErrInvalid' }[converterResult.error] || 'convErrUnsupported';
           const msg = dict[msgKey].replace('{host}', converterResult.host || '');
-          statusEl.className = 'p-4 radius-control bg-charcoal-900 border border-white/15 flex items-start gap-3';
+          statusEl.className = 'p-4 radius-control bg-charcoal-900 frame-white flex items-start gap-3';
           statusEl.innerHTML = `
             <svg class="w-4 h-4 mt-0.5 shrink-0 text-[#C9C9D1]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
             <p class="text-xs sm:text-sm text-[#E4E4E9] leading-relaxed">${escapeHtml(msg)}</p>
@@ -4789,7 +4820,7 @@
           return;
         }
 
-        statusEl.className = 'px-4 py-4 sm:py-5 radius-control bg-obsidian border border-hairline flex items-center justify-center gap-3 text-center';
+        statusEl.className = 'px-4 py-4 sm:py-5 radius-control bg-obsidian frame-success flex items-center justify-center gap-3 text-center';
         statusEl.innerHTML = `
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.6)] shrink-0"></span>
           <span class="font-mono text-sm sm:text-lg font-bold uppercase tracking-widest text-emerald-400">${t('convDetected')}</span>
@@ -4842,7 +4873,7 @@
       function showToast(msg) {
         const box = document.getElementById('toast-box');
         const el = document.createElement('div');
-        el.className = 'px-4 py-2 radius-control glass-pill text-white font-mono text-xs font-medium shadow-2xl flex items-center gap-2.5 section-fade pointer-events-auto';
+        el.className = 'px-4 py-2 radius-control glass-pill frame-control text-white font-mono text-xs font-medium shadow-2xl flex items-center gap-2.5 section-fade pointer-events-auto';
         el.innerHTML = `<span class="w-2 h-2 rounded-full bg-acid shadow-[0_0_8px_#E2FF32]"></span><span>${msg}</span>`;
         box.appendChild(el);
         setTimeout(() => el.remove(), 2500);
