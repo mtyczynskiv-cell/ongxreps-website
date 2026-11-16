@@ -257,24 +257,43 @@
     .nav-coupon { margin-top: 6px; }
     .nav-coupon::after { content: ''; position: absolute; left: 8px; right: 8px; top: -6px; height: 1px; background: var(--line-structure); }
     .settings-toggle.is-open, .nav-toggle.is-open { border-color: var(--line-control-hover); background-color: #1C1C22; }
-    .settings-chevron { display: none; transition: transform 0.25s ease; }
-    .settings-toggle.is-open .settings-chevron { transform: rotate(180deg); }
-    @media (min-width: 640px) { .settings-chevron { display: block; } }
 
     .settings-panel { position: fixed; z-index: 46; visibility: hidden; pointer-events: none; transition: visibility 0s linear 0.25s; }
     .settings-panel.is-open { visibility: visible; pointer-events: auto; transition: none; }
+    .settings-panel { width: 276px; }
     .settings-card { padding: 14px; }
-    .settings-section + .settings-section { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-structure); }
-    .settings-label { margin: 0 0 9px 2px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #686873; }
-    .settings-panel .lang-flag-btn { border-radius: 11px; }
-    .settings-panel .lang-flag-btn .lang-flag-icon { width: 62%; }
+    .settings-section + .settings-section { margin-top: 13px; padding-top: 13px; border-top: 1px solid var(--line-structure); }
+    .settings-label { margin: 0 0 10px 2px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #686873; }
+    .settings-panel .lang-flag-btn { border-radius: 13px; }
     .settings-panel .curr-choice.curr-seg { border-radius: var(--radius-control); }
+    /* sections slide in one after another, like the menu tabs */
+    .settings-section { opacity: 0; transform: translateY(-6px); transition: opacity 0.18s ease, transform 0.22s ease; }
+    .settings-panel.is-open .settings-section { opacity: 1; transform: none; transition: opacity 0.3s ease, transform 0.38s cubic-bezier(0.22, 1, 0.36, 1); }
+    .settings-panel.is-open .settings-section:nth-child(2) { transition-delay: 50ms; }
+    .settings-panel.is-open .settings-section:nth-child(3) { transition-delay: 100ms; }
+    .settings-toggle { color: #F4F4F6; }
+    .settings-toggle .gear { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .settings-toggle.is-open .gear { transform: rotate(60deg); }
+    /* agent buttons: logo only, tinted in the platform colour, selected one ringed like the selected flag */
+    .agent-logo-btn {
+      height: 52px; display: flex; align-items: center; justify-content: center;
+      border-radius: var(--radius-control); cursor: pointer;
+      background-color: rgba(var(--agent-rgb), 0.12); border: 1px solid rgba(var(--agent-rgb), 0.5); color: var(--agent-g2);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.22s ease;
+    }
+    .agent-logo-btn svg { width: 28px; height: 28px; }
+    .agent-logo-btn:hover { background-color: rgba(var(--agent-rgb), 0.2); border-color: rgba(var(--agent-rgb), 0.8); }
+    .agent-logo-btn:active { transform: scale(0.96); }
+    .agent-logo-btn.is-active {
+      background-color: rgba(var(--agent-rgb), 0.24); border-color: var(--agent-g2);
+      box-shadow: 0 0 0 2px #0C0C0F, 0 0 0 4px var(--agent-g2), 0 10px 24px -12px rgba(var(--agent-rgb), 0.7);
+    }
+    .agent-logo-btn:focus-visible { outline: 2px solid #E2FF32; outline-offset: 3px; }
 
     /* Desktop */
     @media (min-width: 1024px) {
       .nav-overlay { display: none; }
       .site-nav { width: 312px; }
-      .settings-panel { width: 340px; }
       .site-nav.is-open .nav-item { transition-delay: calc(var(--i) * 28ms + 40ms), calc(var(--i) * 28ms + 40ms), 0s, 0s, 0s; }
       .nav-item:hover { background: rgba(255, 255, 255, 0.05); color: #FFFFFF; }
       .nav-item:hover .nav-ico { border-color: rgba(255, 255, 255, 0.3); color: #FFFFFF; }
@@ -284,7 +303,7 @@
 
     /* Phones / tablets: same panels, full width under the header; the tabs rise one by one, bottom first */
     @media (max-width: 1023.98px) {
-      .site-nav, .settings-panel { width: min(420px, calc(100vw - 24px)); }
+      .site-nav { width: min(420px, calc(100vw - 24px)); }
       .nav-item { height: 50px; padding: 0 12px 0 8px; color: #D4D4DA; font-size: 14px; transform: translateY(16px) scale(0.98); }
       .nav-item:active { background: rgba(255, 255, 255, 0.06); }
       .site-nav.is-open .nav-item { transition-delay: calc(var(--r) * 45ms + 30ms), calc(var(--r) * 45ms + 30ms), 0s, 0s, 0s; }
@@ -1058,11 +1077,8 @@
 
         <!-- Right: one settings button (language · currency · agent) + the menu button -->
         <div class="flex items-center gap-1.5 shrink-0">
-          <button type="button" id="settings-toggle" onclick="App.toggleSettings(event)" data-settings-root data-settings-toggle aria-controls="settings-panel" aria-expanded="false" title="Ustawienia" aria-label="Ustawienia" data-i18n-title="settingsLabel" data-i18n-aria-label="settingsLabel" class="settings-toggle h-8 pl-1.5 pr-2 radius-control btn-surface-secondary flex items-center gap-1.5">
-            <span id="header-lang-btn" class="lang-flag-mini"></span>
-            <span class="font-mono tabular-nums text-[11px] font-semibold text-white leading-none whitespace-nowrap"><span class="text-acid" id="header-curr-symbol">zł</span> <span id="header-curr-code">PLN</span></span>
-            <span class="w-5 h-5 rounded-md agent-tile flex items-center justify-center shrink-0"><svg class="w-3 h-3" fill="currentColor" aria-hidden="true"><use data-agent-logo href="#kakobuy-logo"/></svg></span>
-            <svg class="settings-chevron w-3 h-3 text-[#9E9EA9]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <button type="button" id="settings-toggle" onclick="App.toggleSettings(event)" data-settings-root data-settings-toggle aria-controls="settings-panel" aria-expanded="false" title="Ustawienia" aria-label="Ustawienia" data-i18n-title="settingsLabel" data-i18n-aria-label="settingsLabel" class="settings-toggle h-8 w-9 radius-control btn-surface-secondary flex items-center justify-center">
+            <svg class="gear w-[17px] h-[17px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
           </button>
 
           <!-- Menu (all screen sizes) -->
@@ -1619,15 +1635,15 @@
     <div class="settings-card">
       <section class="settings-section">
         <div class="settings-label" data-i18n="selectLangLabel">Wybierz język</div>
-        <div data-lang-row class="grid grid-cols-7 gap-1.5" role="group"></div>
+        <div data-lang-row class="grid grid-cols-8 gap-2" role="group"></div>
       </section>
       <section class="settings-section">
         <div class="settings-label" data-i18n="selectCurrencyLabel">Wybierz walutę</div>
-        <div data-currency-seg class="grid grid-cols-4 gap-1.5" role="group"></div>
+        <div data-currency-seg class="grid grid-cols-2 gap-2" role="group"></div>
       </section>
       <section class="settings-section">
         <div class="settings-label" data-i18n="agentSwitchLabel">AGENT ZAKUPOWY</div>
-        <div data-agent-switch class="grid grid-cols-2 gap-1.5" role="group"></div>
+        <div data-agent-logos class="grid grid-cols-2 gap-2" role="group"></div>
       </section>
     </div>
   </div>
@@ -3983,14 +3999,22 @@
         });
 
         // Settings panel: the 7 flags in one row, the 4 currencies as a compact segmented row
-        const langRowHtml = Object.keys(LANGUAGES).map(code => flagTile(code)).join('');
+        // 4 flags in the first row, 3 centred in the second (8-column grid, each flag spans 2)
+        const langRowHtml = Object.keys(LANGUAGES).map((code, i) => flagTile(code, i === 4 ? 'col-span-2 col-start-2' : 'col-span-2')).join('');
         document.querySelectorAll('[data-lang-row]').forEach(container => { container.innerHTML = langRowHtml; });
         const currSegHtml = Object.keys(CURRENCIES).map(code => {
           const cfg = CURRENCIES[code];
           const active = state.currency === code;
-          return `<button type="button" onclick="App.selectCurrency('${code}')" aria-pressed="${active}" class="curr-choice curr-seg${active ? ' is-active' : ''} h-10 flex items-center justify-center gap-1"><span class="curr-symbol font-display text-sm font-bold leading-none">${cfg.symbol}</span><span class="curr-code font-mono text-[10px]">${code}</span></button>`;
+          return `<button type="button" onclick="App.selectCurrency('${code}')" aria-pressed="${active}" class="curr-choice curr-seg${active ? ' is-active' : ''} h-11 flex items-center justify-center gap-1.5"><span class="curr-symbol font-display text-base font-bold leading-none">${cfg.symbol}</span><span class="curr-code font-mono text-[11px]">${code}</span></button>`;
         }).join('');
         document.querySelectorAll('[data-currency-seg]').forEach(container => { container.innerHTML = currSegHtml; });
+        // Agents: two logo buttons in each platform's colours (the name stays available to screen readers)
+        const agentLogoHtml = AGENT_ORDER.map(id => {
+          const a = AGENTS[id];
+          const active = id === state.agent;
+          return `<button type="button" onclick="App.selectAgent('${id}')" data-agent-theme="${id}" aria-pressed="${active}" aria-label="${a.name}" title="${a.name}" class="agent-logo-btn${active ? ' is-active' : ''}"><svg fill="currentColor" aria-hidden="true"><use href="${a.logo}"/></svg></button>`;
+        }).join('');
+        document.querySelectorAll('[data-agent-logos]').forEach(container => { container.innerHTML = agentLogoHtml; });
       }
 
       // opts.haul: Haul Planner card — the save button sits first in the action row, followed by the agent button
@@ -4323,14 +4347,12 @@
         if (hdrCurrSym) hdrCurrSym.textContent = currCfg.symbol;
         const hdrCurrCode = document.getElementById('header-curr-code');
         if (hdrCurrCode) hdrCurrCode.textContent = state.currency;
+        const curLang = LANGUAGES[state.lang] ? state.lang : 'PL';
+        const welcomePopup = document.getElementById('agent-popup');
+        if (welcomePopup) welcomePopup.style.setProperty('--popup-lang-rgb', LANGUAGES[curLang].popupRgb || LANGUAGES[curLang].rgb);
         const hdrLangBtn = document.getElementById('header-lang-btn');
         if (hdrLangBtn) {
-          const curLang = LANGUAGES[state.lang] ? state.lang : 'PL';
           hdrLangBtn.style.setProperty('--flag-rgb', LANGUAGES[curLang].rgb);
-          const hdrLangToggle = document.getElementById('header-lang-toggle');
-          if (hdrLangToggle) hdrLangToggle.style.setProperty('--flag-rgb', LANGUAGES[curLang].rgb);
-          const welcomePopup = document.getElementById('agent-popup');
-          if (welcomePopup) welcomePopup.style.setProperty('--popup-lang-rgb', LANGUAGES[curLang].popupRgb || LANGUAGES[curLang].rgb);
           hdrLangBtn.innerHTML = flagIcon(curLang);
         }
         document.documentElement.lang = (LANGUAGES[state.lang] || LANGUAGES.PL).html;
