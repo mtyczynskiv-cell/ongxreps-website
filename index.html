@@ -490,6 +490,30 @@
       box-shadow: 0 0 0 1px var(--agent-g2), 0 16px 36px -16px rgba(var(--agent-rgb), 0.85);
     }
     .agent-choice:active { transform: scale(0.98); }
+    /* Currency picker in the welcome popup: same construction as the agent tiles, accent = ONGXREPS lime */
+    .curr-choice {
+      position: relative;
+      border-radius: var(--radius-card);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.05) 0%, rgba(17, 17, 20, 0.95) 62%);
+      border: 1px solid var(--line-control);
+      box-shadow: var(--specular-top);
+      color: #F4F4F6;
+      transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.24s ease, background 0.2s ease;
+    }
+    .curr-choice:hover {
+      border-color: var(--line-control-hover);
+      box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 16px 36px -18px rgba(0, 0, 0, 0.9);
+    }
+    .curr-choice .curr-code { color: #9E9EA9; transition: color 0.2s ease; }
+    .curr-choice.is-active {
+      --curr-rgb: 34, 197, 94;
+      background: rgba(var(--curr-rgb), 0.26);
+      border-color: rgba(var(--curr-rgb), 0.9);
+      box-shadow: 0 0 0 2px #0C0C0F, 0 0 0 4px rgb(var(--curr-rgb)), 0 10px 24px -10px rgba(var(--curr-rgb), 0.7);
+    }
+    .curr-choice.is-active .curr-symbol { color: #FFFFFF; }
+    .curr-choice.is-active .curr-code { color: #FFFFFF; font-weight: 700; }
+    .curr-choice:active { transform: scale(0.98); }
     /* Language picker: flag icons in tiles styled like the KakoBuy / CapyBuy tiles
        (tinted background + border in the flag's colour, --flag-rgb set per language) */
     .lang-flag-btn {
@@ -567,6 +591,18 @@
       border-radius: 2px;
       box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.2);
     }
+
+    /* Welcome popup theme per step: language step follows the chosen language, currency step is always green */
+    #agent-popup { --popup-lang-rgb: 220, 20, 60; --popup-curr-rgb: 34, 197, 94; }
+    #agent-popup[data-step="lang"] { --popup-rgb: var(--popup-lang-rgb); }
+    #agent-popup[data-step="curr"] { --popup-rgb: var(--popup-curr-rgb); }
+    #agent-popup > div { transition: border-color 0.3s ease; }
+    #agent-popup[data-step="lang"] .agent-border-30,
+    #agent-popup[data-step="curr"] .agent-border-30 { border-color: rgba(var(--popup-rgb), 0.55) !important; }
+    #agent-popup[data-step="lang"] .popup-dot.active,
+    #agent-popup[data-step="curr"] .popup-dot.active { background: rgb(var(--popup-rgb)); }
+    #agent-popup[data-step="lang"] #popup-step-num,
+    #agent-popup[data-step="curr"] #popup-step-num { color: rgb(var(--popup-rgb)); transition: color 0.3s ease; }
 
     /* Before an agent is chosen the welcome popup stays neutral (no agent colour) */
     #agent-popup[data-step="agent"] .agent-border-30 { border-color: var(--line-panel) !important; }
@@ -1741,12 +1777,9 @@
         <h3 class="font-display text-xl sm:text-2xl font-bold text-white leading-snug" data-i18n="popupLangTitle">Wybierz język strony</h3>
         <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="popupLangDesc">Możesz go zmienić w każdej chwili w nagłówku strony.</p>
         <div id="popup-lang-options" class="mt-5 grid grid-cols-8 gap-3" role="group"></div>
-        <div class="mt-5 flex gap-2.5">
+        <div class="mt-3 flex items-center justify-between">
           <button data-popup-back onclick="App.popupBack()" class="py-3.5 px-4 btn-surface-secondary font-medium text-xs sm:text-sm text-[#9E9EA9] hover:text-white" data-i18n="popupBack">Wstecz</button>
-          <button onclick="App.popupNext()" class="flex-1 py-3.5 px-4 btn-primary-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2">
-            <span data-i18n="popupNext">Dalej</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
+          <button onclick="App.popupNext()" class="ml-auto px-2 py-1.5 font-mono text-[11px] text-white transition-colors group inline-flex items-center gap-1.5"><span data-i18n="popupNext">Dalej</span><svg class="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></button>
         </div>
       </div>
 
@@ -1755,12 +1788,9 @@
         <h3 class="font-display text-xl sm:text-2xl font-bold text-white leading-snug" data-i18n="popupCurrTitle">Wybierz walutę</h3>
         <p class="text-xs sm:text-sm text-[#9E9EA9] mt-1.5 leading-relaxed" data-i18n="popupCurrDesc">Ceny produktów i wysyłki zostaną przeliczone automatycznie.</p>
         <div id="popup-curr-options" class="mt-5 grid grid-cols-2 gap-2.5"></div>
-        <div class="mt-5 grid grid-cols-[auto_1fr] gap-2.5">
-          <button onclick="App.popupBack()" class="py-3.5 px-4 btn-surface-secondary font-medium text-xs sm:text-sm text-[#9E9EA9] hover:text-white" data-i18n="popupBack">Wstecz</button>
-          <button onclick="App.popupNext()" class="py-3.5 px-4 btn-primary-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2">
-            <span data-i18n="popupNext">Dalej</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-          </button>
+        <div class="mt-3 flex items-center justify-between">
+          <button onclick="App.popupBack()" class="px-2 py-1.5 font-mono text-[11px] text-[#9E9EA9] hover:text-white transition-colors" data-i18n="popupBack">Wstecz</button>
+          <button onclick="App.popupNext()" class="px-2 py-1.5 font-mono text-[11px] text-white transition-colors group inline-flex items-center gap-1.5"><span data-i18n="popupNext">Dalej</span><svg class="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></button>
         </div>
       </div>
 
@@ -1850,7 +1880,7 @@
       const LANGUAGES = {
         PL: { code: 'PL', name: 'Polski', label: 'Polski (PL)', flag: '#flag-pl', html: 'pl', rgb: '220, 20, 60' },
         EN: { code: 'EN', name: 'English', label: 'English (EN)', flag: '#flag-en', html: 'en', rgb: '70, 105, 225' },
-        DE: { code: 'DE', name: 'Deutsch', label: 'Deutsch (DE)', flag: '#flag-de', html: 'de', rgb: '255, 206, 0' },
+        DE: { code: 'DE', name: 'Deutsch', label: 'Deutsch (DE)', flag: '#flag-de', html: 'de', rgb: '255, 206, 0', popupRgb: '255, 140, 0' },
         FR: { code: 'FR', name: 'Français', label: 'Français (FR)', flag: '#flag-fr', html: 'fr', rgb: '75, 115, 230' },
         ES: { code: 'ES', name: 'Español', label: 'Español (ES)', flag: '#flag-es', html: 'es', rgb: '241, 191, 0' },
         IT: { code: 'IT', name: 'Italiano', label: 'Italiano (IT)', flag: '#flag-it', html: 'it', rgb: '0, 160, 80' },
@@ -3858,11 +3888,9 @@
             const cfg = CURRENCIES[code];
             const active = state.currency === code;
             return `
-              <button onclick="App.selectCurrency('${code}', true)" class="px-4 py-3.5 radius-control flex flex-col items-start gap-1 transition-all ${
-                active ? 'bg-white text-black shadow-sm' : 'btn-surface-secondary text-[#F4F4F6]'
-              }">
-                <span class="font-display tabular-nums text-xl font-bold leading-none">${cfg.symbol}</span>
-                <span class="font-mono text-[11px] ${active ? 'font-bold' : 'text-[#9E9EA9]'}">${code}</span>
+              <button onclick="App.selectCurrency('${code}', true)" aria-pressed="${active}" class="curr-choice${active ? ' is-active' : ''} px-4 py-3.5 flex flex-col items-center justify-center text-center gap-1">
+                <span class="curr-symbol font-display tabular-nums text-xl font-bold leading-none">${cfg.symbol}</span>
+                <span class="curr-code font-mono text-[11px]">${code}</span>
               </button>
             `;
           }).join('');
@@ -4249,6 +4277,8 @@
           hdrLangBtn.style.setProperty('--flag-rgb', LANGUAGES[curLang].rgb);
           const hdrLangToggle = document.getElementById('header-lang-toggle');
           if (hdrLangToggle) hdrLangToggle.style.setProperty('--flag-rgb', LANGUAGES[curLang].rgb);
+          const welcomePopup = document.getElementById('agent-popup');
+          if (welcomePopup) welcomePopup.style.setProperty('--popup-lang-rgb', LANGUAGES[curLang].popupRgb || LANGUAGES[curLang].rgb);
           hdrLangBtn.innerHTML = flagIcon(curLang);
         }
         document.documentElement.lang = (LANGUAGES[state.lang] || LANGUAGES.PL).html;
